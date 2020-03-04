@@ -107,38 +107,12 @@ Things you may want to cover:
 - belongs_to :product
 
 
-## category-firstテーブル
+## categorysテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+|ancestry|integer||
 
 
 ### Association
 - has_many :products
-- has_many :category-seconds
-
-
-
-## category-secondテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
-
-### Association
-- has_many :products
-- has_many :category-thirds
-- belongs_to :category-first
-
-
-## category-thirdテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
-
-### Association
-- has_many :products
-- belongs_to :category-second
-
-
