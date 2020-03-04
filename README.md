@@ -61,7 +61,7 @@ Things you may want to cover:
 ## creditcardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card-number|integer|null: false|
+|card_number|integer|null: false|
 |user|references|null: false, foreign_key: true|
 
 
@@ -74,25 +74,21 @@ Things you may want to cover:
 |------|----|-------|
 |user|references|null: false,foreign_key: true|
 |brand|string|
-|item-name|string|null: false|
-|item-detail|text|null: false|
-|item-size|string||
+|item_name|string|null: false|
+|item_detail|text|null: false|
+|item_size|string||
 |condition|string|null: false|
 |price|integer|null: false|
-|category-first|references|null: false,foreign_key: true|
-|category-second|references|null: false,foreign_key: true|
-|category-third|references|null: false,foreign_key: true|
-|delivery-pay|string|null: false|
-|origin-area|string|null: false|
-|lead-time|string|null: false|
+|category|references|null: false,foreign_key: true|
+|delivery_pay|string|null: false|
+|origin_area|string|null: false|
+|lead_time|string|null: false|
 
 
 
 ### Association
 - belongs_to :user
-- belongs_to :category-first
-- belongs_to :category-second
-- belongs_to :category-third
+- belongs_to :category
 - has_many :images
 
 
