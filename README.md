@@ -32,10 +32,12 @@ Things you may want to cover:
 |encrypted_password|string|null: false|
 
 ### Association
-- has_one :profiles
+- has_one :profile
+- has_one :creditcard
+- has_many :products
 
 
-## usersテーブル
+## profilesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|foreign_key: true|
@@ -55,5 +57,88 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 
-aaaaaaaa
+
+## creditcardsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|card-number|integer|null: false|
+|user|references|null: false, foreign_key: true|
+
+
+### Association
+- belongs_to :user
+
+
+## productsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user|references|null: false,foreign_key: true|
+|brand|string|
+|item-name|string|null: false|
+|item-detail|text|null: false|
+|item-size|string||
+|condition|string|null: false|
+|price|integer|null: false|
+|category-first|references|null: false,foreign_key: true|
+|category-second|references|null: false,foreign_key: true|
+|category-third|references|null: false,foreign_key: true|
+|delivery-pay|string|null: false|
+|origin-area|string|null: false|
+|lead-time|string|null: false|
+
+
+
+### Association
+- belongs_to :user
+- belongs_to :category-first
+- belongs_to :category-second
+- belongs_to :category-third
+- has_many :images
+
+
+## imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|image|string|null: false|
+|product|references|null: false, foreign_key: true|
+
+
+### Association
+- belongs_to :product
+
+
+## category-firstテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+
+### Association
+- has_many :products
+- has_many :category-seconds
+
+
+
+## category-secondテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+
+### Association
+- has_many :products
+- has_many :category-thirds
+- belongs_to :category-first
+
+
+## category-thirdテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+
+### Association
+- has_many :products
+- belongs_to :category-second
+
 
