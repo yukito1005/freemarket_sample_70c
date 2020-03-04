@@ -32,10 +32,12 @@ Things you may want to cover:
 |encrypted_password|string|null: false|
 
 ### Association
-- has_one :profiles
+- has_one :profile
+- has_one :creditcard
+- has_many :products
 
 
-## usersテーブル
+## profilesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|foreign_key: true|
@@ -55,5 +57,58 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 
-aaaaaaaa
 
+## creditcardsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|card_number|integer|null: false|
+|user|references|null: false, foreign_key: true|
+
+
+### Association
+- belongs_to :user
+
+
+## productsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user|references|null: false,foreign_key: true|
+|brand|string|
+|item_name|string|null: false|
+|item_detail|text|null: false|
+|item_size|string||
+|condition|string|null: false|
+|price|integer|null: false|
+|category|references|null: false,foreign_key: true|
+|delivery_pay|string|null: false|
+|origin_area|string|null: false|
+|lead_time|string|null: false|
+
+
+
+### Association
+- belongs_to :user
+- belongs_to :category
+- has_many :images
+
+
+## imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|image|string|null: false|
+|product|references|null: false, foreign_key: true|
+
+
+### Association
+- belongs_to :product
+
+
+## categorysテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|ancestry|integer||
+
+
+### Association
+- has_many :products
