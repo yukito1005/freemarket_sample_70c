@@ -1,0 +1,93 @@
+.new {
+  background-color: #EEEEEE;
+  &__header {
+    height: 150px;
+    text-align: center;
+    .logo {
+      margin-top: 25px;
+    }
+  }
+  &__user {
+    background-color: white;
+    width: 740px;
+    margin: auto;
+    padding-bottom: 100px;
+    &--post h2 {
+      text-align: center;
+      font-size: 25px;
+      font-weight: bold;
+      padding: 40px 0;
+      border-bottom: thin solid #EEEEEE;
+    }
+    .boxes {
+      background-color: yellowgreen;
+      height: 100px;
+      &__field {
+        width: 400px;
+        margin-top: 40px;
+        margin-left: 220px;
+        label {
+          display: inline-block;
+          font-weight: bold;
+          font-size: 15px;
+          margin: 0 5px 5px 0;
+        }
+        span {
+          display: inline-block;
+          background-color: red;
+          color: white;
+          vertical-align: top;
+          padding: 2px 2px;
+          font-size: 12px;
+          border-radius: 3px;
+        }
+        &__large-frame {
+          width: 300px;
+          height: 40px;
+          padding-left: 5px;
+        }
+        h3 {
+          font-size: 17px;
+          font-weight: bold;
+          margin-top: 20px;
+        }
+        &__middle-frame {
+          width: 150px;
+          height: 40px;
+          padding-left: 5px;
+        }
+        .year{
+          width: 80px;
+          height: 45px;
+        }
+        .month{
+          width: 80px;
+          height: 45px;
+        }
+        .day{
+          width: 80px;
+          height: 45px;
+        }
+      }
+    }
+    .actions {
+      text-align: center;
+      width: 300px;
+      margin: auto;
+      margin-top: 80px;
+      &__btn {
+        display: block;
+        width: 300px;
+        line-height: 50px;
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        background-color: red;
+      }
+    }
+  }
+  .footer {
+    background-color: #EEEEEE;
+    height: 100px;
+  }
+}
