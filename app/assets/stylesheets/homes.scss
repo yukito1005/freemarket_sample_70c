@@ -47,6 +47,9 @@
           color: #333;
           padding: 0 11px 0 0;
           }
+          a:hover{
+            color: orange;
+          }
           }
         
         .right-navi{
@@ -57,6 +60,7 @@
             text-decoration: none;
             color: #333;
             padding: 0 15px 0 0;
+            
             }
          }
       }
@@ -104,26 +108,75 @@
             color: #fff;
             line-height: 1.77778;
             }
-          
-      }
-    }
 
+          .app-icon{
+            margin: 24px 0 0 0;
+            cursor:pointer;
+            filter: alpha(opacity=60);
+            
+            .abtn:hover{
+              opacity: 0.5;
+            }
+            .gbtn:hover{
+              opacity: 0.5;
+            }
+            
+          }
+         }
+       }
       }
-      .main-visual2{
-       position: relative;
-       background-image: url(bg-topMiddleDl-pict.jpg);
-      
-      }
-      .main-introduction{
+
+  
+
+    .main-intro{
+      width: 100%;
+      height: 658px;
+      .intro-content{
+        padding: 60px 20px;
+        .subtitle{
+        .reason{
         text-align: center;
-        .ul{
-          display: flex;
-          width: 100%;
-          margin: 0 auto;
-          position: relative;
+        font-size: 26px;
+        line-height: 1.4;
+        font-weight: bold;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        position: relative;
+        }
+         ::after{
+          content: "";
+          width: 70px;
+          height: 4px;
+          background-color: #3CCACE;
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+        }
 
-          .li{
+        }
+        .list{
+          display: flex;
+          margin: 0 auto;
+          position: absolute;
+          text-align: center; 
+          left: 123px;
+          font-size: 24px;
+          line-height: 50px;
+          margin-bottom: 20px;
+
+          li{
             margin: 16px 5% 0 0;
+            .text1{
+              font-weight: bold;
+              font-size: 24px;
+              line-height: 50px;
+             .a{
+               color: #3CCACE ;
+             }
+
+            }
+
           }
 
         }
@@ -137,7 +190,16 @@
           background-color: #3CCACE;
           color: #fff;
         }
+      
       }
+    }
+
+      .main-visual2{
+        background-image: url(bg-topMiddleDl-pict.jpg);
+        width: 100%;
+        height: 400px;
+       }
+
     .main-feature{
       text-align: center;
       font-size: 26px;
@@ -165,7 +227,7 @@
       }
     }
   }
-
+  
   .footer{
    background:blue;
    width: 100%;
@@ -180,6 +242,6 @@
       position: fixed;
       padding: 15px;
     }
-
   }
 }
+
