@@ -41,6 +41,14 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
+group :development, :test do
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
+end
+
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
@@ -69,7 +77,7 @@ gem 'haml-rails'
 gem 'erb2haml'
 
 gem 'pry-rails'
-gem 'font-awesome-rails'
+gem 'font-awesome-sass'
 gem 'ancestry'
 gem 'jquery-rails'
 
