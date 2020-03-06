@@ -1,0 +1,55 @@
+.wrapper 
+  .header
+    = image_tag "logo.png", size:"200x60", class: "logo"
+  .main-contents
+    .main-contents_image
+      .main-contents_image_body
+        %label 出品画像
+        %span 必須
+        %p 最大10枚までアップロードできます
+        .main-contents_image_body_post
+        .main-contents_image_body_formerror 画像がありません
+    .main-contents_product-description
+      .main-contents_product-description_topform
+        .main-contents_product-description_topform_name
+          %label 商品名
+          %span 必須
+        %input{:autocomplete => "off", :name => "name", :placeholder => "40文字まで", :type => "text", :value => "", :class => "input"}/
+      .main-contents_product-description_formerror 入力してください
+      .main-contents_product-description_bottomform
+        .main-contents_product-description_bottomform_name
+          %label 商品の説明
+          %span 必須
+        %textarea(name="" cols="30" rows="10" placeholder="商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。")  
+        .main-contents_product-description_bottomform_counter 0/1000
+        .main-contents_product-description_bottomform_formerror 入力してください
+      .main-contents_product-description_bottomform 
+        
+    .main-contents_product-detail
+      %p 商品の詳細
+      .main-contents_product-detail_top
+        .main-contents_product-detail_top_category
+          %label カテゴリー
+          %span 必須
+        .main-contents_product-detail_top_selector
+          %select(name="categoryId")
+            %option 選択してください
+      .main-contents_product-detail_middle  
+        .main-contents_product-detail_middle_brand
+          %label ブランド
+          %span 任意
+        .main-contents_product-detail_middle_selector
+          %select(name="categoryId")
+            %option 選択してください  
+      .main-contents_product-detail_bottom      
+        .main-contents_product-detail_bottom_condition
+          %label 商品の状態
+          %span 必須
+        .main-contents_product-detail_bottom_selector
+          %select(name="categoryId")
+            %option 選択してください   
+    .main-contents_delivery
+      %p 配送について
+      %i.far.fa-question-circle
+    .main-contents_price
+  .footer
