@@ -7,9 +7,13 @@
       = link_to '新規会員登録',  'new_user_session_path', class:'contents__row--btn'
     .login-form
       .field
-        = link_to 'facebookでログイン', 'https://www.facebook.com/', class:'field__box', id:'f-link'
+        = link_to  'https://www.facebook.com/', class:'field__box', id:'f-link' do
+          = icon('fab', 'facebook-square', class: 'field__box__icon-size')
+          facebook
       .field
-        = link_to 'Googleでログイン', 'https://www.google.co.jp/', class:'field__box', id:'g-link'
+        = link_to  'https://www.google.co.jp/', class:'field__box', id:'g-link' do
+          = icon('fab', 'google', class: 'field__box__icon-color')
+          Google
     .login-form
       = form_with model: @user, url: user_registration_path, local: true  do |f|
         .field

@@ -42,6 +42,25 @@
         &__box {
           width: 340px;
           padding: 8px 0;
+          position: relative;
+          &__icon-size {
+            display: inline-block;
+            line-height: 23px;
+            font-size: 30px;
+            position: absolute;
+            left: 20px;
+          }
+          &__icon-color {
+            display: inline-block;
+            background: linear-gradient(110deg, #ea4335 20%, #fbbc05 40%, #34a583, #4285F4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: rgba(255,255,255,0.0);
+            font-size: 19px;
+            line-height: 23px;
+            vertical-align: bottom;
+            position: absolute;
+            left: 20px;
+          }
         }
         #f-link {
           display: inline-block;
