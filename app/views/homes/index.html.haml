@@ -6,7 +6,7 @@
           = link_to image_tag src="logo.png",size: "140x40"
         .search-form
           %input.form{:placeholder=>'キーワードから探す',:type=>'text'}
-          = image_tag src="icon-search 1.png", class:'search',size: "20x20"
+          = link_to image_tag src="icon-search 1.png", class:'search',size: "20x20"
       .main-navi
         .left-navi
           = link_to 'カテゴリー'
@@ -21,7 +21,7 @@
         .text
           .p 人生を変えるアプリ
           .p2 FURIMAはだれでもかんたんに出品・購入できる
-          .p3 フリマアプリです
+          .p3 フリマアプリです。
           .app-icon
             = link_to image_tag src="app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg",size: "180x53",class:'abtn'
             = link_to image_tag src="google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg",size: "180x53",class:'gbtn'
@@ -36,18 +36,29 @@
               = image_tag src="pict-reason-01.jpg",size: "360x360"
               .text1
                 %p1.a 3分 
-                %p2 ですぐに出品
+                %p2 ですぐに出品kkkkkkkkkkk
             %li
               = image_tag src="pict-reason-02.jpg",size: "360x360"
-              %p1 シンプルで使いやすい
+              %p1 プルやすい
             %li
               = image_tag src="pict-reason-03.jpg",size: "360x360"
               %p1 手数料最安値
           
     
-    .main-visual2
+    .number1visual
+      .number1__content
+        .number1__content__text
+          .subtitle 会員数日本一位
+          .popular
+            .pb FURIMAは、フリマアプリでも最も人気
+            .pc フリマアプリです
+            .pd ほしかったあの商品に出会えるかもしれません。
+          .app-icon
+            = link_to image_tag src="app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg",size: "180x53",class:'abtn'
+            = link_to image_tag src="google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg",size: "180x53",class:'gbtn'
 
-    .main-feature
+     
+    .furima-feature
       .h2
       FURIMAの特徴
       .item-image
@@ -55,8 +66,7 @@
       = image_tag src="icon-02.png",size:"219x337"
       = image_tag src="icon-04.png",size:"219x337"
 
-    .main-pickup
-
+    .pickup
       .product-phot
         .phot-1
         = image_tag src="icon-04.png",size:"220x150"
@@ -66,8 +76,28 @@
         = image_tag src="icon-04.png",size:"220x150"
         = image_tag src="icon-04.png",size:"220x150"
         = image_tag src="icon-04.png",size:"220x150"
-    .main-banner
-      = image_tag src="bg-appBanner-pict.jpg",size:"1440x359"
+    .download-banner
+      .download-banner__content
+        .download-banner__content__text
+          .p だれでもかんたん、人生を変えるフリマアプリ
+          .p2 今すぐ無料ダウンロード！
+          .app-icon
+            = link_to image_tag src="app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg",size: "180x53",class:'abtn'
+            = link_to image_tag src="google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg",size: "180x53",class:'gbtn'
+
+
+
   .footer
+    .footer__content
+      %ul.furima
+        %li.content FURIMAについて
+        %li.content FURIMAを見る
+        %li.content ヘルプ＆ガイド
+
     .camera-icon
-      出品する
+      %p 出品する
+      =link_to image_tag src="icon_camera.png",size: "54x54",class:'camera'
+    .furima-icon
+      =link_to image_tag src="logo-white.png",size: "160x43"
+    .furima-text
+      %p ©︎FURIMA

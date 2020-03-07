@@ -66,7 +66,7 @@
       }
     }
   }
-    
+
   .top-main{
     background-color: green;
     width: 100%;
@@ -126,7 +126,6 @@
        }
       }
 
-  
 
     .main-intro{
       width: 100%;
@@ -144,7 +143,7 @@
         position: relative;
         }
          ::after{
-          content: "";
+          content: "-";
           width: 70px;
           height: 4px;
           background-color: #3CCACE;
@@ -194,13 +193,50 @@
       }
     }
 
-      .main-visual2{
+    .number1visual{
         background-image: url(bg-topMiddleDl-pict.jpg);
         width: 100%;
         height: 400px;
-       }
+        background-size: cover;
+        background-position: bottom right;
+        position: relative;
+        .number1__content{
+          padding: 76px;
+          position: abusolute;
+          &__text{
+            
+            color: #fff;
+            text-shadow: 0 0 5px rgba(0,0,0,0.4);
+            text-align: left;
+            max-width: 1040px;
+            width: 100%;
+            margin: 0 auto;
+          .subtitle{
+            font-size: 27px;
+            font-weight: bold;
+            line-height: 1.4;
+          }
+          .popular{
+            font-size: 18px;
+            margin: 20px 0 30px;
+            line-height: 1.5;
+              
+            }
+          .app-icon{
+            .abtn:hover{
+              opacity: 0.5;
+            }
+            .gbtn:hover{
+              opacity: 0.5;
+            }
 
-    .main-feature{
+          }
+
+
+        }
+       }
+       }
+    .furimafeature{
       text-align: center;
       font-size: 26px;
       line-height: 1.4;
@@ -209,7 +245,6 @@
       padding-bottom: 15px;
       position: relative;
     }
-   
     .product-phot{
       text-align: center;
       font-size: 26px;
@@ -226,14 +261,73 @@
 
       }
     }
+    .download-banner{
+      background-image: url(bg-appBanner-pict.jpg);
+      height: 359px;
+      &__content{
+        text-align: center;
+        padding: 100px 40px;
+        &__text{
+          color: #fff;
+          .p{
+            text-shadow: 0 0 5px rgba(0,0,0,0.4);
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 1.4;
+          }
+          .p2{
+            font-size: 35px;
+            text-shadow: 0 0 5px rgba(0,0,0,0.4);
+          }
+          .app-icon{
+            margin: 20px auto 0;
+          }
+
+          .abtn:hover{
+            opacity: 0.5;
+          }
+          .gbtn:hover{
+            opacity: 0.5;
+          }
+        }
+      }
+    
+    
+    }
+
   }
-  
+
   .footer{
-   background:blue;
-   width: 100%;
-   height: 354px;
+    padding: 60px 0;
+    color: #fff;
+    background-color: #272727;
+    width: 100%;
+    &__content{
+      .furima{
+      text-align: center;
+      .content{
+        height: 260px;
+        width: 150x;
+        display: inline-block;
+        color: tan;
+      }
+
+
+
+    }
+
+  }
     .camera-icon{
-      width: 120px;
+      cursor: pointer;
+      p{
+        color: white;
+        font-size: 18px;
+      }
+      .camera{
+        top: 5px;
+      }
+
+      width: 90px;
       background: #3CCACE;
       text-align: center;
       border-radius: 4%;
@@ -242,6 +336,19 @@
       position: fixed;
       padding: 15px;
     }
+    .camera-icon:hover{
+      opacity:0.9;
+    }
+    .furima-icon{
+      text-align: center;
+    }
+    .furima-text{
+      text-align: center;
+      p{
+        display: inline-block;
+      }
+      
+    }
+
   }
 }
-
