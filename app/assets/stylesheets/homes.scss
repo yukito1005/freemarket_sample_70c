@@ -113,6 +113,10 @@
     margin: 0 auto;
     &__content{
       padding: 0 10px 0 0;
+      .stylenone{
+        text-decoration: none;
+        color: #333;
+      }
     }
   }
 }
