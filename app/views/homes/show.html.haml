@@ -1,32 +1,185 @@
-.pcheader 徳岡さんが作ってる
+.pcheader
+  .pcheader__inner
+    .pcheader__inner__main
+      %h1.pcheader__inner__main--icon
+        %a{href: "#"}
+          %img{src: "assets/logo.png", width: 140, height: 40.55}
+      .pcheader__inner__main--search
+        %form.pcheader__inner__main--search--form
+          %input{placeholder: "キーワードから探す"}
+          %button
+            .search--icon
+              %img{src: "assets/icon-search 1.png",width: 19.61, height: 19.61}
+    .pcheader__inner__navi
+      %ul.pcheader__inner__navi__lists
+        %li.pcheader__inner__navi__lists--left--category
+          %a{href: "#"} カテゴリー
+        %li.pcheader__inner__navi__lists--left--brand
+          %a{href: "#"} ブランド
+      %ul.pcheader__inner__navi__lists
+        %li.pcheader__inner__navi__lists--right--login
+          %a{href: "#"} ログイン
+        %li.pcheader__inner__navi__lists--right--signup
+          %a{href: "#"} 新規会員登録
 
 -# パンくずメニュー
 %nav.breadCrumbs
   %ul.category
-
     %li.category__content
-      %a.category__content FRIMA
-
+      %a.category__content--app FRIMA
     %li.category__content
       %i.fas.fa-angle-right
-
     %li.category__content
-      %a ベビー・キッズ
-
+      %a.category__content--first ベビー・キッズ
     %li.category__content
       %i.fas.fa-angle-right
-
     %li.category__content
-      %a ベビー服(男女兼用)  ~95cm
-
+      %a.category__content--second ベビー服(男女兼用)  ~95cm
     %li.category__content
       %i.fas.fa-angle-right
-
     %li.category__content
-      %a アウター
-
+      %a.category__content--third アウター
     %li.category__content
       %i.fas.fa-angle-right
-
     %li.category__content
-      %p product3
+      %p.category__content--item product3
+
+.item
+  .item__main
+    .item__main__right
+    .item__main__left
+      .top-contents
+        .top-contents__item
+          %h2.top-contents__item--name product3
+          .top-contents__item__body
+            %ul.top-contents__item__body__images
+              %li.top-contents__item__body__images--show
+                %img.top-contents__item__body__images--show--image{src: "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", width: 560 ,height: 346}
+                %ul.top-contents__item__body__images--show--index
+                  %li.top-contents__item__body__images--show--index--list
+                    %img{src: "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", width: 140 ,height: 87}
+                  %li.top-contents__item__body__images--show--index--list
+                    %img{src: "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png", width: 140 ,height: 87}
+                  %li.top-contents__item__body__images--show--index--list
+                    %img{src: "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png", width: 140 ,height: 87}
+        .top-contents__price
+          %span.top-contents__price__main ¥30000
+          .top-contents__price__sub
+            %span (税込)
+            %span 送料込み
+        .top-contents__detail
+          親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+        .top-contents__table
+          %table
+            %tbody
+              %tr
+                %th 出品者
+                %td hoge
+              %tr
+                %th カテゴリー
+                %td
+                  %a{href: "#"} ベビー・キッズ 
+                  %br
+                  %a{href: "#"} ベビー服(男女兼用)  ~95cm
+                  %br
+                  %a{href: "#"} アウター
+              %tr
+                %th ブランド
+                %td 
+              %tr
+                %th 商品のサイズ
+                %td 
+              %tr
+                %th 商品の状態
+                %td 未使用に近い
+              %tr
+                %th 配送料の負担
+                %td 送料込み（出品者負担）
+              %tr
+                %th 発送元の地域
+                %td 
+                  %a{href: "#"} 岩手県
+              %tr
+                %th 発送日の目安
+                %td 4-7日で発送
+        .top-contents__option
+          %ul.top-contents__option--favorite
+            %li.top-contents__option--favorite--btn
+              %i.fas.fa-star  お気に入り 0
+          %ul.top-contents__option--report
+            %li.top-contents__option--report--btn
+              %a{href: "#"}
+                %i.fas.fa-flag 不適切な商品の通報
+
+    .comment
+      %form.comment__new
+        %textarea.comment__new--text
+        %p.comment__new--notes
+          相手のことを考え丁寧なコメントを心がけましょう。
+          %br>/
+          不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %button.comment__new--submit
+          %i.fas.fa-comment コメントする
+
+    %ul.link-navi
+      %li.link-navi__left
+        %a{href: "#"}
+          %i.fas.fa-angle-left
+          %span 前の商品
+      %li.link-navi__right
+        %a{href: "#"}
+          %span 後ろの商品
+          %i.fas.fa-angle-right
+
+    .related-item
+      %a.related-item__link{href: "#"} ベビー・キッズをもっと見る
+      .related-item__producuts
+
+.app-banner
+  .app-banner__inner
+    .app-banner__inner--title だれでもかんたん、人生を変えるフリマアプリ
+    .app-banner__inner--body 今すぐ無料ダウンロード！
+    .app-banner__inner--icon
+      %a{href: "#"}
+        %img{src: "http://furima.tokyo/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg", width: 180 ,height: 53}
+      %a{href: "#"}
+        %img{src: "http://furima.tokyo/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg", width: 180 ,height: 53}
+
+.footer
+  %ul.footer__contents
+    %li.footer__contents__box
+      %h2.footer__contents__box--title FURIMAについて
+      %ul.footer__contents__box--lists
+        %li
+          %a{href: "#"} 会社概要（運営会社）
+        %li
+          %a{href: "#"} プライバシーポリシー
+        %li
+          %a{href: "#"} FURIMA利用規約
+        %li
+          %a{href: "#"} ポイントに関する特約
+    %li.footer__contents__box
+      %h2.footer__contents__box--title FURIMAを見る
+      %ul.footer__contents__box--lists 
+        %li
+          %a{href: "#"} カテゴリー一覧
+        %li
+          %a{href: "#"} ブランド一覧
+    %li.footer__contents__box
+      %h2.footer__contents__box--title ヘルプ＆ガイド
+      %ul.footer__contents__box--lists
+        %li
+          %a{href: "#"} FURIMAガイド
+        %li
+          %a{href: "#"} FURIMAロゴ利用ガイドライン
+        %li
+          %a{href: "#"} お知らせ
+  .footer__logo
+    %a{href: "#"}
+      %img{src: "/assets/logo-white.png", width: 160 ,height: 46}
+  %p.footer__copyright ©️ FURIMA
+
+%a{href: "#"}
+  .purchase-btn
+    %span.purchase-btn--text 出品する
+    %img.purchase-btn--icon{src: "/assets/icon_camera.png", width: 54 ,height: 54}
