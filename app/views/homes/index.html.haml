@@ -1,19 +1,20 @@
 .top-page
   .header
     .header-box
-      .main-header
-        .logo-icon
-          = link_to image_tag src="logo.png",size: "140x40"
-        .search-form
-          %input.form{:placeholder=>'キーワードから探す',:type=>'text'}
-          = link_to image_tag src="icon-search 1.png", class:'search',size: "20x20"
-      .main-navi
-        .left-navi
-          = link_to 'カテゴリー'
-          = link_to 'ブランド'
-        .right-navi
-          = link_to 'ログイン'
-          = link_to '新規会員登録'
+      .header-block
+        .main-header
+          .logo-icon
+            = link_to image_tag src="logo.png",size: "140x40"
+          .search-form
+            %input.form{:placeholder=>'キーワードから探す',:type=>'text'}
+            = link_to image_tag src="icon-search 1.png", class:'search',size: "20x20"
+        .main-navi
+          .left-navi
+            = link_to 'カテゴリー'
+            = link_to 'ブランド'
+          .right-navi
+            = link_to 'ログイン'
+            = link_to '新規会員登録'
 
   .top-main
     .main-visual
@@ -28,21 +29,57 @@
 
     .main-intro
       .intro-content
-        .subtitle
-          .reason FURIMAが選ばれる理由 
-          
-          %ul.list
-            %li
-              = image_tag src="pict-reason-01.jpg",size: "360x360"
-              .text1
-                %p1.a 3分 
-                %p2 ですぐに出品kkkkkkkkkkk
-            %li
-              = image_tag src="pict-reason-02.jpg",size: "360x360"
-              %p1 プルやすい
-            %li
-              = image_tag src="pict-reason-03.jpg",size: "360x360"
-              %p1 手数料最安値
+        .reason 
+          FURIMAが選ばれる理由 
+          %after
+      .card
+        %ul.list
+          %li.number1
+            .card-image
+              .image
+                = image_tag src="pict-reason-01.jpg",size: "306x306"
+              .number
+                1
+            .subtitle
+              %p.textfoucs
+                3分
+              %p3
+                ですぐに出品
+            .explain
+              %p
+              スマホで入力するだけで簡単に出品が
+              %br/ 
+              できる！
+
+          %li.number2
+            .card-image
+              .image
+                = image_tag src="pict-reason-02.jpg",size: "306x306"
+              .number
+                2
+            .subtitle
+              %p.textfoucs
+                シンプル
+              %p3
+                で使いやすい
+            .explain
+              %p
+              めんどくさい入力は必要なく、検索も
+              %br/
+              購入もスムーズ！
+          %li.number3
+            .card-image
+              .image
+                = image_tag src="pict-reason-03.jpg",size: "306x306"
+              .number
+                3
+            .subtitle
+              %p
+                手数料
+              %p.textfoucs
+                　業界最安
+            .explain
+              最大3%でお得に出品&購入！
           
     
     .number1visual
@@ -59,23 +96,157 @@
 
      
     .furima-feature
-      .h2
-      FURIMAの特徴
-      .item-image
-      = image_tag src="icon-01.png",size:"220x337"
-      = image_tag src="icon-02.png",size:"219x337"
-      = image_tag src="icon-04.png",size:"219x337"
+      .furima-feature__box
+        %h2
+          FURIMAの特徴
+          %after
+        .item-image
+          %section
+            %figure
+              = image_tag src="icon-01.png",size:"220x337"
+            %h3
+              簡単に売り買いができる
+            %p3
+              スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+          %section
+            %figure
+              = image_tag src="icon-03.png",size:"219x337"
+            %h3
+              売上金は即日振込みに対応
+            %p3
+              午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+          %section
+            %figure
+              = image_tag src="icon-04.png",size:"219x337"
+            %h3
+              様々な支払いに対応
+            %p3
+              お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
 
-    .pickup
-      .product-phot
-        .phot-1
-        = image_tag src="icon-04.png",size:"220x150"
-        = image_tag src="icon-04.png",size:"220x150"
-        = image_tag src="icon-04.png",size:"220x150"
-        .phot-2
-        = image_tag src="icon-04.png",size:"220x150"
-        = image_tag src="icon-04.png",size:"220x150"
-        = image_tag src="icon-04.png",size:"220x150"
+    .pickup-category
+      .pickup-block
+        .pickup-block__tittle
+          ピックアップカテゴリー
+        .pickup-block__sub-tittle
+          新規投稿商品
+        .pickup-block__product-phot
+          .block
+            .left
+              = link_to
+              .image
+                = image_tag src="icon-04.png",size:"220x150"
+              .pop
+                .name 
+                  ペットボトル
+                .detail
+                  %ul
+                    %li.price
+                      300000
+                    %li.icon
+                      %i.fas.fa-star.stariocn
+                    %li
+                      3
+                .tax
+                  (税込)
+            .center
+              = link_to
+              .image
+                = image_tag src="icon-04.png",size:"220x150"
+              .pop
+                .name
+                  唐辛子
+                .detail
+                  %ul
+                    %li.price
+                      300000
+                    %li.icon
+                      %i.fas.fa-star.stariocn
+                    %li
+                      3
+                  .tax
+                    (税込)
+              
+            .right
+              = link_to 
+              .image
+                = image_tag src="icon-04.png",size:"220x150"
+              .pop
+                .name
+                  唐辛子
+                .detail
+                  %ul
+                    %li.price
+                      300000
+                    %li.icon
+                      %i.fas.fa-star.stariocn
+                    %li
+                      3
+                  .tax
+                    (税込)
+    .pickup-category2
+      .pickup-brand
+        .pickup-brand__tittle
+          ピックアップブランド
+        .pickup-brand__sub-tittle
+          アーカイバ
+        .pickup-brand__product-phot
+          .block
+            .left
+              = link_to
+              .image
+                = image_tag src="icon-04.png",size:"220x150"
+              .pop
+                .name 
+                  ペットボトル
+                .detail
+                  %ul
+                    %li.price
+                      300000
+                    %li.icon
+                      %i.fas.fa-star.stariocn
+                    %li
+                      3
+                .tax
+                  (税込)
+            .center
+              = link_to
+              .image
+                = image_tag src="icon-04.png",size:"220x150"
+              .pop
+                .name
+                  唐辛子
+                .detail
+                  %ul
+                    %li.price
+                      300000
+                    %li.icon
+                      %i.fas.fa-star.stariocn
+                    %li
+                      3
+                  .tax
+                    (税込)
+              
+            .right
+              = link_to
+              .image
+                = image_tag src="icon-04.png",size:"220x150"
+              .pop
+                .name
+                  唐辛子
+                .detail
+                  %ul
+                    %li.price
+                      300000
+                    %li.icon
+                      %i.fas.fa-star.stariocn
+                    %li
+                      3
+                  .tax
+                    (税込)
+
+
+
+                
     .download-banner
       .download-banner__content
         .download-banner__content__text
@@ -90,10 +261,33 @@
   .footer
     .footer__content
       %ul.furima
-        %li.content FURIMAについて
-        %li.content FURIMAを見る
-        %li.content ヘルプ＆ガイド
-
+        %li.content
+          FURIMAについて
+          %ul
+            %li
+              = link_to '会社概要(運営会社)'
+            %li
+              = link_to 'プライバシーポリシー'
+            %li
+              = link_to 'フリマの利用規約'
+            %li
+              = link_to 'ポイントに関する規約'
+        %li.content 
+          FURIMAを見る
+          %ul
+            %li
+              = link_to 'カテゴリー一覧'
+            %li
+              = link_to 'ブランド一覧'
+        %li.content
+          ヘルプ＆ガイド
+          %ul
+            %li 
+              = link_to 'FURIMAガイド'
+            %li 
+              = link_to 'FURIMAロゴ利用会ドライン'
+            %li 
+              = link_to 'お知らせ'
     .camera-icon
       %p 出品する
       =link_to image_tag src="icon_camera.png",size: "54x54",class:'camera'
