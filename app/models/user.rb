@@ -5,5 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   # has_many :products, class_name: 'Product', foreign_key: 'user_id'
-         
+  has_one :profile
+  has_one :creditcard
+  # validates :email, presence: true, unique: true
+  validates :nickname, :password, :encrypted_password, presence: true
+  validates :email, presence: true, uniqueness: true
 end
