@@ -1,0 +1,213 @@
+.defalt-container{
+  background-color: #f5f5f5;
+}
+// コンテントの部分の大枠
+.l-container{
+  margin: 20px auto 0;
+  padding: 0 0 40px;
+  height: 1500px;
+  width: 1000px;
+  //FURIMA・設定等
+  &__side{
+    margin: 0 100px 0 0;
+    width: 280px;
+    float: left;
+    &__mypage-nav{
+      &__head{
+        margin-top: 50px;
+      }
+      li{
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid #f5f5f5;
+        height: 20px;
+        padding: 16px;
+        background-color: white;
+        font-size: 14px;
+        color: black;
+      }
+      li.nav-active{
+        background-color: #eee;
+        border: 1px solid red;
+      }
+      li:hover{
+        background-color: #eee;
+        .icon-arrow-right{
+          font-size: 20px;
+          line-height: 20px;
+        }
+      }
+    }
+  } 
+  //ユーザーの詳細・取引
+  &__content{
+    float: left;
+    //ユーザーの詳細(ユーザー情報)
+    &__mypage-user{
+      height: 200px;
+      background-color:rgba(255,255,255,0.8);
+      background-blend-mode:lighten;
+      background-image:url(logo.png);
+      background-size: 100% 100%;
+      display: flex;
+      align-items: center;
+      .user-detail{
+        height: 150px;
+        width: 100%;
+        .user-icon{
+          display: block;
+          margin: 0 auto;
+        }
+        .user-name{
+          margin-top: 10px;
+          text-align: center;
+          font-weight: bold;
+          color: black;
+        }
+        .user-evaluations-exhibitions{
+          margin-top: 10px;
+          display: flex;
+          justify-content: center;
+          .evaluations{
+            &__numbers{
+              margin-left: 5px;
+              float: right;
+              font-weight: bold;
+            }
+          }
+          .exhibitions{
+            margin-left: 5px;
+            &__numbers{
+              margin-left: 5px;
+              float: right;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+      .user-detail:hover{
+        opacity: 0.5;
+      }
+    }
+    //ユーザーの詳細(お知らせ・やることリストのタブ)
+    &__mypage-tabs-container-info-todo{
+      &__tabs{
+        height: 100px;
+        background-color: #eee;
+        display: flex;
+        margin: 0 auto;
+        font-weight: bold;
+        li .info-todo-tab{
+          width: 300px;
+          line-height: 100px;
+          display: block;
+          text-align: center;
+          color: black;
+        }
+        li .info-todo_active{
+          background-color: white;
+          border-top: 5px solid red;
+          color: skyblue;
+        }
+        li :not(.info-todo_active):hover{
+          opacity: 0.5;
+        }
+      }
+      //ユーザーの詳細(お知らせ・やることリストの一覧)
+      &__contents{
+        .info-todo_content{
+          width: 100%;
+          min-height: 50px;
+          background-color: white;
+          display: none;
+          li{
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #f5f5f5;
+            height: 50px;
+            line-height: 50px;
+            padding: 16px;
+            background-color:white;
+            font-size: 14px;
+            color: black;
+            .info-index{
+              height: 50px;
+              width: 100%;
+              text-align: center;
+              line-height: 50px;
+            }
+          }
+          li:hover{
+            background-color: #eee;
+          }
+        }
+        .info-todo_show{
+          display: block;
+        }
+      }
+    }
+    //取引中・過去の取引
+    &__mypage-tab-container-purchase{
+      //取引(タイトル:購入した商品)
+      &__head{
+        height: 100px;
+        width: 100%;
+        margin: 100px auto 0;
+        text-align: center;
+        background-color: white;
+        font-weight: bold;
+        line-height: 100px;
+      }
+      //取引(取引中と過去取引のタブ)
+      &__tabs{
+        height: 100px;
+        background-color: #eee;
+        display: flex;
+        margin: 0 auto;
+        font-weight: bold;
+        li .purchase-tab{
+          width: 300px;
+          line-height: 100px;
+          display: block;
+          text-align: center;
+          color: black;
+        }
+        li .purchase_active{
+          background-color: white;
+          border-top: 5px solid red;
+          color: skyblue;
+        }
+        li :not(.purchase_active):hover{
+          opacity: 0.5;
+        }
+      }
+      //取引(取引中と過去取引の一覧)
+      &__contents{
+         .purchase_content{
+          width: 100%;
+          height: 200px;
+          background-color: white;
+          display: none;
+          background-color:rgba(255,255,255,0.8);
+          background-blend-mode:lighten;
+          background-image:url(logo.png);
+          background-size: 100% 100%;
+          li{
+            text-align: center;
+            line-height: 200px;
+          }
+        }
+        .purchase_show{
+          display: block;
+        }
+      }
+    }
+  }
+}
+a{
+  text-decoration: none;
+}
+li{
+  cursor: pointer;
+}
+
