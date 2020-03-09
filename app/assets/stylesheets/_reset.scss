@@ -1,3 +1,4 @@
+
 /**
  * YUI 3.5.0 - reset.css (http://developer.yahoo.com/yui/3/cssreset/)
  * http://cssreset.com
@@ -5,6 +6,7 @@
  * http://yuilibrary.com/license/
  */
 /*
+
 	TODO will need to remove settings on HTML since we can't namespace it.
 	TODO with the prefix, should I group by selector or property for weight savings?
 */
@@ -44,6 +46,7 @@ p,
 blockquote,
 th,
 td {
+
 	margin:0;
 	padding:0;
 }
@@ -67,17 +70,22 @@ em,
 strong,
 th,
 var {
+
 	font-style:normal;
 	font-weight:normal;
+
 }
 
 ol,
 ul {
+
 	list-style:none;
+
 }
 
 caption,
 th {
+
 	text-align:left;
 }
 h1,
@@ -104,18 +112,22 @@ sup {
 }
 sub {
 	vertical-align:text-bottom;
+
 }
 input,
 textarea,
 select {
+
 	font-family:inherit;
 	font-size:inherit;
 	font-weight:inherit;
+
 }
 /*to enable resizing for IE*/
 input,
 textarea,
 select {
+
 	*font-size:100%;
 }
 /*because legend doesn't inherit in IE */
