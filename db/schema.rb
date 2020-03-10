@@ -50,13 +50,13 @@ ActiveRecord::Schema.define(version: 2020_03_09_020904) do
     t.string "lastname_kana", null: false
     t.string "firstname", null: false
     t.string "firstname_kana", null: false
-    t.integer "birthday", null: false
-    t.integer "postal_code", null: false
+    t.date "birthday", null: false
+    t.string "postal_code", null: false
     t.string "prefecture", null: false
     t.string "city", null: false
-    t.string "adddress", null: false
+    t.string "address", null: false
     t.string "building"
-    t.integer "tell"
+    t.string "tell"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"

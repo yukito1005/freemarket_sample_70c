@@ -6,13 +6,13 @@ class CreateProfiles < ActiveRecord::Migration[5.2]
       t.string :lastname_kana, null: false
       t.string :firstname, null: false
       t.string :firstname_kana, null: false
-      t.integer :birthday, null: false
-      t.integer :postal_code, null: false
+      t.date   :birthday, null: false
+      t.string :postal_code, null: false
       t.string :prefecture, null: false
       t.string :city, null: false
-      t.string :adddress, null:false
+      t.string :address, null:false
       t.string :building
-      t.integer :tell
+      t.string :tell
       t.timestamps
     end
   end

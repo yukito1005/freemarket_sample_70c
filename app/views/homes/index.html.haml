@@ -1,7 +1,7 @@
 %h1.test Hello World!
 -# 仮置き
 - if user_signed_in?
-  = link_to 'ログアウト', '/user/sign_out'
+  = link_to 'ログアウト', '/users/sign_out', method: :delete
 - else
   = link_to '新規登録', '/users/sign_up'
   = link_to 'ログイン', '/users/sign_in'
