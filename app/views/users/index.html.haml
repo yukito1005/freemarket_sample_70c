@@ -19,8 +19,9 @@
             いいね!一覧
             .icon-arrow-right
               >
-          %li.mypage-nav-list-item
-            出品する
+          %li 
+            = link_to new_product_path,class:"mypage-nav-list-item" do
+              出品する
             .icon-arrow-right
               >
           %li.mypage-nav-list-item 
