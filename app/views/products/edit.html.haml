@@ -1,0 +1,148 @@
+.wrapper 
+  .header-new
+    = image_tag "logo.png", size:"185x49", class: "logo-new"
+  .main-contents
+    .main-contents__image
+      .main-contents__image__body
+        %label 出品画像
+        %span 必須
+        %p.note 最大10枚までアップロードできます
+        .main-contents__image__body__post
+          %label.main-contents__image__body__post__image-btn  
+            = icon('fas', 'camera')
+            -# = file_field_tag "images[]", type: :file, multiple: true, class:"main-contents__body__post__image-btn__file"
+          %p
+            %br ドラッグアンドドロップ
+            またはクリックしてファイルをアップロード
+        .main-contents__image__body__formerror 画像がありません
+    .main-contents__product-description
+      .main-contents__product-description__topform
+        .main-contents__product-description__topform__name
+          %label 商品名
+          %span 必須
+        %input{autocomplete:"off", name:"name", placeholder:"40文字まで", type:"text", value:"", class:"input"}
+      .main-contents__product-description__formerror 入力してください
+      .main-contents__product-description__bottomform
+        .main-contents__product-description__bottomform__name
+          %label 商品の説明
+          %span 必須
+        %textarea(name="" cols="30" rows="10" placeholder="商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。")  
+        .main-contents__product-description__bottomform__counter 0/1000
+        .main-contents__product-description__bottomform__formerror 入力してください
+      .main-contents__product-description__bottomform 
+        
+    .main-contents__product-detail
+      %p 商品の詳細
+      .main-contents__product-detail__top
+        .main-contents__product-detail__top__category
+          %label カテゴリー
+          %span 必須
+        .main-contents__product-detail__top__selector
+          %select(name="categoryId")
+            %option 選択してください
+            %option レディース
+            %option メンズ
+            %option ベビー・キッズ
+            %option インテリア・住まい・小物
+            %option 本・音楽・ゲーム
+            %option おもちゃ・ホビー・グッズ
+            %option コスメ・香水・美容
+            %option 家電・スマホ・カメラ
+            %option スポーツ・レジャー
+            %option ハンドメイド
+            %option チケット
+            %option 自動車・オートバイ
+            %option その他          
+        .main-contents__product-detail__top__formerror  選択してください  
+      .main-contents__product-detail__middle  
+        .main-contents__product-detail__middle__brand
+          %label ブランド
+          %span 任意
+        .main-contents__product-detail__middle__selector
+          %input{autocomplete:"off", name:"name", placeholder:"例) シャネル", type:"text", value:"", class:"input.brand"}
+      .main-contents__product-detail__bottom      
+        .main-contents__product-detail__bottom__condition
+          %label 商品の状態
+          %span 必須
+        .main-contents__product-detail__bottom__selector
+          %select(name="categoryId")
+            %option 選択してください  
+            %option 新品、未使用  
+            %option 未使用に近い 
+            %option 目立った傷や汚れなし  
+            %option やや傷や汚れあり
+            %option 傷や汚れあり  
+            %option 全体的に状態が悪い  
+        .main-contents__product-detail__bottom__formerror  選択してください     
+    .main-contents__delivery
+      .main-contents__delivery__about
+        %p 配送について
+        %i.far.fa-question-circle
+      .main-contents__delivery__top 
+        .main-contents__delivery__top__burden
+          %label 配送料の負担
+          %span 必須
+        .main-contents__delivery__top__selector  
+          %select(name="categoryId")
+            %option 選択してください
+            %option 送料込み(出品者負担)
+            %option 着払い(購入者負担)
+        .main-contents__delivery__top__formerror 選択してください   
+      .main-contents__delivery__middle
+        .main-contents__delivery__middle__area
+          %label 発送元の地域
+          %span 必須
+        .main-contents__delivery__middle__selector 
+          = form_for '' do|f|
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "選択してください", class: 'input'
+            
+        .main-contents__delivery__middle__formerror 選択してください    
+      .main-contents__delivery__bottom
+        .main-contents__delivery__bottom__days
+          %label 発送までの日数
+          %span 必須
+        .main-contents__delivery__bottom__selector
+          %select(name="categoryId")
+            %option 選択してください
+            %option 1~2日で発送
+            %option 2~3日で発送
+            %option 4~7日で発送
+        .main-contents__delivery__bottom__formerror 選択してください    
+    .main-contents__price
+      .main-contents__price__about 
+        %label 価格
+        %span (¥300〜9,999,999)
+        %i.far.fa-question-circle
+      .main-contents__price__sell
+        .main-contents__price__sell__top
+          .main-contents__price__sell__top__labeler
+            %label 販売価格
+            %span 必須
+          %span.price ¥
+          .main-contents__price__sell__top__inputarea
+            %input{autocomplete:"off", name:"price", placeholder:"0", type:"number", value: "-1", dirname:"KeyName",dir: "rtl"}
+        .main-contents__price__sell__topformerror 300以上9999999以下で入力してください
+        .main-contents__price__sell__middle
+          .main-contents__price__sell__middle__commission
+            %label 販売手数料（10%）
+          %span —
+        .main-contents__price__sell__bottom
+          %label 販売利益
+          %span —
+        .main-contents__price__sell__two-selections
+          %button{type:"submit", class:"exhibition"} 変更する
+          = link_to product_path(@product), class: "return" do
+            キャンセル
+        %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+  .footer
+    %ul(class="footer-note")
+      %li(class="privacy") プライバシーポリシー
+      %li(class="rules") フリマ利用規約
+      %li(class="specific-deal") 特定商取引に関する表記
+    = image_tag "logo-white.png", size:"185x49", class: "footer-logo" 
+    .footer__inc
+      %label ©️
+      %span FURIMA, Inc.
+
+     
+     
