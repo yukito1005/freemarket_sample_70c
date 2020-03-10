@@ -26,4 +26,7 @@ class ProductsController < ApplicationController
 
   def purchase
   end
+
+  def purchase
+  end
 end
