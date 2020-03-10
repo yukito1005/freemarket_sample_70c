@@ -21,7 +21,7 @@ $(function(){
   //取引中・過去の取引
   let PurchaseTabs = $(".purchase-tab");
   PurchaseTabs.click(PurchaseTabSwitch);
-
+  
   // クラスの切り替えをtabSwitch関数で定義
   function PurchaseTabSwitch() {
     // 全てのactiveクラスのうち、最初の要素を削除（"[0]は、最初の要素の意味"）
@@ -40,22 +40,28 @@ $(function(){
   //side
   let SideNav = $(".l-container__side__mypage-nav li");
   SideNav.click(SideNavSwitch);
-
+  
   function SideNavSwitch() {
-    // 全てのactiveクラスのうち、最初の要素を削除（"[0]は、最初の要素の意味"）
-    $('.nav-active').removeClass("nav-active");
-    $('.side-nav-active-show-content').removeClass("side-nav-active-show-content");
-    // クリックしたタブにactiveクラスを追加
-    $(this).addClass("nav-active");
     // 何番目の要素がクリックされたかを、配列tabsから要素番号を取得
     const index = SideNav.index(this);
-
-    //content変数に全ての.l-container__contentの配列を取得する
-    let content = $(".l-container__content");
-    
-    //content変数の中にindexの番号とcontentの同じ配列番号にactを追加する
-    $(content).eq(index).addClass("side-nav-active-show-content");
-    $(window).scrollTop(0);
+    if(index != 4){
+      // 全てのactiveクラスのうち、最初の要素を削除（"[0]は、最初の要素の意味"）
+      $('.nav-active').removeClass("nav-active");
+      $('.side-nav-active-show-content').removeClass("side-nav-active-show-content");
+      // クリックしたタブにactiveクラスを追加
+      $(this).addClass("nav-active");
+      
+      //content変数に全ての.l-container__contentの配列を取得する
+      let content = $(".l-container__content");
+      
+      //content変数の中にindexの番号とcontentの同じ配列番号にside-nav-active-show-contentを追加する
+      $(content).eq(index).addClass("side-nav-active-show-content");
+      $(window).scrollTop(0);
+    }else{
+      let href = $(this).children('a').attr('href');
+      // 現在のタブで開く
+      location.href = href;
+    };
   };
 });
 

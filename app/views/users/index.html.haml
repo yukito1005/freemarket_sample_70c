@@ -120,12 +120,10 @@
                 0
       .l-container__content__mypage-tabs-container-info-todo
         %ul.l-container__content__mypage-tabs-container-info-todo__tabs
-          %li
-            = link_to "#",class:"info-todo-tab info-todo_active" do
-              お知らせ
-          %li
-            = link_to "#",class:"info-todo-tab" do
-              やることリスト
+          %li.info-todo-tab.info-todo_active
+            お知らせ
+          %li.info-todo-tab
+            やることリスト
         .l-container__content__mypage-tabs-container-info-todo__contents
           %ul.info-todo_content.info-todo_show
             %li
@@ -190,12 +188,10 @@
         .l-container__content__mypage-tab-container-purchase__head
           購入した商品
         %ul.l-container__content__mypage-tab-container-purchase__tabs
-          %li
-            = link_to "#",class:"purchase-tab purchase_active" do
-              取引中
-          %li
-            = link_to "#",class:"purchase-tab" do
-              過去の取引
+          %li.purchase-tab.purchase_active
+            取引中
+          %li.purchase-tab
+            過去の取引
         .l-container__content__mypage-tab-container-purchase__contents
           %ul.purchase_content.purchase_show
             %li.not-found

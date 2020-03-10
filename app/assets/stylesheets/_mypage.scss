@@ -25,6 +25,9 @@
         background-color: white;
         font-size: 14px;
         color: black;
+        a{
+          color: black;
+        }
       }
       li.nav-active{
         background-color: #eee;
@@ -101,14 +104,13 @@
         display: flex;
         margin: 0 auto;
         font-weight: bold;
-        li .info-todo-tab{
+        .info-todo-tab{
           width: 300px;
           line-height: 100px;
-          display: block;
           text-align: center;
           color: black;
         }
-        li .info-todo_active{
+        .info-todo_active{
           background-color: white;
           border-top: 5px solid red;
           color: skyblue;
@@ -169,14 +171,13 @@
         display: flex;
         margin: 0 auto;
         font-weight: bold;
-        li .purchase-tab{
+        .purchase-tab{
           width: 300px;
           line-height: 100px;
-          display: block;
           text-align: center;
           color: black;
         }
-        li .purchase_active{
+        .purchase_active{
           background-color: white;
           border-top: 5px solid red;
           color: skyblue;
@@ -304,6 +305,7 @@
   .side-nav-active-show-content{
     display: block;
   }
+  
 }
 li{
   cursor: pointer;
