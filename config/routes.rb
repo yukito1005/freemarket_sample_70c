@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
-  root "homes#show"
-  resources :products, only: [:index,:new, :show, :edit] do
+  root "homes#index"
+  resources :products, only: [:index,:new, :show, :edit, :destroy] do
     collection do
       get :purchase
     end

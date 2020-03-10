@@ -129,9 +129,12 @@
         .main-contents__price__sell__bottom
           %label 販売利益
           %span —
-        .main-contents__price__sell__two-selections
-          %button{type:"submit", class:"exhibition"} 変更する
-          = link_to product_path(@product), class: "return" do
+        .main-contents__price__sell__edit-selection-btn
+          %button{type:"submit", class:"change-btn"} 変更する
+          %p.btn-span or
+          = link_to product_path(@product), method: :delete, class: "delete-btn" do
+            商品を削除する
+          = link_to product_path(@product), class: "return-btn" do
             キャンセル
         %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
   .footer
