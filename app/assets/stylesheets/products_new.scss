@@ -48,15 +48,13 @@
         height: 150px;
         margin-top: 15px;
         border: 1px dashed #3CCACE;
-        &__image-btn{
-          margin-left: 300px;
+        &__area{
+          height: 150px;
           .fa-camera{
             margin-top: 40px;
             cursor: pointer;
           }
-          &__file{
-          display: none;
-          }
+          
         }  
         
         p{
