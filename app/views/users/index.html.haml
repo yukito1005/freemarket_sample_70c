@@ -3,14 +3,13 @@
     .l-container__side
       .l-container__side__mypage-nav
         %ul
-          = link_to "#",class:"info-todo-tab info-todo_active" do
-              お知らせ
           %li.mypage-nav-list-item.nav-active
             マイページ
             .icon-arrow-right
               >
-          %li.mypage-nav-list-item
-            お知らせ
+          %li 
+            = link_to root_path,class:"mypage-nav-list-item" do
+              お知らせ
             .icon-arrow-right
               >
           %li.mypage-nav-list-item
