@@ -45,7 +45,6 @@ $(function(){
     // 全てのactiveクラスのうち、最初の要素を削除（"[0]は、最初の要素の意味"）
     $('.nav-active').removeClass("nav-active");
     $('.side-nav-active-show-content').removeClass("side-nav-active-show-content");
-
     // クリックしたタブにactiveクラスを追加
     $(this).addClass("nav-active");
     // 何番目の要素がクリックされたかを、配列tabsから要素番号を取得
@@ -56,6 +55,7 @@ $(function(){
     
     //content変数の中にindexの番号とcontentの同じ配列番号にactを追加する
     $(content).eq(index).addClass("side-nav-active-show-content");
+    $(window).scrollTop(0);
   };
 });
 
