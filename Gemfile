@@ -42,6 +42,7 @@ group :development, :test do
 end
 
 group :development, :test do
+  gem 'rspec-rails'
   gem 'capistrano'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
