@@ -191,6 +191,7 @@
             .left
               = link_to ""
               .image
+                - @product. each do |image|
                 = image_tag "icon-04.png",size:"220x150"
               .pop
                 .name 

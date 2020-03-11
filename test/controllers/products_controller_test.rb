@@ -1,4 +1,4 @@
-require 'test_helper'
+frequire 'test_helper'
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
