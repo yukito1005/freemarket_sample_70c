@@ -15,7 +15,7 @@
           = icon('fab', 'google', class: 'field__box__icon-color')
           Google
     .login-form
-      = form_with model: @user, url: user_registration_path, local: true  do |f|
+      = form_with model: @user, url: user_session_path, local: true  do |f|
         .field
           = f.email_field :email, autofocus: true, autocomplete: "email", placeholder:'メールアドレス ', class:'field__box'
         .field
