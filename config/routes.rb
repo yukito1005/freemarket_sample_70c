@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
 
   root "homes#index"
-  resources :products, only: [:index,:new] do
+  resources :products, only: [:index,:new, :show, :edit, :destroy] do
     collection do
       get :purchase
     end
