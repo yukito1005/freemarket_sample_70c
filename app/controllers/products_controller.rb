@@ -1,13 +1,12 @@
 class ProductsController < ApplicationController
   def index
-  
+    @product = Procducts.find(1)
+  end
   
   def new
-    @products = Product.all
   end 
 
   def show
-    @products = Product.all
   end
 
   def purchase
