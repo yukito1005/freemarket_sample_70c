@@ -1,1 +1,12 @@
 %h1.test Hello World
+
+
+.category-test
+  - @category_first.each do |category_first|
+    = category_first.name
+    .category-test
+      - category_first.children.each do |category_second|
+        = category_second.name
+        .category-test
+          - category_second.children.each do |category_third|
+            = category_third.name
