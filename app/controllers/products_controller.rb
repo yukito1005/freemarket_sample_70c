@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
-  def index
+  before_action :set_product, expect: [:index, :new]
 
+  def index
   end
 
 
@@ -8,16 +9,14 @@ class ProductsController < ApplicationController
   end 
 
   def show
-    @product = Product.find(params[:id])
+    @images = @product.image
     @category = @product.category
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def destroy
-    @product = Product.find(params[:id])
     if @product.user.id == current_user.id
       @product.destroy
       redirect_to root_path
@@ -27,6 +26,9 @@ class ProductsController < ApplicationController
   def purchase
   end
 
-  def purchase
+  private
+  
+  def set_product
+    @product = Product.find(params[:id])
   end
 end

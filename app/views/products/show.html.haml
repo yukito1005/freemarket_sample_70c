@@ -63,15 +63,16 @@
             = @product.item_name
           .top-contents__item__body
             %ul.top-contents__item__body__images
-              %li.top-contents__item__body__images--show
-                = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", size: "560x346", class: "top-contents__item__body__images--show--image"
-                %ul.top-contents__item__body__images--show--index
-                  %li.top-contents__item__body__images--show--index--list
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", size: "140x87"
-                  %li.top-contents__item__body__images--show--index--list
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png", size: "140x87"
-                  %li.top-contents__item__body__images--show--index--list
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png", size: "140x87"
+              - @images.each do |image|
+                %li.top-contents__item__body__images--show
+                  = image_tag "#{image.image}", size: "560x346", class: "top-contents__item__body__images--show--image"
+                  %ul.top-contents__item__body__images--show--index
+                    %li.top-contents__item__body__images--show--index--list
+                      = image_tag "#{image.image}", size: "140x87"
+                    -# %li.top-contents__item__body__images--show--index--list
+                    -#   = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png", size: "140x87"
+                    -# %li.top-contents__item__body__images--show--index--list
+                    -#   = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png", size: "140x87"
         .top-contents__price
           %span.top-contents__price__main
             = @product.price
