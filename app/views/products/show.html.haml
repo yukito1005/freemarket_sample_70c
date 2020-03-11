@@ -3,7 +3,7 @@
     .pcheader__inner__main
       %h1.pcheader__inner__main--icon
         = link_to "#" do
-          = image_tag "http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg", size: "140x40.55"
+          = image_tag "http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg", size: "100x40.55"
       .pcheader__inner__main--search
         %form.pcheader__inner__main--search--form
           %input{placeholder: "キーワードから探す"}
@@ -63,23 +63,36 @@
             = @product.item_name
           .top-contents__item__body
             %ul.top-contents__item__body__images
-              - @images.each do |image|
-                %li.top-contents__item__body__images--show
-                  = image_tag "#{image.image}", size: "560x346", class: "top-contents__item__body__images--show--image"
-                  %ul.top-contents__item__body__images--show--index
-                    %li.top-contents__item__body__images--show--index--list
-                      = image_tag "#{image.image}", size: "140x87"
-                    -# %li.top-contents__item__body__images--show--index--list
-                    -#   = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png", size: "140x87"
-                    -# %li.top-contents__item__body__images--show--index--list
-                    -#   = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png", size: "140x87"
+              %li.top-contents__item__body__images--show
+                = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", size: "560x346", class: "top-contents__item__body__images--show--image img01 mainimage"
+                %ul#image-hover.img01.top-contents__item__body__images--show--index
+                  %li.top-contents__item__body__images--show--index--list
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", size: "100x87"
+                  %li.top-contents__item__body__images--show--index--list
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png", size: "100x87"
+                  %li.top-contents__item__body__images--show--index--list
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png", size: "100x87"
+                  %li.top-contents__item__body__images--show--index--list
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", size: "100x87"
+                  %li.top-contents__item__body__images--show--index--list
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png", size: "100x87"
+                  %li.top-contents__item__body__images--show--index--list
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png", size: "100x87"
+                  %li.top-contents__item__body__images--show--index--list
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", size: "100x87"
+                  %li.top-contents__item__body__images--show--index--list
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png", size: "100x87"
+                  %li.top-contents__item__body__images--show--index--list
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png", size: "100x87"
+                  %li.top-contents__item__body__images--show--index--list
+                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", size: "100x87"
+
         .top-contents__price
           %span.top-contents__price__main
             = @product.price
           .top-contents__price__sub
             %span (税込)
             %span 送料込み
-        -# 今後↓のパス変更有り
         - if @product.user.id != current_user.id
           = link_to purchase_products_path(@product) do
             .top-contents__purchase 購入画面に進む

@@ -61,7 +61,7 @@ Things you may want to cover:
 ## creditcardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_number|integer|null: false|
+|card_token|string|null: false|
 |user|references|null: false, foreign_key: true|
 
 
