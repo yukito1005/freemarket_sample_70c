@@ -5,7 +5,7 @@
 様の本人情報の登録にご協力ください。他
 %br/
 のお客様に公開されることはありません。
-= form_with model: @user, url: user_registration_path, class:'boxes', local: true do |p|
+= form_with model: @profile, url: profiles_path, class:'boxes', local: true do |p|
   .boxes__field
     = p.label :'お名前(全角)'
     %span 必須
