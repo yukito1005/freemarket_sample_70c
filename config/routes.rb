@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
-  root "products#new"
-  resources :products, only: [:index,:new] do
+  root "homes#index"
+  resources :products, only: [ :index, :new, :create, :show, :edit, :destroy] do
     collection do
-      get :purchase
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+      get 'get_size', defaults: { format: 'json' }
     end
   end
 
