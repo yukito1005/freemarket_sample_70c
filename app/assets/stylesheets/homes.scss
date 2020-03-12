@@ -399,11 +399,16 @@
         margin: 26px auto;
         display: flex;
         justify-content: space-around;
+
         .block{
           width: 780px;
           margin: 26px auto;
           display: flex;
           justify-content: space-around;
+          overflow: hidden;
+          
+
+          
           .left{
             width: 220px;
             background-color: #fff;
@@ -421,7 +426,10 @@
               z-index: auto;
               height: 150px;
               object-fit: cover;
+              
             }
+           
+
           .pop{
             background-color: white;
             color: #333;
@@ -443,8 +451,8 @@
                 padding-left: 70px;
                 ::before{ 
                   font-weight: 900;
-                 content: "\f007";
-               }
+                content: "\f007";
+              }
               }
             }
             }
@@ -454,92 +462,92 @@
             }
           }
         }
-        .center{
-          width: 220px;
-          background-color: #fff;
-          display: inline-block;
-          float: left;
-          cursor: pointer;
-          img{
-            width: 100%;
-            z-index: auto;
-            height: 150px;
-            object-fit: cover;
-          }
-        .pop{
-          background-color: white;
-          color: #333;
-          padding: 16px;
-          .detail{
-            ul{
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              position: relative;
-              .icon{
-                position: absolute;
-                padding-left: 150px;
-            .staricon{
-              display: inline-block;
-              font: normal normal normal 14px/1 FontAwesome;
-              padding-left: 70px;
-              ::before{ 
-                font-weight: 900;
-               content: "\f007";
-             }
-            }
-          }
-          }
-          }
-          .tax{
-            font-size: 8px;
-          }
-        }
-      }
-      .right{
-        width: 220px;
-        background-color: #fff;
-        display: inline-block;
-        float: left;
-        cursor: pointer;
-        img{
-          width: 100%;
-          z-index: auto;
-          height: 150px;
-          object-fit: cover;
-        }
-      .pop{
-        background-color: white;
-        color: #333;
-        padding: 16px;
-        .name{
-        }
-        .detail{
-          ul{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            .icon{
-              position: absolute;
-              padding-left: 150px;
-          .staricon{
-            display: inline-block;
-            font: normal normal normal 14px/1 FontAwesome;
-            padding-left: 70px;
-            ::before{ 
-              font-weight: 900;
-             content: "\f007";
-            }
-           }
-          } 
-         }
-        }
-        .tax{
-          font-size: 8px;
-        }
-      }
-    }
+    //     .center{
+    //       width: 220px;
+    //       background-color: #fff;
+    //       display: inline-block;
+    //       float: left;
+    //       cursor: pointer;
+    //       img{
+    //         width: 100%;
+    //         z-index: auto;
+    //         height: 150px;
+    //         object-fit: cover;
+    //       }
+    //     .pop{
+    //       background-color: white;
+    //       color: #333;
+    //       padding: 16px;
+    //       .detail{
+    //         ul{
+    //           display: flex;
+    //           align-items: center;
+    //           justify-content: space-between;
+    //           position: relative;
+    //           .icon{
+    //             position: absolute;
+    //             padding-left: 150px;
+    //         .staricon{
+    //           display: inline-block;
+    //           font: normal normal normal 14px/1 FontAwesome;
+    //           padding-left: 70px;
+    //           ::before{ 
+    //             font-weight: 900;
+    //            content: "\f007";
+    //          }
+    //         }
+    //       }
+    //       }
+    //       }
+    //       .tax{
+    //         font-size: 8px;
+    //       }
+    //     }
+    //   }
+    //   .right{
+    //     width: 220px;
+    //     background-color: #fff;
+    //     display: inline-block;
+    //     float: left;
+    //     cursor: pointer;
+    //     img{
+    //       width: 100%;
+    //       z-index: auto;
+    //       height: 150px;
+    //       object-fit: cover;
+    //     }
+    //   .pop{
+    //     background-color: white;
+    //     color: #333;
+    //     padding: 16px;
+    //     .name{
+    //     }
+    //     .detail{
+    //       ul{
+    //         display: flex;
+    //         align-items: center;
+    //         justify-content: space-between;
+    //         position: relative;
+    //         .icon{
+    //           position: absolute;
+    //           padding-left: 150px;
+    //       .staricon{
+    //         display: inline-block;
+    //         font: normal normal normal 14px/1 FontAwesome;
+    //         padding-left: 70px;
+    //         ::before{ 
+    //           font-weight: 900;
+    //          content: "\f007";
+    //         }
+    //        }
+    //       } 
+    //      }
+    //     }
+    //     .tax{
+    //       font-size: 8px;
+    //     }
+    //   }
+    // }
     .center:hover{
       opacity: 0.5;
     }
@@ -550,6 +558,8 @@
       opacity: 0.5;
     }
       }
+     
+
       }
     }
    }

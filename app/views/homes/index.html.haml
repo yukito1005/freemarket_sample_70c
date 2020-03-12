@@ -13,8 +13,8 @@
             = link_to 'カテゴリー'
             = link_to 'ブランド'
           .right-navi
-            = link_to 'ログイン'
-            = link_to '新規会員登録'
+            = link_to 'ログイン','/products/4'
+            = link_to '新規会員登録','/products/4'
 
   .top-main
     .main-visual
@@ -92,7 +92,6 @@
             = link_to image_tag "app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg",size: "180x53",class:'abtn'
             = link_to image_tag "google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg",size: "180x53",class:'gbtn'
 
-     
     .furima-feature
       .furima-feature__box
         %h2
@@ -131,7 +130,7 @@
           .block
             - @products.each do |product|
               .left
-                = link_to ""
+                = link_to "",'products/_path'
                 .image
                   = image_tag "icon-04.png", size:"220x150"
                 .pop
@@ -147,40 +146,6 @@
                         3
                   .tax
                     (税込)
-            -# .center
-            -#   = link_to ""
-            -#   .image
-            -#     = image_tag "icon-04.png",size:"220x150"
-            -#   .pop
-            -#     .name
-            -#       唐辛子
-            -#     .detail
-            -#       %ul
-            -#         %li.price
-            -#           300000
-            -#         %li.icon
-            -#           %i.fas.fa-star.stariocn
-            -#         %li
-            -#           3
-            -#       .tax
-            -#         (税込)
-            -# .right
-            -#   = link_to ""
-            -#   .image
-            -#     = image_tag "icon-04.png",size:"220x150"
-            -#   .pop
-            -#     .name
-            -#       唐辛子
-            -#     .detail
-            -#       %ul
-            -#         %li.price
-            -#           300000
-            -#         %li.icon
-            -#           %i.fas.fa-star.stariocn
-            -#         %li
-            -#           3
-            -#       .tax
-            -#         (税込)
     .pickup-category2
       .pickup-brand
         .pickup-brand__tittle
@@ -191,7 +156,7 @@
           .block
             - @products.each do |product|
               .left
-                = link_to ""
+                = link_to '',''
                 .image
                   = image_tag "icon-04.png", size:"220x150"
                 .pop
@@ -207,41 +172,7 @@
                         3
                   .tax
                     (税込)
-            -# .center
-            -#   = link_to ""
-            -#   .image
-            -#     = image_tag "icon-04.png",size:"220x150"
-            -#   .pop
-            -#     .name
-            -#       唐辛子
-            -#     .detail
-            -#       %ul
-            -#         %li.price
-            -#           = product.price
-            -#         %li.icon
-            -#           %i.fas.fa-star.stariocn
-            -#         %li
-            -#           3
-            -#       .tax
-            -#         (税込)
-              
-            -# .right
-            -#   = link_to  ""
-            -#   .image
-            -#     = image_tag "icon-04.png",size:"220x150"
-            -#   .pop
-            -#     .name
-            -#       唐辛子
-            -#     .detail
-            -#       %ul
-            -#         %li.price
-            -#           300000
-            -#         %li.icon
-            -#           %i.fas.fa-star.stariocn
-            -#         %li
-            -#           3
-            -#       .tax
-            -#         (税込)
+
     .download-banner
       .download-banner__content
         .download-banner__content__text

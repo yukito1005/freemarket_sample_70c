@@ -7,11 +7,6 @@ class ProductsController < ApplicationController
 
   before_action :set_product, expect: [:index, :new]
 
-  def index
-  end
-
-
-
   def new
   end 
 
