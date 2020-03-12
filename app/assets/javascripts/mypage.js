@@ -38,7 +38,7 @@ $(function(){
   }
   
   //side
-  let SideNav = $(".mypage-nav-list-item");
+  let SideNav = $(".l-container__side__mypage-nav li");
   SideNav.click(SideNavSwitch);
   
   function SideNavSwitch() {
