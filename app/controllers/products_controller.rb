@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, expect: [:index, :new]
+  before_action :set_product, only: [:show, :destroy, :edit, :update]
 
   def index
   end
@@ -11,6 +11,11 @@ class ProductsController < ApplicationController
   def show
     @images = @product.images
     @category = @product.category
+    @images.each_with_index do |image, i|
+      if i == 0
+        @image = "/assets/purchase-sample.png"
+      end
+    end
   end
 
   def edit
