@@ -1,28 +1,18 @@
 $(function(){
-  //DataTransferオブジェクトで、データを格納する箱を作る
+  //複数画像投稿の作成
   var dataBox = new DataTransfer();
-  //querySelectorでfile_fieldを取得
   var file_field = document.querySelector('input[type=file]')
-  //fileが選択された時に発火するイベント
   $('#img-file').change(function(){
-    //選択したfileのオブジェクトをpropで取得
     var files = $('input[type="file"]').prop('files')[0];
     $.each(this.files, function(i, file){
-      //FileReaderのreadAsDataURLで指定したFileオブジェクトを読み込む
       var fileReader = new FileReader();
-
-      //DataTransferオブジェクトに対して、fileを追加
       dataBox.items.add(file)
-      //DataTransferオブジェクトに入ったfile一覧をfile_fieldの中に代入
       file_field.files = dataBox.files
-
       var num = $('.item-image').length + 1 + i
       fileReader.readAsDataURL(file);
-      //画像が10枚になったら超えたらドロップボックスを削除する
       if (num == 10){
         $('#image-box__container').css('display', 'none')   
       }
-      //読み込みが完了すると、srcにfileのURLを格納
       fileReader.onloadend = function() {
         var src = fileReader.result
         var html= `<div class='item-image' data-image="${file.name}">
@@ -35,41 +25,145 @@ $(function(){
                       <div class='item-image__operetion--delete'>削除</div>
                     </div>
                   </div>`
-        //image_box__container要素の前にhtmlを差し込む
         $('#image-box__container').before(html);
       };
-      //image-box__containerのクラスを変更し、CSSでドロップボックスの大きさを変えてやる。
       $('#image-box__container').attr('class', `item-num-${num}`)
     });
   });
-  //削除ボタンをクリックすると発火するイベント
   $(document).on("click", '.item-image__operetion--delete', function(){
-    //削除を押されたプレビュー要素を取得
     var target_image = $(this).parent().parent()
-    //削除を押されたプレビューimageのfile名を取得
     var target_name = $(target_image).data('image')
-    //プレビューがひとつだけの場合、file_fieldをクリア
     if(file_field.files.length==1){
-      //inputタグに入ったファイルを削除
       $('input[type=file]').val(null)
       dataBox.clearData();
-      console.log(dataBox)
     }else{
-      //プレビューが複数の場合
       $.each(file_field.files, function(i,input){
-        //削除を押された要素と一致した時、index番号に基づいてdataBoxに格納された要素を削除する
         if(input.name==target_name){
           dataBox.items.remove(i) 
         }
       })
-      //DataTransferオブジェクトに入ったfile一覧をfile_fieldの中に再度代入
       file_field.files = dataBox.files
     }
-    //プレビューを削除
     target_image.remove()
-    //image-box__containerクラスをもつdivタグのクラスを削除のたびに変更
     var num = $('.item-image').length
     $('#image-box__container').show()
     $('#image-box__container').attr('class', `item-num-${num}`)
   })
+
+
+
+//// カテゴリーセレクトボックスのオプションを作成
+  function appendOption(category){
+    var html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
+    return html;
+  }
+  // 子カテゴリーの表示
+  function appendChidrenBox(insertHTML){
+    var childSelectHtml = '';
+    childSelectHtml = `<div class='listing-select-wrapper__added' id= 'children_wrapper'>
+                        <div class='listing-select-wrapper__box'>
+                          <select class="listing-select-wrapper__box--select" id="child_category" name="category_id">
+                            <option value="---" data-category="---">---</option>
+                            ${insertHTML}
+                          <select>
+                        </div>
+                      </div>`;
+    $('.listing-select-wrapper__box').append(childSelectHtml);
+  }
+  // 孫カテゴリーの表示
+  function appendGrandchidrenBox(insertHTML){
+    var grandchildSelectHtml = '';
+    grandchildSelectHtml = `<div class='listing-select-wrapper__added' id= 'grandchildren_wrapper'>
+                              <div class='listing-select-wrapper__box'>
+                                <select class="listing-select-wrapper__box--select" id="grandchild_category" name="product[category_id]">
+                                  <option value="---" data-category="---">---</option>
+                                  ${insertHTML}
+                                </select>
+                              </div>
+                            </div>`;
+    $('.listing-select-wrapper__added').append(grandchildSelectHtml);
+  }
+ 
+  $('.listing-select-wrapper__box').on('change','#parent_category', function(){
+    var parentCategory = document.getElementById('parent_category').value; 
+    if (parentCategory != "選択してください"){ 
+      $.ajax({
+        url: '/products/get_category_children',
+        type: 'GET',
+        data: { parent_name: parentCategory },
+        dataType: 'json'
+      })
+      .done(function(children){
+        $('#children_wrapper').remove(); 
+        $('#grandchildren_wrapper').remove();
+        $('#size_wrapper').remove();
+        $('#brand_wrapper').remove();
+        var insertHTML = '';
+        children.forEach(function(child){
+          insertHTML += appendOption(child);
+        });
+        appendChidrenBox(insertHTML);
+      })
+      .fail(function(){
+        alert('カテゴリー取得に失敗しました');
+      })
+    }else{
+      $('#children_wrapper').remove(); 
+      $('#grandchildren_wrapper').remove();
+      $('#size_wrapper').remove();
+      $('#brand_wrapper').remove();
+    }
+  });
+  
+  $('.listing-select-wrapper__box').on('change', '#child_category', function(){
+    var childId = $('#child_category option:selected').data('category'); 
+    if (childId != "---"){ 
+      $.ajax({
+        url: '/products/get_category_grandchildren',
+        type: 'GET',
+        data: { child_id: childId },
+        dataType: 'json'
+      })
+      .done(function(grandchildren){
+        if (grandchildren.length != 0) {
+          $('#grandchildren_wrapper').remove();
+          $('#size_wrapper').remove();
+          $('#brand_wrapper').remove();
+          var insertHTML = '';
+          grandchildren.forEach(function(grandchild){
+            insertHTML += appendOption(grandchild);
+          });
+          appendGrandchidrenBox(insertHTML);
+        }
+      })
+      .fail(function(){
+        alert('カテゴリー取得に失敗しました');
+      })
+    }else{
+      $('#grandchildren_wrapper').remove(); 
+      $('#size_wrapper').remove();
+      $('#brand_wrapper').remove();
+    }
+  });
+
+  $('#price_calc').on('input', function(){ 
+    var data = $('#price_calc').val();
+    var profit = Math.round(data * 0.9)  
+    var fee = (data - profit) 
+    $('.right_bar').html(fee) 
+    $('.right_bar').prepend('¥') 
+    $('.right_bar_2').html(profit)
+    $('.right_bar_2').prepend('¥')
+    $('#price').val(profit) 
+    if(profit == '') {  
+    $('.right_bar_2').html('');
+    $('.right_bar').html('');
+    }
+  })
+
+  $("#input-text").on("keyup", function() {
+    let countNum = String($(this).val().length);
+    $("#counter").text(countNum + "/1000");
+  });
+
 });

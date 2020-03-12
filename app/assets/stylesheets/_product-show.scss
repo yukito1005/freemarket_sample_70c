@@ -177,7 +177,6 @@
             flex-wrap: wrap;
 
             &--list{
-              margin: 0 12px 0 0;
               img{
                 object-fit: cover;
                 height: 87px;
@@ -481,4 +480,17 @@
       text-decoration: none;
       margin-bottom: 5px;
     }
+}
+
+.notifications {
+  color: white;
+  text-align: center;  
+
+  .notice {
+    background-color: lightBlue;
+  }
+
+  .alert {
+    background-color: orange;
+  }
 }
