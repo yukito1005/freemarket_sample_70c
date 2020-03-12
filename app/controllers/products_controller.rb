@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
 
 
   def new
+    @product = Product.new
   end 
 
   def show
@@ -36,6 +37,8 @@ class ProductsController < ApplicationController
   def purchase
   end
 
+  def create
+  end 
   private
   
   def set_product
