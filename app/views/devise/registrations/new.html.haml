@@ -1,6 +1,5 @@
-.new
-  .new__header
-    = image_tag 'logo.png', size: '200x80', class: 'logo'
+.wrapper
+  = render partial: 'shared/products_header'
   .new__user
     .new__user--post 
       %h2 会員情報入力
@@ -28,4 +27,4 @@
         = f.password_field :password_confirmation, autocomplete: "new-password", placeholder:'上記と同じ文字を入力', class:'boxes__field__large-frame'
         .actions
           = f.submit "次へ進む", class:'actions__btn'
-  .footer
+  = render partial: 'shared/products_footer'
