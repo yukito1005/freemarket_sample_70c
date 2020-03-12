@@ -24,7 +24,7 @@
       &__field {
         width: 400px;
         margin-top: 40px;
-        margin-left: 220px;
+        margin-left: 200px;
         label {
           display: inline-block;
           font-weight: bold;
@@ -68,6 +68,12 @@
           height: 45px;
         }
       }
+    }
+    .action {
+      margin: auto;
+      text-align: center;
+      width: 300px;
+      margin-top: 80px;
     }
     .actions {
       text-align: center;
