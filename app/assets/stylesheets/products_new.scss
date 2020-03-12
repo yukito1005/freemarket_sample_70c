@@ -1,6 +1,6 @@
 .wrapper {
   background-color: rgb(245, 245, 245);
-  width: 100vw;
+  width: 100vh;
 }
 .header-new {
   width: 100%;
@@ -20,9 +20,53 @@
   padding-bottom: 50px;
   &__image{
     padding: 40px;
-    height: 300px;
+    height: 100%;
     border-bottom: 2px solid #F5F5F5;
     &__body{
+      #image-box-1{
+        display:flex;
+        flex-wrap: wrap;
+        #image-box__container{
+          height: 150px;
+          background-color: #F5F5F5;
+          .input-area{
+            width: 100%;
+            .fa-camera{
+              display: block;
+              text-align: center;
+              margin: 0 auto;
+              line-height: 150px;
+              font-size: 25px;
+              cursor: pointer;
+            }
+            .fa-camera:hover{
+              color: #3CCACE;
+            }
+          }  
+          
+        }
+        .item-image{
+          border: 1px solid #3CCACE;
+          height: 150px;
+          .item-image__operetion{
+            .item-image__operetion--delete{
+              cursor: pointer;
+              font-size: 20px;
+              text-align: center;
+              line-height: 60px;
+              height: 60px;
+            }
+            .item-image__operetion--delete:hover{
+              color: #3CCACE;
+            }
+          }  
+        }
+      }
+      @media screen and (max-width:700px) {
+        #image-box-1{
+          flex-wrap: wrap;
+        }
+      }
       label{
         font-size: 14px;
         font-weight: 600;
@@ -43,35 +87,44 @@
         margin-top: 16px;
         font-size: 14px;
       }
-      &__post{
-        background-color: #F5F5F5;
-        height: 150px;
-        margin-top: 15px;
-        border: 1px dashed #3CCACE;
-        &__image-btn{
-          margin-left: 300px;
-          .fa-camera{
-            margin-top: 40px;
-            cursor: pointer;
-          }
-          &__file{
-          display: none;
-          }
-        }  
+      
+      .item-num-0{
+        width: 100%;
         
-        p{
-          text-align: center;
-          font-size: 12px;
-        }
       }
-      &__formerror{
-        margin-top: 16px;
-        font-size: 14px;
-        color: red;
-        line-height: 1.4em;
+      .item-num-1{
+        width: 503.9px;
       }
-
+      .item-num-2{
+        width: 387.9px;
+      }
+      .item-num-3{
+        width: 271.9px;
+      }
+      .item-num-4{
+        width: 155.9px;
+      }
+      //下段のfile_field
+      .item-num-5{
+        width: 100%;
+      }
+      .item-num-6{
+        width: 503.9px;
+      }
+      .item-num-7{
+        width: 387.9px;
+      }
+      .item-num-8{
+        width: 271.9px;
+      }
+      .item-num-9{
+        width: 155.9px;
+      }
+      
+      
     }
+    
+
   }  
   &__product-description{
     padding: 40px;
@@ -160,7 +213,7 @@
     
   }
   &__product-detail{
-    height: 444px;
+    height: 100%;
     border-bottom: 2px solid #F5F5F5;  
     padding: 40px;
     p{
@@ -172,7 +225,7 @@
       line-height: 1.4em;
     }
     &__top{
-      height: 83px;
+      height: 100%;
       &__category{
         label{
           font-size: 14px;
@@ -191,8 +244,8 @@
           font-weight: 600;
         }  
       }
-      &__selector{     
-        select {
+      .listing-form-box{   
+        .listing-select-wrapper__box--select{
           width: 620px;
           height: 48px;
           background-color:white;
@@ -200,9 +253,6 @@
           appearance: none;
           padding-left:16px; 
           border-color: #3CCACE;
-          option{
-          
-          }
         }   
       } 
       &__formerror{
@@ -216,7 +266,7 @@
 
     &__middle{
       height: 83px;
-      margin-top: 70px;
+      margin-top: 20px;
       &__brand{
         label{
           font-size: 14px;
@@ -450,7 +500,7 @@
       }
     }
     &__sell{
-      height: 187px;
+      height: 187x;
       &__top{
         height: 58px;
         font-size: 14px;
@@ -507,10 +557,11 @@
         width: 620px;
         padding: 12px 0;
         display: flex;
-        border-bottom: 2px solid #F5F5F5; 
+        border-bottom: 2px solid #F5F5F5;
+        justify-content: space-between;
         label{
           font-size:14px;
-          margin-right: 470px;
+      
           vertical-align: baseline;
         }
 
@@ -520,10 +571,10 @@
         height: 58px;
         padding-top: 20px;
         margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
         label{
           font-size: 14px;
-          margin-right: 537px;
-         
         }
       }
       &__two-selections{
