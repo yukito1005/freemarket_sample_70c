@@ -51,7 +51,7 @@
             %span (税込)
             %span 送料込み
         - if @product.user.id != current_user.id
-          = link_to purchase_products_path(@product) do
+          = link_to purchase_products_path do
             .top-contents__purchase 購入画面に進む
         - else
           = link_to edit_product_path(@product) do
