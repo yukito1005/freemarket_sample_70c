@@ -1,12 +1,10 @@
 class ProductsController < ApplicationController
-  # before_action :set_product, expect: [:index, :new]
+  before_action :set_product, only: [:show, :destroy, :edit, :update, :purchase]
 
   def index
-    @product = Procducts.find(1)
+    @product = Procducts.all.order("created_at DESC").limit(3)
   end
   
-
-  before_action :set_product, expect: [:index, :new]
 
   def new
     @product = Product.new
@@ -67,7 +65,7 @@ class ProductsController < ApplicationController
   def products_params
     params.require(:product).permit(:item_name, :item_detail, :brand, :condition, :price, :category_id, :delivery_pay, :orign_area, :lead_time, :brand, images_attributes: [:id, :image, :_destroy]).merge(user_id: current_user.id, status: 0)
   end
-  # def set_product
-  #   @product = Product.find(params[:id])
-  # end
+  def set_product
+    @product = Product.find(params[:id])
+  end
 end

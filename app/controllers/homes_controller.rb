@@ -6,7 +6,7 @@ class HomesController < ApplicationController
   end
 
   def index
-    @products = Product.all
-    @images = Image.all
+    @products = Product.all.order("created_at DESC").limit(3)
+    @pickupbrand = Product.where(category_id: "304").limit(3)
   end
 end
