@@ -1,3 +1,4 @@
 class Category < ApplicationRecord
-  # has_many :products, class_name: 'Product', foreign_key: 'category_id'
+  has_many :products
+  has_ancestry
 end

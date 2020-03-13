@@ -64,11 +64,11 @@
           .top-contents__item__body
             %ul.top-contents__item__body__images
               %li.top-contents__item__body__images--show
-                = image_tag "#{@image}", size: "560x346", class: "top-contents__item__body__images--show--image img01 mainimage"
+                = image_tag @image.image.url , size: "560x346", class: "top-contents__item__body__images--show--image img01 mainimage"
                 %ul#image-hover.img01.top-contents__item__body__images--show--index
-                  - @images.each do |image|
+                  - @product.images.each do |image|
                     %li.top-contents__item__body__images--show--index--list
-                      = image_tag "#{image.image}", size: "100x87"
+                      = image_tag image.image.url, size: "112x87"
         .top-contents__price
           %span.top-contents__price__main
             = @product.price
@@ -121,7 +121,7 @@
                 %th 発送元の地域
                 %td 
                   = link_to "#" do
-                    = @product.orign_area
+                    = @prefecture.name
               %tr
                 %th 発送日の目安
                 %td
