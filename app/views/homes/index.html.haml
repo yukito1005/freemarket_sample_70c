@@ -115,10 +115,8 @@
         .pickup-block__product-phot
           .block
             - @products.each do |product|
-    
-              
               .left
-                = link_to "",'products/:id'
+                = link_to "", new_user_session_path
                 .image
                   - product.images.each_with_index do |image, i|
                     - if i == 0
@@ -127,9 +125,8 @@
                         .sold-group
                           %p.sold
                             sold
-                            
                           %p.sold-label
-                          　
+                          
                 .pop
                   .name 
                     = product.item_name
@@ -153,7 +150,7 @@
           .block
             - @pickupbrand.each do |product|
               .left
-                = link_to "",'products/_path'
+                = link_to "", new_user_session_path
                 .image
                   - product.images.each_with_index do |image, i|
                     - if i == 0
@@ -162,10 +159,8 @@
                         .sold-group
                           %p.sold
                             sold
-                            
                           %p.sold-label
                           　
-                         
                 .pop
                   .name 
                     = product.item_name
