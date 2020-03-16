@@ -45,13 +45,13 @@ Things you may want to cover:
 |lastname_kana|string|null: false|
 |firstname|string|null: false|
 |firstname_kana|string|null: false|
-|birthday|integer|null: false|
-|postal_code|integer|null: false|
+|birthday|date|null: false|
+|postal_code|string|null: false|
 |prefecture|string|null: false|
 |city|string|null: false|
 |address|string|null: false|
 |building|string||
-|tel|integer||
+|tel|string||
 
 
 ### Association
@@ -61,7 +61,7 @@ Things you may want to cover:
 ## creditcardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_number|integer|null: false|
+|card_token|string|null: false|
 |user|references|null: false, foreign_key: true|
 
 
@@ -83,6 +83,7 @@ Things you may want to cover:
 |delivery_pay|string|null: false|
 |origin_area|string|null: false|
 |lead_time|string|null: false|
+|ststus|integer|null: false|
 
 
 

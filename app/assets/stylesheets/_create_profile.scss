@@ -1,0 +1,35 @@
+.registration {
+  margin: auto;
+  background-color: rgb(255, 255, 255);
+  width: 700px;
+  padding-bottom: 50px;
+  text-align: center;
+  &__font {
+    padding: 50px 0;
+    font-size: 25px;
+    font-weight: bold;
+    border-bottom: 1px solid #F5F5F5;
+  }
+  &__box {
+    margin: auto;
+    padding: 10px 0;
+    margin-top: 20px;
+    width: 340px;
+    &--btn {
+      display: inline-block;
+      width: 340px;
+      border: solid #3CCACE;
+      background-color: #fff;
+      margin: auto;
+      padding: 10px;
+      font-size: 20px;
+      color: #3CCACE;
+      font-weight: bold;
+    }
+    &--btn:hover {
+      color: #fff;
+      background-color: #3CCACE;
+      cursor: pointer;
+    }
+  }
+}

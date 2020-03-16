@@ -1,0 +1,37 @@
+.footer
+  .footer__content
+    %ul.furima
+      %li.content
+        FURIMAについて
+        %ul
+          %li
+            = link_to '会社概要(運営会社)'
+          %li
+            = link_to 'プライバシーポリシー'
+          %li
+            = link_to 'フリマの利用規約'
+          %li
+            = link_to 'ポイントに関する規約'
+      %li.content 
+        FURIMAを見る
+        %ul
+          %li
+            = link_to 'カテゴリー一覧'
+          %li
+            = link_to 'ブランド一覧'
+      %li.content
+        ヘルプ＆ガイド
+        %ul
+          %li 
+            = link_to 'FURIMAガイド'
+          %li 
+            = link_to 'FURIMAロゴ利用会ドライン'
+          %li 
+            = link_to 'お知らせ'
+  .camera-icon
+    %p 出品する
+    =link_to image_tag "icon_camera.png",size: "54x54",class:'camera'
+  .furima-icon
+    =link_to image_tag "logo-white.png",size: "160x43"
+  .furima-text
+    %p ©︎FURIMA
