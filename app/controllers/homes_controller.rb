@@ -4,5 +4,6 @@ class HomesController < ApplicationController
   end
 
   def index
+    @parents = Category.where(ancestry: nil)
   end
 end
