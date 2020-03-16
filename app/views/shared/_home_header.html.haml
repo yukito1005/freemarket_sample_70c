@@ -10,8 +10,22 @@
             = link_to image_tag "icon-search 1.png", class:'search',size: "20x20"
         .main-navi
           .left-navi
-            = link_to 'カテゴリー'
-            = link_to 'ブランド'
+            .menu-category
+              = link_to 'カテゴリー', root_path
+              %ul.firstMenu
+                - @parents.each do |parent|
+                  %li.firstMenu__parent
+                    = parent.name
+                    %ul.secondMenu
+                      - parent.children.each do |child|
+                        %li.secondMenu__child
+                          = child.name
+                          %ul.thirdMenu
+                            - child.children.each do |grandchild|
+                              %li.thirdMenu__grandchild
+                                = grandchild.name
+            .menu-brand
+              = link_to 'ブランド', root_path
           .right-navi
             - if user_signed_in?
               = link_to 'ログアウト', destroy_user_session_path, method: :delete

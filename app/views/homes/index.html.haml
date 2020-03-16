@@ -78,7 +78,6 @@
             = link_to image_tag "app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg",size: "180x53",class:'abtn'
             = link_to image_tag "google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg",size: "180x53",class:'gbtn'
 
-     
     .furima-feature
       .furima-feature__box
         %h2
@@ -115,55 +114,30 @@
           新規投稿商品
         .pickup-block__product-phot
           .block
-            .left
-              = link_to ""
-              .image
-                = image_tag "icon-04.png",size:"220x150"
-              .pop
-                .name 
-                  ペットボトル
-                .detail
-                  %ul
-                    %li.price
-                      300000
-                    %li.icon
-                      %i.fas.fa-star.stariocn
-                    %li
-                      3
-                .tax
-                  (税込)
-            .center
-              = link_to ""
-              .image
-                = image_tag "icon-04.png",size:"220x150"
-              .pop
-                .name
-                  唐辛子
-                .detail
-                  %ul
-                    %li.price
-                      300000
-                    %li.icon
-                      %i.fas.fa-star.stariocn
-                    %li
-                      3
-                  .tax
-                    (税込)
-            .right
-              = link_to ""
-              .image
-                = image_tag "icon-04.png",size:"220x150"
-              .pop
-                .name
-                  唐辛子
-                .detail
-                  %ul
-                    %li.price
-                      300000
-                    %li.icon
-                      %i.fas.fa-star.stariocn
-                    %li
-                      3
+            - @products.each do |product|
+              .left
+                = link_to "",root_path
+                .image
+                  - product.images.each_with_index do |image, i|
+                    - if i == 0
+                      = image_tag image.image.url, size:"220x150"
+                        - if product.status == 1
+                        .sold-group
+                          %p.sold
+                            sold
+                          %p.sold-label
+                          
+                .pop
+                  .name 
+                    = product.item_name
+                  .detail
+                    %ul
+                      %li.price
+                        = product.price
+                      %li.icon
+                        %i.fas.fa-star.stariocn
+                      %li
+                        3
                   .tax
                     (税込)
     .pickup-category2
@@ -174,58 +148,33 @@
           アーカイバ
         .pickup-brand__product-phot
           .block
-            .left
-              = link_to ""
-              .image
-                = image_tag "icon-04.png",size:"220x150"
-              .pop
-                .name 
-                  ペットボトル
-                .detail
-                  %ul
-                    %li.price
-                      300000
-                    %li.icon
-                      %i.fas.fa-star.stariocn
-                    %li
-                      3
-                .tax
-                  (税込)
-            .center
-              = link_to ""
-              .image
-                = image_tag "icon-04.png",size:"220x150"
-              .pop
-                .name
-                  唐辛子
-                .detail
-                  %ul
-                    %li.price
-                      300000
-                    %li.icon
-                      %i.fas.fa-star.stariocn
-                    %li
-                      3
+            - @pickupbrand.each do |product|
+              .left
+                = link_to "", root_path
+                .image
+                  - product.images.each_with_index do |image, i|
+                    - if i == 0
+                      = image_tag image.image.url, size:"220x150"
+                      - if product.status == 1
+                        .sold-group
+                          %p.sold
+                            sold
+                          %p.sold-label
+                          　
+                .pop
+                  .name 
+                    = product.item_name
+                  .detail
+                    %ul
+                      %li.price
+                        = product.price
+                      %li.icon
+                        %i.fas.fa-star.stariocn
+                      %li
+                        3
                   .tax
                     (税込)
-              
-            .right
-              = link_to  ""
-              .image
-                = image_tag "icon-04.png",size:"220x150"
-              .pop
-                .name
-                  唐辛子
-                .detail
-                  %ul
-                    %li.price
-                      300000
-                    %li.icon
-                      %i.fas.fa-star.stariocn
-                    %li
-                      3
-                  .tax
-                    (税込)
+
     .download-banner
       .download-banner__content
         .download-banner__content__text
