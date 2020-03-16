@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2020_03_12_015316) do
     t.text "item_detail", null: false
     t.string "item_size"
     t.string "condition", null: false
-    t.integer "price", null: false
+    t.string "price", null: false
     t.bigint "category_id", null: false
     t.string "delivery_pay", null: false
     t.string "orign_area", null: false

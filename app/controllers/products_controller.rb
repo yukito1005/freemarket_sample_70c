@@ -9,7 +9,24 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.new
+    @category_parent_array = ["選択してください"] 
+    @category_parent_array = Category.where(ancestry: nil).pluck(:name)  
+    @delivery_pay =["送料込み(出品者負担)","着払い(購入者負担)"]
+    @lead_time =["1~2日で発送","2~3日で発送","4~7日で発送"]
+    @condition =["新品、未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れあり","傷や汚れあり","全体的に状態が悪い"]
   end 
+
+  def get_category_children
+    @category_children = Category.find(params[:parent_name]).children
+  end  
+
+  def get_category_grandchildren
+    @category_grandchildren = Category.find(params[:child_id]).children
+  end 
+
+
+
+
 
   def show
     @product.images
@@ -55,7 +72,7 @@ class ProductsController < ApplicationController
   end  
 
   def get_category_grandchildren
-    @category_grandchildren = Category.find("#{params[:child_id]}").children
+    @category_grandchildren = Category.find(params[:child_id]).children
   end 
 
 
