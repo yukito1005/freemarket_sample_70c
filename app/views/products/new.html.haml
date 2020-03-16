@@ -55,7 +55,7 @@
             %label 商品の状態
             %span 必須
           .main-contents__product-detail__bottom__selector
-            =f.select "product[condition]", @condition, {}, class:"condition"
+            =f.select "product[condition]", @condition, {}, class:"condition" 
               
       .main-contents__delivery
         .main-contents__delivery__about
@@ -72,7 +72,7 @@
             %label 発送元の地域
             %span 必須
           .main-contents__delivery__middle__selector 
-            = f.collection_select "product[orign_area]", Prefecture.all, :id, :name, prompt: "選択してください", class: 'input'
+            = f.collection_select "product[orign_area]", Prefecture.all, :id, :name, class: 'input'
             
         .main-contents__delivery__bottom
           .main-contents__delivery__bottom__days

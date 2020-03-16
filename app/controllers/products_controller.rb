@@ -12,9 +12,9 @@ class ProductsController < ApplicationController
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end  
-    @delivery_pay =["選択してください","送料込み(出品者負担)","着払い(購入者負担)"]
-    @lead_time =["選択してください","1~2日で発送","2~3日で発送","4~7日で発送"]
-    @condition =["選択してください","新品、未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れあり","傷や汚れあり","全体的に状態が悪い"]
+    @delivery_pay =["送料込み(出品者負担)","着払い(購入者負担)"]
+    @lead_time =["1~2日で発送","2~3日で発送","4~7日で発送"]
+    @condition =["新品、未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れあり","傷や汚れあり","全体的に状態が悪い"]
   end 
 
   def get_category_children
