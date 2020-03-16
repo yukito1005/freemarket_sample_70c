@@ -2,33 +2,37 @@
   .header-new
     = image_tag "logo.png", size:"185x49", class: "logo-new"
   .main-contents
-    = form_with model:@prodoct, url: "/products", method: :post , local:true do |f|
+    = form_with model:@prodoct, url: "/products/#{@product.id}", method: :put , local:true do |f|
       .main-contents__image
         .main-contents__image__body
           %label 出品画像
           %span 必須
           %p.note 最大10枚までアップロードできます
           #image-box-1
+            - @product.images.each do |image|
+              .item-image
+                .item-image__content
+                  .item-image__content--icon
+                    = image_tag image.image.url, size: "114x80", name: "product[images_attributes][][image]"
+                .item-image__operetion
+                  .item-image__operetion--delete 削除
             .item-num-0#image-box__container
               = f.fields_for :images do |i|
                 .input-area
                   = i.file_field :image, type: 'file', name: "product[images_attributes][][image]", value:"", style: "display:none", id:"img-file"
                   %label.camera{for: "img-file"}
                     %i.fas.fa-camera
-            
-       
       .main-contents__product-description
         .main-contents__product-description__topform
           .main-contents__product-description__topform__name
             %label 商品名
             %span 必須
-          = f.text_field "product[item_name]" , autocomplete:"off", placeholder:"40文字まで", type:"text", value:"", class:"input"
-       
+          = f.text_field "product[item_name]" , autocomplete:"off", placeholder:"40文字まで", type:"text", value: "#{@product.item_name}", class:"input"
         .main-contents__product-description__bottomform
           .main-contents__product-description__bottomform__name
             %label 商品の説明
             %span 必須
-          = f.text_area "product[item_detail]", cols:"30", id:"input-text", rows:"10", placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" 
+          = f.text_area "product[item_detail]", cols:"30", id:"input-text", rows:"10",  value: "#{@product.item_detail}", placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" 
           .main-contents__product-description__bottomform__counter(id="counter") 0/1000
          
         .main-contents__product-description__bottomform 
@@ -42,8 +46,9 @@
             .listing-form-box
               .listing-select-wrapper
                 .listing-select-wrapper__box
-                  = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
-
+                  = f.collection_select :category_parent_id, @categories, :id, :name, {selected: @product.category.parent.parent.id}, class: "listing-select-wrapper__box--select", id: "parent_category"
+                  = f.collection_select :category_child_id, @product.category.parent.parent.children, :id, :name, {selected: @product.category.parent.id}, class: "listing-select-wrapper__box--select", id: "#children_wrapper"
+                  = f.collection_select :category_grand_child_id, @product.category.parent.children, :id, :name, {selected: @product.category.id}, class: "listing-select-wrapper__box--select", id: "#grandchildren_wrapper"
         .main-contents__product-detail__middle  
           .main-contents__product-detail__middle__brand
             %label ブランド
@@ -56,7 +61,6 @@
             %span 必須
           .main-contents__product-detail__bottom__selector
             =f.select "product[condition]", @condition, {}, class:"condition"
-              
       .main-contents__delivery
         .main-contents__delivery__about
           %p 配送について
@@ -72,8 +76,7 @@
             %label 発送元の地域
             %span 必須
           .main-contents__delivery__middle__selector 
-            = f.collection_select "product[orign_area]", Prefecture.all, :id, :name, prompt: "選択してください", class: 'input'
-            
+            = f.collection_select "product[orign_area]", Prefecture.all, :id, :name, prompt: "選択してください", class: 'input', selected: @prefecture.id
         .main-contents__delivery__bottom
           .main-contents__delivery__bottom__days
             %label 発送までの日数
