@@ -25,6 +25,7 @@
         %span 必須
         %br/
         = f.password_field :password_confirmation, autocomplete: "new-password", placeholder:'上記と同じ文字を入力', class:'boxes__field__large-frame'
+
         .actions
           = f.submit "次へ進む", class:'actions__btn'
   = render partial: 'shared/products_footer'

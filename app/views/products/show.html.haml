@@ -1,31 +1,8 @@
-.pcheader
-  .pcheader__inner
-    .pcheader__inner__main
-      %h1.pcheader__inner__main--icon
-        = link_to "#" do
-          = image_tag "http://furima.tokyo/assets/logo-d3d78326971d78b06e3d6f0ba666d025a8ad681286b4d9e00e7dbe8673bcfd23.svg", size: "100x40.55"
-      .pcheader__inner__main--search
-        %form.pcheader__inner__main--search--form
-          %input{placeholder: "キーワードから探す"}
-          %button
-            .search--icon
-              = image_tag "http://furima.tokyo/assets/icon-search-60a83ada85216fe00789cd16065281694d9a08948275fef83683fadcf131d84d.svg", size: "19.61x19.61"
-    .pcheader__inner__navi
-      %ul.pcheader__inner__navi__lists
-        %li.pcheader__inner__navi__lists--left--category
-          = link_to "#" do
-            カテゴリー
-        %li.pcheader__inner__navi__lists--left--brand
-          = link_to "#" do
-            ブランド
-      %ul.pcheader__inner__navi__lists
-        %li.pcheader__inner__navi__lists--right--login
-          = link_to "#" do
-            ログイン
-        %li.pcheader__inner__navi__lists--right--signup
-          = link_to "#" do
-            新規会員登録
 
+.top-page
+  = render partial: 'shared/home_header'
+
+-# パンくずメニュー
 %nav.breadCrumbs
   %ul.category
     %li.category__content
@@ -63,28 +40,12 @@
           .top-contents__item__body
             %ul.top-contents__item__body__images
               %li.top-contents__item__body__images--show
-                = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", size: "560x346", class: "top-contents__item__body__images--show--image img01 mainimage"
+
+                = image_tag @image.image.url , size: "560x346", class: "top-contents__item__body__images--show--image img01 mainimage"
                 %ul#image-hover.img01.top-contents__item__body__images--show--index
-                  %li.top-contents__item__body__images--show--index--list
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", size: "100x87"
-                  %li.top-contents__item__body__images--show--index--list
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png", size: "100x87"
-                  %li.top-contents__item__body__images--show--index--list
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png", size: "100x87"
-                  %li.top-contents__item__body__images--show--index--list
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", size: "100x87"
-                  %li.top-contents__item__body__images--show--index--list
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png", size: "100x87"
-                  %li.top-contents__item__body__images--show--index--list
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png", size: "100x87"
-                  %li.top-contents__item__body__images--show--index--list
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", size: "100x87"
-                  %li.top-contents__item__body__images--show--index--list
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png", size: "100x87"
-                  %li.top-contents__item__body__images--show--index--list
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png", size: "100x87"
-                  %li.top-contents__item__body__images--show--index--list
-                    = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png", size: "100x87"
+                  - @product.images.each do |image|
+                    %li.top-contents__item__body__images--show--index--list
+                      = image_tag image.image.url, size: "112x87"
 
         .top-contents__price
           %span.top-contents__price__main
@@ -93,7 +54,9 @@
             %span (税込)
             %span 送料込み
         - if @product.user.id != current_user.id
-          = link_to purchase_products_path(@product) do
+
+          = link_to purchase_products_path do
+
             .top-contents__purchase 購入画面に進む
         - else
           = link_to edit_product_path(@product) do
@@ -138,7 +101,8 @@
                 %th 発送元の地域
                 %td 
                   = link_to "#" do
-                    = @product.orign_area
+
+                    = @prefecture.name
               %tr
                 %th 発送日の目安
                 %td
@@ -185,51 +149,6 @@
         = image_tag "http://furima.tokyo/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg", size: "180x53"
       = link_to "#" do
         = image_tag "http://furima.tokyo/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg", size: "180x53"
-.footer
-  %ul.footer__contents
-    %li.footer__contents__box
-      %h2.footer__contents__box--title FURIMAについて
-      %ul.footer__contents__box--lists
-        %li
-          = link_to "#" do
-            会社概要（運営会社）
-        %li
-          = link_to "#" do
-            プライバシーポリシー
-        %li
-          = link_to "#" do
-            FURIMA利用規約
-        %li
-          = link_to "#" do
-            ポイントに関する特約
-    %li.footer__contents__box
-      %h2.footer__contents__box--title FURIMAを見る
-      %ul.footer__contents__box--lists 
-        %li
-          = link_to "#" do
-            カテゴリー一覧
-        %li
-          = link_to "#" do
-            ブランド一覧
-    %li.footer__contents__box
-      %h2.footer__contents__box--title ヘルプ＆ガイド
-      %ul.footer__contents__box--lists
-        %li
-          = link_to "#" do
-            FURIMAガイド
-        %li
-          = link_to "#" do
-            FURIMAロゴ利用ガイドライン
-        %li
-          = link_to "#" do
-            お知らせ
-  .footer__logo
-    = link_to "#" do
-      = image_tag "http://furima.tokyo/assets/logo-white-f61961ed5170064c5f33dd4524bdceeb5a5df2c83eb76fba31143f63fbab2c5e.svg", size: "160x46"
 
-  %p.footer__copyright ©️ FURIMA
 
-= link_to "#" do
-  .purchase-btn
-    %span.purchase-btn--text 出品する
-    = image_tag "http://furima.tokyo/assets/icon_camera-968c5ebaa05319bf1e2ad7508f852dd712504a4d26a1930d8bd87ec03ebcc37a.svg", size: "54x54"
+= render partial: 'shared/home_footer'
