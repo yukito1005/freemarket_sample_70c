@@ -33,7 +33,6 @@ class ProductsController < ApplicationController
 
 
   def show
-
     @product.images
     @category = @product.category
     @product.images.each_with_index do |image, i|
