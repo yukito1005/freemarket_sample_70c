@@ -131,12 +131,21 @@
         .pickup-block__product-phot
           .block
             - @products.each do |product|
+    
+              
               .left
                 = link_to "",'products/:id'
                 .image
                   - product.images.each_with_index do |image, i|
                     - if i == 0
                       = image_tag image.image.url, size:"220x150"
+                        - if product.status == 1
+                        .sold-group
+                          %p.sold
+                            sold
+                            
+                          %p.sold-label
+                          　
                 .pop
                   .name 
                     = product.item_name
@@ -165,6 +174,14 @@
                   - product.images.each_with_index do |image, i|
                     - if i == 0
                       = image_tag image.image.url, size:"220x150"
+                      - if product.status == 1
+                        .sold-group
+                          %p.sold
+                            sold
+                            
+                          %p.sold-label
+                          　
+                         
                 .pop
                   .name 
                     = product.item_name
