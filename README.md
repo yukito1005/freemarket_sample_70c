@@ -83,6 +83,8 @@ Things you may want to cover:
 |delivery_pay|string|null: false|
 |origin_area|string|null: false|
 |lead_time|string|null: false|
+|ststus|integer|null: false|
+|brand|string||
 
 
 
