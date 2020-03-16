@@ -1,0 +1,13 @@
+.wrapper
+  = render partial: 'shared/products_header'
+  .registration
+    %ul.registration__field
+      %li.registration__font
+        登録が完了しました
+      %li.registration__box
+        = link_to("トップページへ戻る", root_path, class: "registration__box--btn")
+      %li.registration__box
+        = link_to("マイページ", root_path, class: "registration__box--btn")
+      %li.registration__box
+        = link_to("出品する", root_path, class: "registration__box--btn")
+  = render partial: 'shared/products_footer'

@@ -1,0 +1,35 @@
+.top-page
+  .header
+    .header-box
+      .header-block
+        .main-header
+          .logo-icon
+            = link_to image_tag "logo.png",size: "140x40"
+          .search-form
+            %input.form{placeholder:'キーワードから探す',type:'text'}
+            = link_to image_tag "icon-search 1.png", class:'search',size: "20x20"
+        .main-navi
+          .left-navi
+            .menu-category
+              = link_to 'カテゴリー', root_path
+              %ul.firstMenu
+                - @parents.each do |parent|
+                  %li.firstMenu__parent
+                    = parent.name
+                    %ul.secondMenu
+                      - parent.children.each do |child|
+                        %li.secondMenu__child
+                          = child.name
+                          %ul.thirdMenu
+                            - child.children.each do |grandchild|
+                              %li.thirdMenu__grandchild
+                                = grandchild.name
+            .menu-brand
+              = link_to 'ブランド', root_path
+          .right-navi
+            - if user_signed_in?
+              = link_to 'ログアウト', destroy_user_session_path, method: :delete
+              = link_to 'マイページ', '#'
+            - else
+              = link_to 'ログイン', new_user_session_path
+              = link_to '新規会員登録', new_user_registration_path
