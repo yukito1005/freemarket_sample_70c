@@ -1,3 +1,15 @@
+.top-page
+  = render partial: 'shared/home_header'
+%nav.breadCrumbs
+  %ul.category
+    %li.category__content
+      = link_to "#", class: "category__content--app stylenone" do
+        FRIMA
+    %li.category__content
+      %i.fas.fa-angle-right
+    %li.category__content
+      = link_to "#", class: "category__content--app stylenone" do
+        マイページ
 .defalt-container
   .l-container
     .l-container__side
@@ -108,7 +120,7 @@
         = link_to "#",class: "user-detail" do
           = image_tag 'member_photo_noimage_thumb.png', alt: 'ユーザー写真', height: '60', width: '60', class: 'user-icon'
           .user-name
-            ユーザー名
+            =current_user.nickname
           .user-evaluations-exhibitions
             .evaluations
               評価数:
@@ -117,7 +129,11 @@
             .exhibitions
               出品数:
               .exhibitions__numbers
-                0
+                -i=0
+                - @user_products.each do |product|
+                  - if current_user.id == product.user_id
+                    -i+=1
+                =i
       .l-container__content__mypage-tabs-container-info-todo
         %ul.l-container__content__mypage-tabs-container-info-todo__tabs
           %li.info-todo-tab.active.initialize-active
@@ -192,7 +208,7 @@
             取引中
           %li.purchase-tab
             過去の取引
-        .l-container__content__mypage-tab-container-purchase__contents
+        .l-container__content__mypage-tab-container-purchase__contents  
           %ul.purchase_content.show.initialize-show
             %li.not-found
               取引中の商品がありません
@@ -213,7 +229,92 @@
       出品する
     //出品した商品-出品中
     .l-container__content
-      出品した商品-出品中
+      .l-container__content__exhibition-item
+        .l-container__content__exhibition-item__head
+          出品した商品
+        %ul.l-container__content__exhibition-item__tabs
+          %li.exhibition-item-tab.exhibition-active.active
+            出品中
+          %li.exhibition-item-tab.transaction-active
+            取引中
+          %li.exhibition-item-tab.sold-active
+            売却済み
+        .l-container__content__exhibition-item__contents
+          .exhibition-item-content.exhibition-show.show
+            - @user_products.each do |product|
+              = link_to product_path(product),class:"exhibition-item" do
+                .mages
+                  - product.images.each do |image|
+                    = image_tag src=image.image.url, alt: '写真', height: '120px', width: '160px', class: 'images'
+                    -break
+                .item
+                  .item__name-title
+                    商品名
+                  .item__name
+                    =product.item_name
+                  .item__exhibition
+                    出品中
+              .slide
+                🔻
+              %ul.item-detail
+                %li.title
+                  写真
+                %li
+                - product.images.each do |image|
+                  = image_tag src=image.image.url, alt: '写真', height: '100%', width: '100%', class: 'images'
+                %li.title
+                  商品名
+                %li
+                  =product.item_name
+                %li.title
+                  商品の説明
+                %li
+                  =product.item_detail
+                %li.title
+                  カテゴリー
+                %li
+                  = product.category.root.name
+                  %br
+                  = product.category.parent.name
+                  %br
+                  = product.category.name
+                  %br
+                %li.title
+                  ブランド
+                %li
+                  -if product.brand.present?
+                    =product.brand
+                  -else
+                    未記入
+                %li.title
+                  商品の状態
+                %li
+                  =product.condition
+                %li.title
+                  配送料の負担
+                %li
+                  =product.delivery_pay
+                %li.title
+                  発送元の地域
+                %li
+                  =Prefecture.find(product.orign_area).name
+                %li.title
+                  発送までの日数
+                %li
+                  =product.lead_time
+                %li.title
+                  販売価格
+                %li
+                  =product.price
+            -if @user_products==nil
+              %li.no-data
+                出品中の商品はありません
+          %ul.exhibition-item-content.transaction-show
+            %li.no-data
+              取引中の商品はありません
+          %ul.exhibition-item-content.sold-show
+            %li.no-data
+              売却済みの商品はありません
     //出品した商品-取引中
     .l-container__content
       出品した商品-取引中
@@ -352,5 +453,17 @@
       .l-container__content__logout
         .l-container__content__logout__container
           .l-container__content__logout__container__btn
-            = link_to "#",class: "logout-btn" do
+            = link_to destroy_user_session_path, method: :delete, class: "logout-btn" do
               ログアウト
+.app-banner
+  .app-banner__inner
+    .app-banner__inner--title だれでもかんたん、人生を変えるフリマアプリ
+    .app-banner__inner--body 今すぐ無料ダウンロード！
+    .app-banner__inner--icon
+      = link_to "#" do
+        = image_tag "http://furima.tokyo/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg", size: "180x53"
+      = link_to "#" do
+        = image_tag "http://furima.tokyo/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg", size: "180x53"
+
+
+= render partial: 'shared/home_footer'

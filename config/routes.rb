@@ -18,5 +18,4 @@ Rails.application.routes.draw do
       get 'get_size', defaults: { format: 'json' }
     end
   end
-
 end
