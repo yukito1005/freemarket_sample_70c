@@ -1,6 +1,9 @@
 .wrapper
   .container
     .containerLeft
+      = form_with model: @product, url: search_products_path, class: 'detail-container', local: true do |f|
+        .search-sort
+          %i.fas.fa-angle-down
     .containerRight
       .containerRight__search-result-head
         %h1 Xの検索結果

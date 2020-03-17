@@ -7,9 +7,25 @@
     height: 100vh;
     width: calc(100% - 20%);
     .containerLeft {
+      margin-right: 40px;
       border: solid;
       height: 100%;
       width: calc(100% - 70%);
+      .detail-container {
+        position: relative;
+        .search-sort {
+          height: 48px;
+          padding: 0 16px;
+          border: 1px solid #ccc;
+          .fas {
+            position: absolute;
+            right: 16px;
+            top: 23%;
+            color: #888;
+            font-size: 30px;
+          }
+        }
+      }
     }
     .containerRight {
       height: 100%;
