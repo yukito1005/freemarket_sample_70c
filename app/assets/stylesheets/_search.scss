@@ -1,0 +1,34 @@
+.wrapper {
+  background-color: #EEEEEE;
+  .container {
+    display: flex;
+    margin: 40px 128.5px 0;
+    padding: 0 0 40px;
+    border: solid;
+    height: 100vh;
+    width: calc(100% - 20%);
+    .containerLeft {
+      border: solid;
+      height: 100%;
+      width: calc(100% - 70%);
+    }
+    .containerRight {
+      border: solid;
+      height: 100%;
+      width: calc(100% - 30%);
+      &__search-result-head h1 {
+        font-size: 22px;
+        margin-bottom: 8px;
+      }
+      &__search-result-number p {
+        margin: 16px 0;
+        font-size: 12px;
+        color: #888;
+      }
+      &__search-item-box {
+        border: solid;
+        width: auto;
+      }
+    }
+  }
+}
