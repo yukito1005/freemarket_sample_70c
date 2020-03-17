@@ -6,4 +6,15 @@
         %h1 Xの検索結果
       .containerRight__search-result-number
         %p n件表示
-      .containerRight__search-item-box
+      .containerRight__search-item-field
+        .item-box
+          .item-box__photo
+          .item-box__text
+            .item-box__text__name
+              %h3 商品名アイウエオアイウエオアイウエオ
+            .item-box__text__price
+              ¥500
+            .item-box__text__icon
+              %i.fas.fa-star.stariocn
+              %span 1
+  = render partial: 'shared/home_footer'

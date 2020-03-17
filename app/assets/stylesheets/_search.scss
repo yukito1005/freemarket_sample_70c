@@ -4,7 +4,6 @@
     display: flex;
     margin: 40px 128.5px 0;
     padding: 0 0 40px;
-    border: solid;
     height: 100vh;
     width: calc(100% - 20%);
     .containerLeft {
@@ -13,7 +12,6 @@
       width: calc(100% - 70%);
     }
     .containerRight {
-      border: solid;
       height: 100%;
       width: calc(100% - 30%);
       &__search-result-head h1 {
@@ -25,9 +23,55 @@
         font-size: 12px;
         color: #888;
       }
-      &__search-item-box {
-        border: solid;
+      &__search-item-field {
         width: auto;
+        height: 100%;
+        .item-box {
+          border: solid;
+          height: 218px;
+          width: 160px;
+          margin: 0 20px 20px 0;
+          &__photo {
+            height: 160px;
+            width: 160px;
+            border-bottom: solid;
+          }
+          &__text {
+            position: relative;
+            height: 58px;
+            padding: 6px 6px;
+            height: 58px;
+            width: 160px;
+            &__name h3 {
+              position: relative;
+              font-size: 14px;
+              overflow: hidden;
+              word-break: normal;
+              height: 3em;
+              line-height: 1.5;
+              white-space: normal;
+            }
+            &__price {
+              position: absolute;
+              font-weight: 600;
+              font-size: 17px;
+              top: -40px;
+              left: 0;
+              font-weight: 600;
+              color: #fff;
+              padding: 2px 12px 1px 5px;
+              border-radius: 0 16px 16px 0;
+              background-color: rgba(0,0,0,0.3);
+            }
+            &__icon {
+              position: absolute;
+              right: 23px;
+              bottom: 20px;
+              padding-left: 32px;
+              background: linear-gradient(to right, rgba(255,255,255,0), #fff 24px)
+            }
+          }
+        }
       }
     }
   }
