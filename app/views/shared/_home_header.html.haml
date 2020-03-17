@@ -7,7 +7,7 @@
             = link_to image_tag "logo.png",size: "140x40"
           .search-form
             %input.form{placeholder:'キーワードから探す',type:'text'}
-            = link_to image_tag "icon-search 1.png", class:'search',size: "20x20"
+            = link_to (image_tag "icon-search 1.png", class:'search',size: "20x20"), search_products_path
         .main-navi
           .left-navi
             .menu-category

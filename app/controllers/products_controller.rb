@@ -72,6 +72,10 @@ class ProductsController < ApplicationController
     end
   end 
 
+  def search
+    @product = Product.where(['item_name LIKE ?', "%#{params[:search]}%"]).limit(40)
+  end
+
 
   def get_category_children
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
