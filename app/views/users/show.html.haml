@@ -1,3 +1,15 @@
+.top-page
+  = render partial: 'shared/home_header'
+%nav.breadCrumbs
+  %ul.category
+    %li.category__content
+      = link_to "#", class: "category__content--app stylenone" do
+        FRIMA
+    %li.category__content
+      %i.fas.fa-angle-right
+    %li.category__content
+      = link_to "#", class: "category__content--app stylenone" do
+        マイページ
 .defalt-container
   .l-container
     .l-container__side
@@ -103,7 +115,7 @@
             .icon-arrow-right
               >
     //マイページ
-    .l-container__content
+    .l-container__content.show
       .l-container__content__mypage-user
         = link_to "#",class: "user-detail" do
           = image_tag 'member_photo_noimage_thumb.png', alt: 'ユーザー写真', height: '60', width: '60', class: 'user-icon'
@@ -216,7 +228,7 @@
     .l-container__content
       出品する
     //出品した商品-出品中
-    .l-container__content.show
+    .l-container__content
       .l-container__content__exhibition-item
         .l-container__content__exhibition-item__head
           出品した商品
@@ -230,7 +242,7 @@
         .l-container__content__exhibition-item__contents
           .exhibition-item-content.exhibition-show.show
             - @user_products.each do |product|
-              = link_to "#",class:"exhibition-item" do
+              = link_to product_path(product),class:"exhibition-item" do
                 .mages
                   - product.images.each do |image|
                     = image_tag src=image.image.url, alt: '写真', height: '120px', width: '160px', class: 'images'
@@ -443,3 +455,15 @@
           .l-container__content__logout__container__btn
             = link_to destroy_user_session_path, method: :delete, class: "logout-btn" do
               ログアウト
+.app-banner
+  .app-banner__inner
+    .app-banner__inner--title だれでもかんたん、人生を変えるフリマアプリ
+    .app-banner__inner--body 今すぐ無料ダウンロード！
+    .app-banner__inner--icon
+      = link_to "#" do
+        = image_tag "http://furima.tokyo/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg", size: "180x53"
+      = link_to "#" do
+        = image_tag "http://furima.tokyo/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg", size: "180x53"
+
+
+= render partial: 'shared/home_footer'
