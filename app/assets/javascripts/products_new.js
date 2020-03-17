@@ -151,6 +151,7 @@ $(function(){
     }
   });
 
+//販売利益と手数料に関する記述
   $('#price_calc').on('input', function(){ 
     var data = $('#price_calc').val();
     var profit = Math.round(data * 0.9)  
@@ -166,6 +167,7 @@ $(function(){
     }
   })
 
+//文字数カウンターに関する記述
   $("#input-text").on("keyup", function() {
     let countNum = String($(this).val().length);
     $("#counter").text(countNum + "/1000");
