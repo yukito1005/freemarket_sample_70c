@@ -1,0 +1,41 @@
+.main-contents__image__body{
+  .test{
+    display:flex;
+    flex-wrap: wrap;
+    #image-box__container{
+      height: 150px;
+      background-color: #F5F5F5;
+      .input-area{
+        width: 100%;
+        .fa-camera{
+          display: block;
+          text-align: center;
+          margin: 0 auto;
+          line-height: 150px;
+          font-size: 25px;
+          cursor: pointer;
+        }
+        .fa-camera:hover{
+          color: #3CCACE;
+        }
+      }  
+      
+    }
+    .item-image{
+      border: 1px solid #3CCACE;
+      height: 150px;
+      .item-image__operetion{
+        .item-image__operetion--delete{
+          cursor: pointer;
+          font-size: 20px;
+          text-align: center;
+          line-height: 60px;
+          height: 60px;
+        }
+        .item-image__operetion--delete:hover{
+          color: #3CCACE;
+        }
+      }  
+    }
+  }
+}

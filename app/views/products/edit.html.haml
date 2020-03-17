@@ -2,7 +2,7 @@
   .header-new
     = image_tag "logo.png", size:"185x49", class: "logo-new"
   .main-contents
-    = form_with model:@prodoct, url: "/products/#{@product.id}", method: :put , local:true do |f|
+    = form_with model:@prodoct, url: product_path(@product), method: :put , local:true do |f|
       .main-contents__image
         .main-contents__image__body
           %label 出品画像
@@ -46,9 +46,9 @@
             .listing-form-box
               .listing-select-wrapper
                 .listing-select-wrapper__box
-                  = f.collection_select :category_parent_id, @categories, :id, :name, {selected: @product.category.parent.parent.id}, class: "listing-select-wrapper__box--select", id: "parent_category"
-                  = f.collection_select :category_child_id, @product.category.parent.parent.children, :id, :name, {selected: @product.category.parent.id}, class: "listing-select-wrapper__box--select", id: "#children_wrapper"
-                  = f.collection_select :category_grand_child_id, @product.category.parent.children, :id, :name, {selected: @product.category.id}, class: "listing-select-wrapper__box--select", id: "#grandchildren_wrapper"
+                  = f.collection_select :category_parent_id, Category.where(ancestry: nil), :name, :name, {selected: @product.category.parent.parent.name}, class: "listing-select-wrapper__box--select", id: "parent_category"
+                  = f.select :category_child_id, options_for_select(@product.category.parent.parent.children.map{|c|[c[:name], c[:id], {'data-category'=>c[:id]}]}, @product.category.parent.name), {}, {class: 'listing-select-wrapper__box--select edit-children_wrapper', id: 'children_wrapper'}
+                  = f.collection_select "product[category_id]", @product.category.parent.children, :id, :name, {selected: @product.category.name}, class: "listing-select-wrapper__box--select edit-grandchildren_wrapper", id: "grandchildren_wrapper"
         .main-contents__product-detail__middle  
           .main-contents__product-detail__middle__brand
             %label ブランド
@@ -60,7 +60,7 @@
             %label 商品の状態
             %span 必須
           .main-contents__product-detail__bottom__selector
-            =f.select "product[condition]", @condition, {}, class:"condition"
+            = f.select "product[condition]", options_for_select(Condition.all.map{|c|[c[:name], c[:name]]}, @product.condition_was), {prompt: "選択してください"}, {class: 'condition'}
       .main-contents__delivery
         .main-contents__delivery__about
           %p 配送について
@@ -70,7 +70,7 @@
             %label 配送料の負担
             %span 必須
           .main-contents__delivery__top__selector  
-            =f.select "product[delivery_pay]", @delivery_pay, {}, class:"delivery-select"
+            = f.select "product[delivery_pay]", options_for_select(Deliverypay.all.map{|c|[c[:name], c[:name]]}, @product.delivery_pay), {prompt: "選択してください"}, {class: 'delivery-select'}
         .main-contents__delivery__middle
           .main-contents__delivery__middle__area
             %label 発送元の地域
@@ -82,7 +82,8 @@
             %label 発送までの日数
             %span 必須
           .main-contents__delivery__bottom__selector
-            =f.select "product[lead_time]", @lead_time , {}, class:"lead-time"
+            = f.select "product[lead_time]", options_for_select(Leadtime.all.map{|c|[c[:name], c[:name]]}, @product.lead_time), {prompt: "選択してください"}, {class: 'input'}
+
       .main-contents__price
         .main-contents__price__about 
           %label 価格
@@ -95,7 +96,7 @@
               %span 必須
             %span.price ¥
             .main-contents__price__sell__top__inputarea
-              = f.number_field "product[price]", class: "price_form-box", placeholder: "例) 300", type: "number",id: "price_calc"
+              = f.number_field "product[price]", class: "price_form-box", placeholder: "例) 300", type: "number",id: "price_calc", value: @product.price
           .main-contents__price__sell__topformerror 300以上9999999以下で入力してください
           .main-contents__price__sell__middle
             .main-contents__price__sell__middle__commission
@@ -109,12 +110,12 @@
             = f.submit :出品する, class: "exhibition"  
             %button{type:"submit", class:"return" } もどる
           %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
-  .footer
-    %ul(class="footer-note")
-      %li(class="privacy") プライバシーポリシー
-      %li(class="rules") フリマ利用規約
-      %li(class="specific-deal") 特定商取引に関する表記
-    = image_tag "logo-white.png", size:"185x49", class: "footer-logo" 
-    .footer__inc
-      %label ©️
-      %span FURIMA, Inc.
+  -# .footer
+  -#   %ul(class="footer-note")
+  -#     %li(class="privacy") プライバシーポリシー
+  -#     %li(class="rules") フリマ利用規約
+  -#     %li(class="specific-deal") 特定商取引に関する表記
+  -#   = image_tag "logo-white.png", size:"185x49", class: "footer-logo" 
+  -#   .footer__inc
+  -#     %label ©️
+  -#     %span FURIMA, Inc.

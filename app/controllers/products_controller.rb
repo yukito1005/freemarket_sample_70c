@@ -22,15 +22,11 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @categories = Category.where(ancestry: nil)
-    @category_grandchild = Category.find_by(name: @product.category.name)
-    @category_child = Category.find_by(name: @category_grandchild.parent.name)
-    @category_root = Category.find_by(name: @category_grandchild.root.name)
   end
 
   def update
     @product.update(products_params)
-    redirect_to root_path
+    redirect_to product_path(@product)
   end
 
   def destroy

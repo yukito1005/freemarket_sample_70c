@@ -98,6 +98,8 @@ $(function(){
         $('#grandchildren_wrapper').remove();
         $('#size_wrapper').remove();
         $('#brand_wrapper').remove();
+        $('.edit-children_wrapper').remove();
+        $('.edit-grandchildren_wrapper').remove();
         var insertHTML = '';
         children.forEach(function(child){
           insertHTML += appendOption(child);
@@ -112,11 +114,14 @@ $(function(){
       $('#grandchildren_wrapper').remove();
       $('#size_wrapper').remove();
       $('#brand_wrapper').remove();
+      $('.edit-children_wrapper').remove();
+      $('.edit-grandchildren_wrapper').remove();
     }
   });
   
   $('.listing-select-wrapper__box').on('change', '#child_category', function(){
     var childId = $('#child_category option:selected').data('category'); 
+    console.log(childId);
     if (childId != "---"){ 
       $.ajax({
         url: '/products/get_category_grandchildren',
