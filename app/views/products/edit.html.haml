@@ -2,7 +2,7 @@
   .header-new
     = image_tag "logo.png", size:"185x49", class: "logo-new"
   .main-contents
-    = form_with model:@prodoct, url: product_path(@product), method: :put , local:true do |f|
+    = form_with model:@prodoct, url: "/products/#{@product.id}", method: :put , local:true do |f|
       .main-contents__image
         .main-contents__image__body
           %label 出品画像
@@ -46,9 +46,10 @@
             .listing-form-box
               .listing-select-wrapper
                 .listing-select-wrapper__box
-                  = f.collection_select :category_parent_id, Category.where(ancestry: nil), :name, :name, {selected: @product.category.parent.parent.name}, class: "listing-select-wrapper__box--select", id: "parent_category"
-                  = f.select :category_child_id, options_for_select(@product.category.parent.parent.children.map{|c|[c[:name], c[:id], {'data-category'=>c[:id]}]}, @product.category.parent.name), {}, {class: 'listing-select-wrapper__box--select edit-children_wrapper', id: 'children_wrapper'}
-                  = f.collection_select "product[category_id]", @product.category.parent.children, :id, :name, {selected: @product.category.name}, class: "listing-select-wrapper__box--select edit-grandchildren_wrapper", id: "grandchildren_wrapper"
+                  = f.collection_select :category_parent, Category.where(ancestry: nil), :name, :name, {selected: @product.category.parent.parent.name}, class: "listing-select-wrapper__box--select", id: "parent_category"
+                  = f.select :category_child, options_for_select(@product.category.parent.parent.children.map{|c|[c[:name], c[:id], {'data-category'=>c[:id]}]}, @product.category.parent.name), {}, {class: 'listing-select-wrapper__box--select edit-children_wrapper', id: 'children_wrapper'}
+                  -# = f.collection_select "product[category_id]", @product.category.parent.children, :id, :name, {selected: @product.category.name}, class: "listing-select-wrapper__box--select edit-grandchildren_wrapper", id: "grandchildren_wrapper"
+                  = f.select "product[category_id]", options_for_select(@product.category.parent.children.map{|c|[c[:id], c[:name], {'data-category'=>c[:id]}]}, @product.category.name), {}, {class: 'listing-select-wrapper__box--select edit-grandchildren_wrapper', id: 'grandchildren_wrapper'}
         .main-contents__product-detail__middle  
           .main-contents__product-detail__middle__brand
             %label ブランド
@@ -60,7 +61,9 @@
             %label 商品の状態
             %span 必須
           .main-contents__product-detail__bottom__selector
+            -# =f.select "product[condition]", @condition, {}, class:"condition"
             = f.select "product[condition]", options_for_select(Condition.all.map{|c|[c[:name], c[:name]]}, @product.condition_was), {prompt: "選択してください"}, {class: 'condition'}
+
       .main-contents__delivery
         .main-contents__delivery__about
           %p 配送について
@@ -110,12 +113,12 @@
             = f.submit :出品する, class: "exhibition"  
             %button{type:"submit", class:"return" } もどる
           %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
-  -# .footer
-  -#   %ul(class="footer-note")
-  -#     %li(class="privacy") プライバシーポリシー
-  -#     %li(class="rules") フリマ利用規約
-  -#     %li(class="specific-deal") 特定商取引に関する表記
-  -#   = image_tag "logo-white.png", size:"185x49", class: "footer-logo" 
-  -#   .footer__inc
-  -#     %label ©️
-  -#     %span FURIMA, Inc.
+  .footer
+    %ul(class="footer-note")
+      %li(class="privacy") プライバシーポリシー
+      %li(class="rules") フリマ利用規約
+      %li(class="specific-deal") 特定商取引に関する表記
+    = image_tag "logo-white.png", size:"185x49", class: "footer-logo" 
+    .footer__inc
+      %label ©️
+      %span FURIMA, Inc.

@@ -46,6 +46,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+    binding.pry
     @product.update(products_params)
     redirect_to product_path(@product)
   end
