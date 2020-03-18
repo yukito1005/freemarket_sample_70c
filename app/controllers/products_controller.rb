@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.new
+
     @category_parent_array = ["選択してください"] 
     @category_parent_array = Category.where(ancestry: nil).pluck(:name)  
     @delivery_pay =["送料込み(出品者負担)","着払い(購入者負担)"]
@@ -25,6 +26,10 @@ class ProductsController < ApplicationController
   def get_category_grandchildren
     @category_grandchildren = Category.find(params[:child_id]).children
   end 
+
+
+
+
 
   def show
     @parents = Category.where(ancestry: nil)
@@ -57,6 +62,7 @@ class ProductsController < ApplicationController
       @product.destroy
       flash[:notice] = '出品した商品を削除しました'
       redirect_to root_path
+
       # マイページ完成次第パスをマイページに変更
     else
       flash.now[:alert] = '商品の削除に失敗しました'
@@ -70,6 +76,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(products_params)
     if @product.save
+
       redirect_to product_path(@product)
     else
       redirect_to new_product_path

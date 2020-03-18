@@ -40,6 +40,7 @@
           .top-contents__item__body
             %ul.top-contents__item__body__images
               %li.top-contents__item__body__images--show
+
                 = image_tag @image.image.url , size: "560x346", class: "top-contents__item__body__images--show--image img01 mainimage"
                 %ul#image-hover.img01.top-contents__item__body__images--show--index
                   - @product.images.each do |image|

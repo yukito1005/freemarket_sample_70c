@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_03_17_094013) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -37,7 +38,9 @@ ActiveRecord::Schema.define(version: 2020_03_17_094013) do
     t.string "item_name", null: false
     t.text "item_detail", null: false
     t.string "item_size"
+
     t.integer "condition_id", null: false
+
     t.string "price", null: false
     t.bigint "category_id", null: false
     t.integer "delivery_pay_id", null: false

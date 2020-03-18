@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   root "homes#index"
   resources :users, only: [:index]
+
   resources :products, only: [ :index, :new, :create, :show, :edit, :destroy, :update] do
+
     collection do
       get 'purchase'
       get 'get_category_children', defaults: { format: 'json' }
@@ -20,5 +22,4 @@ Rails.application.routes.draw do
       delete 'image_destroy', defaults: { format: 'json' }
     end
   end
-
 end
