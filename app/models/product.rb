@@ -2,9 +2,9 @@ class Product < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
-  belongs_to_active_hash :leadtime
+  belongs_to_active_hash :lead_time
   belongs_to_active_hash :condition
-  belongs_to_active_hash :deliverypay
+  belongs_to_active_hash :delivery_pay
 
   
 
@@ -15,7 +15,8 @@ class Product < ApplicationRecord
   belongs_to :user
   belongs_to :category
 
-  validates :user_id, :condition, :category_id, :delivery_pay, :orign_area, :lead_time, :status, presence: true
+  
+  validates :user_id, :condition_id, :category_id, :delivery_pay_id, :prefecture_id, :lead_time_id, :status, presence: true
   validates :item_name, presence: true, length: { maximum: 40 }
   validates :item_detail, presence: true, length: { maximum: 1000}
   validates :price, presence: true, numericality: {greater_than_or_equal_to: 300, less_than: 10000000} 

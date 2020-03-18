@@ -31,8 +31,9 @@ $(function(){
     });
   });
   $(document).on("click", '.item-image__operetion--delete', function(){
+  
     var target_image = $(this).parent().parent()
-    var target_name = $(target_image).data('image')
+    var target_name = $(target_image).data('id')
     if(file_field.files.length==1){
       $('input[type=file]').val(null)
       dataBox.clearData();
@@ -121,7 +122,6 @@ $(function(){
   
   $('.listing-select-wrapper__box').on('change', '#child_category', function(){
     var childId = $('#child_category option:selected').data('category'); 
-    console.log(childId);
     if (childId != "---"){ 
       $.ajax({
         url: '/products/get_category_grandchildren',
