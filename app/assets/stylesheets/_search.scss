@@ -127,6 +127,27 @@
             height: 160px;
             width: 160px;
             border-bottom: solid;
+            position: relative;
+            &__sold-box {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 0;
+              z-index: 1;
+              border-style: solid;
+              border-width: 80px 80px 0px 0;
+              border-color: #ea352d transparent transparent transparent;
+              p {
+                position: absolute;
+                top: -67px;
+                left: -2px;
+                color: #fff;
+                font-size: 20px;
+                font-weight: bold;
+                z-index: 2;
+                transform: rotate(-45deg);
+              }
+            }
           }
           &__text {
             position: relative;
