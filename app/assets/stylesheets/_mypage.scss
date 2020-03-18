@@ -1,3 +1,24 @@
+.breadCrumbs{
+  border-top: 1px solid #eee;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  position: relative;
+  padding: 0 60px;
+  .category{
+    display: flex;
+    padding: 17px 0 16px;
+    width: 100%;
+    max-width: 1040px;
+    font-size: 14px;
+    margin: 0 auto;
+    &__content{
+      padding: 0 10px 0 0;
+      .stylenone{
+        text-decoration: none;
+        color: #333;
+      }
+    }
+  }
+}
 .defalt-container{
   background-color: #f5f5f5;
 }
@@ -208,6 +229,105 @@
       }
     }
   }
+  //出品した商品-出品中・取引中・売却済み
+  &__content{
+    &__exhibition-item{
+      &__head{
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        font-size: 20px;
+        font-weight: bold;
+        background-color: white;
+      }
+      &__tabs{
+        height: 60px;
+        background-color: #eee;
+        display: flex;
+        margin: 0 auto;
+        font-weight: bold;
+        .exhibition-item-tab{
+          width: 300px;
+          line-height: 60px;
+          text-align: center;
+          color: black;
+        }
+        .active{
+          background-color: white;
+          border-top: 2px solid red;
+          color: skyblue;
+        }
+        :not(.active):hover{
+          opacity: 0.5;
+        }
+      }
+      &__contents{
+        overflow: scroll;
+        background-color: white;
+        padding: 20px;
+        height: 1200px;
+        .exhibition-item-content{
+          display: none;
+          .exhibition-item{
+            height: 100px;
+            width: 500px;
+            padding: 20px;
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            position: relative;
+            .images{
+              float: left;
+              margin-right: 20px;
+            }
+            .item{
+              color: black;
+              background-color: white;
+              &__name-title{
+                text-decoration: underline;
+                margin-bottom: 5px;
+              }
+              &__name{
+                margin-left: 10px;
+              }
+              &__exhibition{
+                border: 1px solid black;
+                background-color: skyblue;
+                position: absolute;
+                right: 20px;
+              }
+            }
+          }
+          .exhibition-item:hover{
+            opacity: 0.5;
+          }
+          .slide{
+            cursor: pointer;
+            text-align: center;
+            font-size: 20px;
+          }
+          ul.item-detail{
+            display: none;
+            li.title{
+              color: red;
+            }
+            li.no-data{
+              color: red;
+              text-align: center;
+              font-size: 20px;
+              line-height: 100px;
+            }
+          }
+        }
+        .show{
+          display: block;
+        }
+      }
+
+    }
+  }
+
+
   //クレジット
   &__content{
     &__credit{
@@ -386,6 +506,7 @@
       display: block;
     }
   }
+
   //ログアウト
   &__content{
     &__logout{
