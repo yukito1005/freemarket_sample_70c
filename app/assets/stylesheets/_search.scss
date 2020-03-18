@@ -14,15 +14,11 @@
       .detail-container {
         position: relative;
         .search-sort {
-          height: 48px;
-          padding: 0 16px;
-          border: 1px solid #ccc;
-          .fas {
-            position: absolute;
-            right: 16px;
-            top: 23%;
-            color: #888;
-            font-size: 30px;
+          #q_sorts {
+            height: 48px;
+            padding: 0 16px;
+            border: 1px solid #ccc;
+            width: 100%;
           }
         }
       }
@@ -54,10 +50,8 @@
           }
           &__text {
             position: relative;
-            height: 58px;
+            background-color: #fff;
             padding: 6px 6px;
-            height: 58px;
-            width: 160px;
             &__name h3 {
               position: relative;
               font-size: 14px;
@@ -81,8 +75,8 @@
             }
             &__icon {
               position: absolute;
-              right: 23px;
-              bottom: 20px;
+              right: 10px;
+              bottom: 5px;
               padding-left: 32px;
               background: linear-gradient(to right, rgba(255,255,255,0), #fff 24px)
             }
