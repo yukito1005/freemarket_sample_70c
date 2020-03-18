@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe Product, type: :model do
   describe '#create' do
     #全ての条件が揃ったら
-    it "is valid with a item_name, user_id, item_detail, condition, price, category_id, delivery_pay, orign_area, lead_time, status" do
+
+    it "is valid with a item_name, user_id, item_detail, condition_id, price, category_id, delivery_pay_id, prefecture_id, lead_time_id, status" do
+
       # user = create(:user)
       # binding.pry
       product = build(:product)
@@ -38,28 +40,29 @@ RSpec.describe Product, type: :model do
       expect(product.errors[:category_id]).to include("can't be blank")
     end
     #商品の状態
-    it "is invalid without a condition" do
-      product = build(:product, condition: "")
+    it "is invalid without a condition_id" do
+      product = build(:product, condition_id: "")
       product.valid?
-      expect(product.errors[:condition]).to include("can't be blank")
+      expect(product.errors[:condition_id]).to include("can't be blank")
     end
     #配送料の負担
-    it "is invalid without a delivery_pay" do
-      product = build(:product, delivery_pay: "")
+    it "is invalid without a delivery_pay_id" do
+      product = build(:product, delivery_pay_id: "")
       product.valid?
-      expect(product.errors[:delivery_pay]).to include("can't be blank")
+      expect(product.errors[:delivery_pay_id]).to include("can't be blank")
     end
     #発送元
-    it "is invalid without a orign_area" do
-      product = build(:product, orign_area: "")
+    it "is invalid without a prefecture_id" do
+      product = build(:product, prefecture_id: "")
       product.valid?
-      expect(product.errors[:orign_area]).to include("can't be blank")
+      expect(product.errors[:prefecture_id]).to include("can't be blank")
     end
     #発送までの日数
-    it "is invalid without a lead_time" do
-      product = build(:product, lead_time: "")
+    it "is invalid without a lead_time_id" do
+      product = build(:product, lead_time_id: "")
       product.valid?
-      expect(product.errors[:lead_time]).to include("can't be blank")
+      expect(product.errors[:lead_time_id]).to include("can't be blank")
+
     end
     #販売価格
     it "is invalid without a price" do
@@ -128,4 +131,5 @@ RSpec.describe Product, type: :model do
     end
 
   end
+
 end  

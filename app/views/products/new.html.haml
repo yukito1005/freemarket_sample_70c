@@ -56,8 +56,7 @@
             %label 商品の状態
             %span 必須
           .main-contents__product-detail__bottom__selector
-            =f.select "product[condition]", @condition, {}, class:"condition"
-              
+            = f.collection_select "product[condition_id]", Condition.all, :id, :name, prompt: "選択してください", class:"condition"
       .main-contents__delivery
         .main-contents__delivery__about
           %p 配送について
@@ -67,20 +66,20 @@
             %label 配送料の負担
             %span 必須
           .main-contents__delivery__top__selector  
-            =f.select "product[delivery_pay]", @delivery_pay, {}, class:"delivery-select"
+            = f.collection_select "product[delivery_pay_id]", DeliveryPay.all, :id, :name, prompt: "選択してください",  class:"delivery-select"
         .main-contents__delivery__middle
           .main-contents__delivery__middle__area
             %label 発送元の地域
             %span 必須
           .main-contents__delivery__middle__selector 
-            = f.collection_select "product[orign_area]", Prefecture.all, :id, :name, prompt: "選択してください", class: 'input'
+            = f.collection_select "product[prefecture_id]", Prefecture.all, :id, :name, prompt: "選択してください", class: 'input'
             
         .main-contents__delivery__bottom
           .main-contents__delivery__bottom__days
             %label 発送までの日数
             %span 必須
           .main-contents__delivery__bottom__selector
-            =f.select "product[lead_time]", @lead_time , {}, class:"lead-time"
+            =f.collection_select "product[lead_time_id]",  LeadTime.all, :id, :name, prompt: "選択してください", class:"lead-time"
       .main-contents__price
         .main-contents__price__about 
           %label 価格

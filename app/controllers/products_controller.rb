@@ -43,7 +43,18 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
+    @regist_images = Image.find_by(product_id: @product.id)
+    @ids = @product.images.map{|image| image.id }
+  end
+
+  def update
+    if @product.update(products_params)
+      flash[:notice] = '商品の編集が完了しました'
+      redirect_to product_path(@product.id)
+    else
+      flash.now[:alert] = '商品の編集に失敗しました'
+      render :edit
+    end
   end
 
   def destroy
@@ -55,7 +66,7 @@ class ProductsController < ApplicationController
       # マイページ完成次第パスをマイページに変更
     else
       flash.now[:alert] = '商品の削除に失敗しました'
-      render edit_product_path(@product)
+      render :edit
     end
   end
 
@@ -81,17 +92,21 @@ class ProductsController < ApplicationController
     @category_grandchildren = Category.find(params[:child_id]).children
   end 
 
+  def image_destroy
+    @image = Image.find(params[:prevew_id])
+    @image.destroy
+  end
 
 
   private
 
   def products_params
-    params.require(:product).permit(:item_name, :item_detail, :brand, :condition, :price, :category_id, :delivery_pay, :orign_area, :lead_time, :brand, images_attributes: [:id, :image, :_destroy]).merge(user_id: current_user.id, status: 0)
+    params.require(:product).permit(:item_name, :item_detail, :brand, :condition_id, :price, :category_id, :delivery_pay_id, :prefecture_id, :lead_time_id, :brand, images_attributes: [:id, :image, :_destroy]).merge(user_id: current_user.id, status: 0)
   end
 
   def set_product
     @product = Product.find(params[:id])
-    @prefecture = Prefecture.find_by(id: @product.orign_area)
+    @delivery_pay = DeliveryPay.where(id: @product.delivery_pay)
   end
 
   def set_category
