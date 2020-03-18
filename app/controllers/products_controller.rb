@@ -43,10 +43,11 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @regist_images = Image.find_by(product_id: @product.id)
+    @ids = @product.images.map{|image| image.id }
   end
 
   def update
-    binding.pry
     @product.update(products_params)
     redirect_to product_path(@product)
   end
@@ -70,7 +71,6 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(products_params)
     if @product.save
-
       redirect_to product_path(@product)
     else
       redirect_to new_product_path
@@ -86,17 +86,21 @@ class ProductsController < ApplicationController
     @category_grandchildren = Category.find(params[:child_id]).children
   end 
 
+  def image_destroy
+    @image = Image.find(params[:prevew_id])
+    @image.destroy
+  end
 
 
   private
 
   def products_params
-    params.require(:product).permit(:item_name, :item_detail, :brand, :condition, :price, :category_id, :delivery_pay, :orign_area, :lead_time, :brand, images_attributes: [:id, :image, :_destroy]).merge(user_id: current_user.id, status: 0)
+    params.require(:product).permit(:item_name, :item_detail, :brand, :condition_id, :price, :category_id, :delivery_pay_id, :prefecture_id, :lead_time_id, :brand, images_attributes: [:id, :image, :_destroy]).merge(user_id: current_user.id, status: 0)
   end
 
   def set_product
     @product = Product.find(params[:id])
-    @prefecture = Prefecture.find_by(id: @product.orign_area)
+    @delivery_pay = DeliveryPay.where(id: @product.delivery_pay)
   end
 
   def set_category
@@ -104,7 +108,7 @@ class ProductsController < ApplicationController
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end  
-    @delivery_pay =["選択してください","送料込み(出品者負担)","着払い(購入者負担)"]
+    # @delivery_pay =["選択してください","送料込み(出品者負担)","着払い(購入者負担)"]
     @lead_time =["選択してください","1~2日で発送","2~3日で発送","4~7日で発送"]
     @condition =["選択してください","新品、未使用","未使用に近い","目立った傷や汚れなし","やや傷や汚れあり","傷や汚れあり","全体的に状態が悪い"]
   end

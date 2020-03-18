@@ -13,9 +13,9 @@
               .item-image
                 .item-image__content
                   .item-image__content--icon
-                    = image_tag image.image.url, size: "114x80", name: "product[images_attributes][][image]"
+                    = image_tag image.image.url, size: "114x80", name: "product[images_attributes][][image]", 'data-id'=>[image.id], 'data-product'=> [@product.id], class: "preview_delete"
                 .item-image__operetion
-                  .item-image__operetion--delete 削除
+                  #preview-destroy.item-image__operetion--delete 削除
             .item-num-0#image-box__container
               = f.fields_for :images do |i|
                 .input-area
@@ -46,10 +46,12 @@
             .listing-form-box
               .listing-select-wrapper
                 .listing-select-wrapper__box
-                  = f.collection_select :category_parent, Category.where(ancestry: nil), :name, :name, {selected: @product.category.parent.parent.name}, class: "listing-select-wrapper__box--select", id: "parent_category"
-                  = f.select :category_child, options_for_select(@product.category.parent.parent.children.map{|c|[c[:name], c[:id], {'data-category'=>c[:id]}]}, @product.category.parent.name), {}, {class: 'listing-select-wrapper__box--select edit-children_wrapper', id: 'children_wrapper'}
-                  -# = f.collection_select "product[category_id]", @product.category.parent.children, :id, :name, {selected: @product.category.name}, class: "listing-select-wrapper__box--select edit-grandchildren_wrapper", id: "grandchildren_wrapper"
-                  = f.select "product[category_id]", options_for_select(@product.category.parent.children.map{|c|[c[:id], c[:name], {'data-category'=>c[:id]}]}, @product.category.name), {}, {class: 'listing-select-wrapper__box--select edit-grandchildren_wrapper', id: 'grandchildren_wrapper'}
+                  = f.collection_select :category_parent, Category.where(ancestry: nil), :name, :name, {selected: @product.category.parent.parent.name},
+                    class: "listing-select-wrapper__box--select", id: "parent_category"
+                  = f.select :category_child, options_for_select(@product.category.parent.parent.children.map{|c|[c[:name], c[:id], {'data-category'=>c[:id]}]}, @product.category.parent.name), {},
+                    {class: 'listing-select-wrapper__box--select edit-children_wrapper', id: 'children_wrapper'}
+                  = f.collection_select "product[category_id]", @product.category.parent.children, :id, :name, {selected: @product.category.name},
+                    class: "listing-select-wrapper__box--select edit-grandchildren_wrapper", id: "grandchildren_wrapper"
         .main-contents__product-detail__middle  
           .main-contents__product-detail__middle__brand
             %label ブランド
@@ -61,9 +63,8 @@
             %label 商品の状態
             %span 必須
           .main-contents__product-detail__bottom__selector
-            -# =f.select "product[condition]", @condition, {}, class:"condition"
-            = f.select "product[condition]", options_for_select(Condition.all.map{|c|[c[:name], c[:name]]}, @product.condition_was), {prompt: "選択してください"}, {class: 'condition'}
-
+            = f.collection_select "product[condition_id]", Condition.all, :id, :name,
+             {selected: @product.condition.id}, class:"condition"
       .main-contents__delivery
         .main-contents__delivery__about
           %p 配送について
@@ -72,21 +73,23 @@
           .main-contents__delivery__top__burden
             %label 配送料の負担
             %span 必須
-          .main-contents__delivery__top__selector  
-            = f.select "product[delivery_pay]", options_for_select(Deliverypay.all.map{|c|[c[:name], c[:name]]}, @product.delivery_pay), {prompt: "選択してください"}, {class: 'delivery-select'}
+          .main-contents__delivery__top__selector 
+            = f.collection_select "product[delivery_pay_id]", DeliveryPay.all, :id, :name,
+             {selected: @product.condition.id}, class:"delivery-select"
         .main-contents__delivery__middle
           .main-contents__delivery__middle__area
             %label 発送元の地域
             %span 必須
-          .main-contents__delivery__middle__selector 
-            = f.collection_select "product[orign_area]", Prefecture.all, :id, :name, prompt: "選択してください", class: 'input', selected: @prefecture.id
+          .main-contents__delivery__middle__selector
+            = f.collection_select "product[prefecture_id]", Prefecture.all, :id, :name,
+             {selected: @product.prefecture.id}, class:'input'
         .main-contents__delivery__bottom
           .main-contents__delivery__bottom__days
             %label 発送までの日数
             %span 必須
           .main-contents__delivery__bottom__selector
-            = f.select "product[lead_time]", options_for_select(Leadtime.all.map{|c|[c[:name], c[:name]]}, @product.lead_time), {prompt: "選択してください"}, {class: 'input'}
-
+            = f.collection_select "product[lead_time_id]", LeadTime.all, :id, :name,
+               {selected: @product.lead_time.id}, class: 'delivery-select'
       .main-contents__price
         .main-contents__price__about 
           %label 価格
