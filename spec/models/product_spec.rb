@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe Product, type: :model do
   describe '#create' do
     #全ての条件が揃ったら
+
     it "is valid with a item_name, user_id, item_detail, condition_id, price, category_id, delivery_pay_id, prefecture_id, lead_time_id, status" do
+
       # user = create(:user)
       # binding.pry
       product = build(:product)
@@ -60,6 +62,7 @@ RSpec.describe Product, type: :model do
       product = build(:product, lead_time_id: "")
       product.valid?
       expect(product.errors[:lead_time_id]).to include("can't be blank")
+
     end
     #販売価格
     it "is invalid without a price" do
@@ -128,5 +131,5 @@ RSpec.describe Product, type: :model do
     end
 
   end
-  
+
 end  
