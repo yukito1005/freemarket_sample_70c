@@ -1,4 +1,11 @@
 $(function(){
+  var num = $('.edit-image-preview').length
+  $('#image-box__container').show()
+  $('#image-box__container').attr('class', `item-num-${num}`)
+  if (num == 10){
+    $('#image-box__container').css('display', 'none')   
+  }
+  
   function appendOption(category){
     var html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
     return html;

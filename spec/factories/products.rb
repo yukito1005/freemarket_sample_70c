@@ -6,12 +6,12 @@ FactoryBot.define do
     item_name {"たんぽぽ"}
     item_detail {"2020年春のお告げ"}
     # category_id {212}
-    condition {"目立った傷や汚れなし"}
+    condition_id {1}
     item_size {"s"}
     brand {"花"}
-    delivery_pay {"着払い(購入者負担)"}
-    orign_area {5}
-    lead_time {"4~7日で発送"}
+    delivery_pay_id {1}
+    prefecture_id {5}
+    lead_time_id {1}
     price {3000}
     status {0}
     user 

@@ -1,6 +1,6 @@
 $(function(){
   $(document).on("click", '#preview-destroy', function(){
-    let target_id = $(".preview_delete").data('id');
+    let target_id = $(this).data('id');
     let ProductID = $(".preview_delete").data("product");
     $.ajax({
       url: "/products/" + ProductID + "/image_destroy",

@@ -9,13 +9,13 @@
           %span 必須
           %p.note 最大10枚までアップロードできます
           #image-box-1
-            - @product.images.each do |image|
-              .item-image
+            - @product.images.each_with_index do |image, i|
+              .item-image.edit-image-preview
                 .item-image__content
                   .item-image__content--icon
-                    = image_tag image.image.url, size: "114x80", name: "product[images_attributes][][image]", 'data-id'=>[image.id], 'data-product'=> [@product.id], class: "preview_delete"
+                    = image_tag image.image.url, size: "114x80", name: "product[images_attributes][#{image.id}][image]", 'data-product'=> [@product.id], class: "preview_delete"
                 .item-image__operetion
-                  #preview-destroy.item-image__operetion--delete 削除
+                  #preview-destroy.item-image__operetion--delete{'data-id'=> image.id} 削除
             .item-num-0#image-box__container
               = f.fields_for :images do |i|
                 .input-area
@@ -113,7 +113,7 @@
             = f.number_field "", style: "display: none", id: "price"
             .right_bar_2 
           .main-contents__price__sell__two-selections
-            = f.submit :出品する, class: "exhibition"  
+            = f.submit :商品の内容を編集する, class: "exhibition"  
             %button{type:"submit", class:"return" } もどる
           %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
   .footer
