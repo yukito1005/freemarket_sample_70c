@@ -10,6 +10,7 @@ class Product < ApplicationRecord
   # belongs_to :category, class_name: 'Category', foreign_key: 'category_id'
   belongs_to :user
   belongs_to :category
+  has_many :likes
 
   validates :user_id, :condition, :category_id, :delivery_pay, :orign_area, :lead_time, :status, presence: true
   validates :item_name, presence: true, length: { maximum: 40 }

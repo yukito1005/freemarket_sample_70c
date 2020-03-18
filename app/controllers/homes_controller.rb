@@ -1,6 +1,5 @@
 class HomesController < ApplicationController
   def show
-
     @category_first = Category.all.order("id ASC").limit(13)
   end
 
