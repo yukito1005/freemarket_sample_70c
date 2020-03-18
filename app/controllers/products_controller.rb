@@ -73,6 +73,7 @@ class ProductsController < ApplicationController
   end 
 
   def search
+    @parents = Category.where(ancestry: nil)
     @product = Product.where(['item_name LIKE ?', "%#{params[:search]}%"]).limit(40)
     @search_product = Product.ransack(params[:search])
   end
