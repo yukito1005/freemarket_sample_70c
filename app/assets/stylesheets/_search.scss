@@ -4,11 +4,9 @@
     display: flex;
     margin: 40px 128.5px 0;
     padding: 0 0 40px;
-    height: 100vh;
     width: calc(100% - 20%);
     .containerLeft {
       margin-right: 40px;
-      height: 100%;
       width: calc(100% - 70%);
       .detail-container {
         position: relative;
@@ -104,8 +102,7 @@
       }
     }
     .containerRight {
-      height: 100%;
-      width: calc(100% - 30%);
+      width: calc(100% - 17%);
       &__search-result-head {
         font-size: 22px;
         font-weight: bold;
@@ -123,11 +120,12 @@
       }
       &__search-item-field {
         width: auto;
-        height: 100%;
+        margin-bottom: 40px;
         .item-box {
           height: 218px;
           width: 160px;
           margin: 0 20px 20px 0;
+          float: left;
           &__photo {
             height: 160px;
             width: 160px;
@@ -186,10 +184,26 @@
               background: linear-gradient(to right, rgba(255,255,255,0), #fff 24px)
             }
           }
-          .pagination {
-            border: solid;
-          }
         }
+      }
+    }
+  }
+  ul {
+    width: 200px;
+    margin-left: 430PX;
+    .pagination {
+      padding-bottom: 40px;
+      span {
+        display: inline-block;
+        text-align: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 4px;
+        background: #fff;
+        border: 1px solid #ccc;
+        font-size: 20px;
+        color: #333;
+        line-height: 42px;
       }
     }
   }
