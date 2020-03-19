@@ -74,10 +74,13 @@ class ProductsController < ApplicationController
 
   def search
     @parents = Category.where(ancestry: nil)
-    @product = Product.where(['item_name LIKE ?', "%#{params[:search]}%"]).limit(40)
-    @products = Product.search(params[:search])
-    @search = params[:search]
     @search_product = Product.ransack(params[:search])
+    @products = Product.search(params[:search]).limit(20)
+    @search = params[:search]
+    unless @search.present?
+      flash[:alert] = "キーワードを入力してください"
+      redirect_to root_path
+    end
   end
 
 

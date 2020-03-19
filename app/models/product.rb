@@ -14,8 +14,12 @@ class Product < ApplicationRecord
   validates :user_id, :condition, :category_id, :delivery_pay, :orign_area, :lead_time, :status, presence: true
   validates :item_name, presence: true, length: { maximum: 40 }
   validates :item_detail, presence: true, length: { maximum: 1000}
-  validates :price, presence: true, numericality: {greater_than_or_equal_to: 300, less_than: 10000000} 
+  validates :price, presence: true, numericality: {greater_than_or_equal_to: 300, less_than: 10000000}
+
+  def self.search(search)
+    return Product.all unless search
+    Product.where(['item_name LIKE ?', "%#{search}%"])
+  end
 
 end
 
-# minimum: 300, 
