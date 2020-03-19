@@ -64,7 +64,7 @@
           = link_to product_path(@product), method: :delete do
             .top-contents__delete 商品を削除する
         .top-contents__detail
-          -# = @product.item_detail
+          = @product.item_detail
         .top-contents__table
           %table
             %tbody

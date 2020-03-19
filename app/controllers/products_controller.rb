@@ -32,6 +32,7 @@ class ProductsController < ApplicationController
 
 
   def show
+    @product = Product.find(params[:id])
     @parents = Category.where(ancestry: nil)
     @product.images
     @category = @product.category
@@ -78,6 +79,7 @@ class ProductsController < ApplicationController
     @default_card_information = customer.cards.retrieve(card.card_id)
     @regist_images = Image.find_by(product_id: @product.id)
     @product = Product.find(params[:id])
+    @profile = Profile.find_by(user_id:@product.user_id)
   end
 
   def create

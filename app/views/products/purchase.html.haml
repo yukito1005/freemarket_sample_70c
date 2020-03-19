@@ -1,6 +1,5 @@
 .wrapper
   .header-purchase
-    -# =image_tag @regist_images.image.url,size:"185x49",class: "logo-purchase" 
     = image_tag "logo.png", size:"185x49", class: "logo-purchase"
   .single-main
     .single-main__container
@@ -46,9 +45,17 @@
               .single-main__container__buy-info__inner__address__inner__top
                 %label 配送先
               .single-main__container__buy-info__inner__address__inner__address
-                %p 〒157-0061
-                %p 東京都 世田谷区 北烏山4丁目6-22 久我山IV 103号室
-                %p 伊藤 圭
+                %p 
+                  〒
+                  = @profile.postal_code
+                %p 
+                  = @profile.prefecture
+                  = @profile.city
+                  = @profile.address
+                  = @profile.building
+                %p 
+                  = @profile.lastname
+                  = @profile.firstname 
           .single-main__container__buy-info__inner__btn
             %button{type:"submit", class:"purchase"} 購入する
   .footer-purchase  
