@@ -14,7 +14,7 @@
             = form_tag(card_path(current_user.id), method: :delete, id: 'charge-form',  name: "inputForm") do
               %input{ type: "hidden", name: "card_id", value: "" }
               %button.form-content__select__delete 削除する
-              = link_to "マイページへ戻る", users_path, class: "form-content__select__return"
+              = link_to "マイページへ戻る", user_path(current_user), class: "form-content__select__return"
           
     -else
       .l-container__content__credit__container
@@ -26,7 +26,7 @@
             = link_to new_card_path,class: "how-to-pay-text" do
               クレジットカードを追加する
           .return    
-            = link_to "マイページへ戻る", users_path, class: "return"  
+            = link_to "マイページへ戻る", user_path(current_user), class: "return"  
         .l-container__content__credit__container__how-to-pay
           = link_to "#",class: "how-to-pay-text" do
             支払い方法について
