@@ -77,6 +77,43 @@ $(function(){
     $('ul.item-detail').not($(this).next()).slideUp();
   });
 
+
+  //購入した商品-取引中・過去の取引
+  let PurchaseItemsTabs = $(".purchase-item-tab");
+  PurchaseItemsTabs.click(PurchaseItemsTabsSwitch);
+  
+  // クラスの切り替えをtabSwitch関数で定義
+  function PurchaseItemsTabsSwitch() {
+    // 全てのactiveクラスのうち、最初の要素を削除（"[0]は、最初の要素の意味"）
+    $('.purchase-item-tab').removeClass("active");
+
+    // クリックしたタブにactiveクラスを追加
+    $(this).addClass("active");
+
+    // 何番目の要素がクリックされたかを、配列tabsから要素番号を取得
+    let index = PurchaseItemsTabs.index(this);
+    
+    // クリックしたタブに対応するshowクラスを追加する
+    $(".purchase-item-content").removeClass("show").eq(index).addClass("show");
+
+    //sideのnavのactiveを削除
+    $('.mypage-nav-list-item').removeClass("active");
+
+    //side_nav変数に全ての.mypage-nav-list-itemの配列を取得する
+    let side_nav = $(".mypage-nav-list-item");
+    
+    if(index==0){
+      index=8;
+    }else if(index==1){
+      index=9;
+    }
+    //クリックされたタブに応じたsideのnavに切り替える
+    $(side_nav).eq(index).addClass("active");
+  }
+
+
+
+
   //side
   let SideNav = $(".l-container__side__mypage-nav li");
   SideNav.click(SideNavSwitch);
@@ -103,6 +140,14 @@ $(function(){
       $('.sold-active').addClass("active");
       $('.sold-show').addClass("show");
       index=5;
+    }else if(index == 8){
+      $('.now-transaction-active').addClass("active");
+      $('.now-transaction-show').addClass("show");
+      index=8;
+    }else if(index == 9){
+      $('.past-transaction-active').addClass("active");
+      $('.past-transaction-show').addClass("show");
+      index=8;
     }
     
     if(index != 4){
