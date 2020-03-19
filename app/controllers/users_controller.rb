@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  def index
-
+  def index #Cardのデータpayjpに送り情報を取り出す
   end
 end

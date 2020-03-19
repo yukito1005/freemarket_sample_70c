@@ -55,6 +55,7 @@ class ProductsController < ApplicationController
   end
 
   def purchase
+    
   end
 
   def create

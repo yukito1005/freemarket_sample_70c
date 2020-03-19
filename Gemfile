@@ -90,3 +90,7 @@ gem 'fog-aws'
 gem 'mini_magick'
 
 gem 'active_hash'
+
+gem 'payjp'
+
+gem 'dotenv'

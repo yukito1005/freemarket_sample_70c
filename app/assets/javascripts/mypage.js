@@ -50,7 +50,7 @@ $(function(){
 
     // 何番目の要素がクリックされたかを、配列tabsから要素番号を取得
     const index = SideNav.index(this);
-    if(index != 4){
+    if(index != 4  && index!=18){
       // 全てのactiveクラスのうち、最初の要素を削除（"[0]は、最初の要素の意味"）
       $('.mypage-nav-list-item').removeClass("active");
       $('.l-container__content').removeClass("show");
