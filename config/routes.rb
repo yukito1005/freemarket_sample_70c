@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   root "users#show"
-  resources :users, only: [:index]
+  resources :users, only: [:index,:show]
   resources :products do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   resources :cards, only: [:new, :index, :show, :destroy] do
-    member do
+    collection do
       post 'pay', to: 'cards#pay'
     end
   end
