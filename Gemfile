@@ -92,3 +92,4 @@ gem 'mini_magick'
 gem 'active_hash'
 
 gem 'ransack'
+gem 'kaminari'
