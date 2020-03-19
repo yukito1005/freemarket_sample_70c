@@ -54,8 +54,8 @@
             %span (税込)
             %span 送料込み
         - if @product.user.id != current_user.id
-
-          = link_to purchase_product_path do
+          
+          = link_to purchase_product_path(@product) do
 
             .top-contents__purchase 購入画面に進む
         - else
@@ -64,7 +64,7 @@
           = link_to product_path(@product), method: :delete do
             .top-contents__delete 商品を削除する
         .top-contents__detail
-          = @product.item_detail
+          -# = @product.item_detail
         .top-contents__table
           %table
             %tbody
