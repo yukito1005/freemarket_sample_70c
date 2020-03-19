@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     post 'profiles', to: 'users/registrations#create_profile'
   end
 
-  root "homes#index"
+  root "users#show"
   resources :users, only: [:index]
   resources :products do
     collection do
