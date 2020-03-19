@@ -72,4 +72,6 @@
               .item-box__text__icon
                 %i.fas.fa-star.stariocn
                 %span 1
+          %ul
+            %li= paginate(@products)
   = render partial: 'shared/home_footer'
