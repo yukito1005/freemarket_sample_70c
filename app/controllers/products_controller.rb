@@ -74,6 +74,10 @@ class ProductsController < ApplicationController
     
   end
 
+  def confirm
+
+  end
+  
   def create
     @product = Product.new(products_params)
     if @product.save
