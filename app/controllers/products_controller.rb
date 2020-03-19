@@ -32,6 +32,7 @@ class ProductsController < ApplicationController
 
 
   def show
+    @product = Product.find(params[:id])
     @parents = Category.where(ancestry: nil)
     @product.images
     @category = @product.category
@@ -45,6 +46,7 @@ class ProductsController < ApplicationController
   def edit
     @regist_images = Image.find_by(product_id: @product.id)
     @ids = @product.images.map{|image| image.id }
+    
   end
 
   def update
@@ -71,7 +73,13 @@ class ProductsController < ApplicationController
   end
 
   def purchase
-    
+    card = Card.find_by(user_id: current_user.id)
+    Payjp.api_key = Rails.application.credentials[:PAYJP_PRIVATE_KEY]
+    customer = Payjp::Customer.retrieve(card.customer_id)
+    @default_card_information = customer.cards.retrieve(card.card_id)
+    @regist_images = Image.find_by(product_id: @product.id)
+    @product = Product.find(params[:id])
+    @profile = Profile.find_by(user_id:@product.user_id)
   end
 
   def confirm
