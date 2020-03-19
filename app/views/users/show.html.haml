@@ -12,108 +12,7 @@
         マイページ
 .defalt-container
   .l-container
-    .l-container__side
-      .l-container__side__mypage-nav
-        %ul
-          %li.mypage-nav-list-item.active
-            マイページ
-            .icon-arrow-right
-              >
-          %li.mypage-nav-list-item
-            お知らせ
-            .icon-arrow-right
-              >
-          %li.mypage-nav-list-item
-            やることリスト
-            .icon-arrow-right
-              >
-          %li.mypage-nav-list-item 
-            いいね!一覧
-            .icon-arrow-right
-              >
-          %li 
-            = link_to new_product_path,class:"mypage-nav-list-item" do
-              出品する
-            .icon-arrow-right
-              >
-          %li.mypage-nav-list-item 
-            出品した商品-出品中
-            .icon-arrow-right
-              >
-          %li.mypage-nav-list-item 
-            出品した商品-取引中
-            .icon-arrow-right
-              >
-          %li.mypage-nav-list-item 
-            出品した商品-売却済み
-            .icon-arrow-right
-              >
-          %li.mypage-nav-list-item 
-            購入した商品-取引中
-            .icon-arrow-right
-              >
-          %li.mypage-nav-list-item 
-            購入した商品-過去の取引
-            .icon-arrow-right
-              >
-          %li.mypage-nav-list-item 
-            ニュース一覧
-            .icon-arrow-right
-              >
-          %li.mypage-nav-list-item 
-            評価一覧
-            .icon-arrow-right
-              >
-          %li.mypage-nav-list-item 
-            ガイド
-            .icon-arrow-right
-              >
-          %li.mypage-nav-list-item 
-            お問い合わせ
-            .icon-arrow-right
-              >
-        .l-container__side__mypage-nav__head
-          FURIMAペイ
-        %ul
-          %li.mypage-nav-list-item 
-            売却・振込申請
-            .icon-arrow-right
-              >
-          %li.mypage-nav-list-item 
-            ポイント
-            .icon-arrow-right
-              >
-        .l-container__side__mypage-nav__head
-          設定
-        %ul
-          %li.mypage-nav-list-item 
-            プロフィール
-            .icon-arrow-right
-              >
-          %li.mypage-nav-list-item 
-            発送元・お届け先住所住所変更
-            .icon-arrow-right
-              >
-          %li.mypage-nav-list-item 
-            支払い方法
-            .icon-arrow-right
-              >
-          %li.mypage-nav-list-item 
-            メール/パスワード
-            .icon-arrow-right
-              >
-          %li.mypage-nav-list-item 
-            本人情報
-            .icon-arrow-right
-              >
-          %li.mypage-nav-list-item 
-            電話番号の確認
-            .icon-arrow-right
-              >
-          %li.mypage-nav-list-item 
-            ログアウト
-            .icon-arrow-right
-              >
+    = render partial: 'shared/side'
     //マイページ
     .l-container__content.show
       .l-container__content__mypage-user
@@ -353,92 +252,102 @@
       発送元・お届け先住所住所変更
     //支払い方法
     .l-container__content
-      .l-container__content__credit.active.initialize-active
-        .l-container__content__credit__head
-          支払い方法
-        .l-container__content__credit__container
-          .l-container__content__credit__container__index
-            クレジットカード一覧
-          .l-container__content__credit__container__add-card
-            .btn
-              = image_tag 'icon-04.png', alt: 'icon', height: '60px', width: '50px', class: 'icon'
-              クレジットカードを追加する
-          .l-container__content__credit__container__how-to-pay
-            = link_to "#",class: "how-to-pay-text" do
-              支払い方法について
-              .icon-arrow-right
-                >
-      .l-container__content__credit
-        .l-container__content__credit__head
-          クレジットカード情報入力
-        .l-container__content__credit__info-container
-          .l-container__content__credit__info-container__input-form
-            .l-container__content__credit__info-container__input-form__card-number
-              .l-container__content__credit__info-container__input-form__card-number__title
-                カード番号
-                .require
-                  必須
-              %input.card-number{maxlength: "16", name: "number", placeholder: "半角数字のみ", type: "text", id: "payment_card_no"}/
-              %ul.card-list
-                %li
-                  = image_tag 'visa.png', alt: 'visa', height: '30', width: '40', class: 'visa'
-                %li
-                  = image_tag 'master.png', alt: 'master', height: '30', width: '40', class: 'master'
-                %li
-                  = image_tag 'seison.png', alt: 'seison', height: '30', width: '40', class: 'seison'
-                %li
-                  = image_tag 'jcb.png', alt: 'jcb', height: '30', width: '40', class: 'jcb'
-                %li
-                  = image_tag 'AmericanExpress.png', alt: 'AmericanExpress', height: '30', width: '40', class: 'AmericanExpress'
-                %li
-                  = image_tag 'DinersClub.png', alt: 'DinersClub', height: '30', width: '40', class: 'DinersClub'
-                %li
-                  = image_tag 'discovercard.png', alt: 'discovercard', height: '30', width: '40', class: 'discovercard'
-            .l-container__content__credit__info-container__input-form__expiration-date
-              .l-container__content__credit__info-container__input-form__expiration-date__title
-                有効期限
-                .require
-                  必須
-              .l-container__content__credit__info-container__input-form__expiration-date__month-year
-                %select.month-select{maxlength: "2", name: "month", type: "text"}
-                  %option{value: "1"}01
-                  %option{value: "2"}02
-                  %option{value: "3"}03
-                  %option{value: "4"}04
-                  %option{value: "5"}05
-                  %option{value: "6"}06
-                  %option{value: "7"}07
-                  %option{value: "8"}08
-                  %option{value: "9"}09
-                  %option{value: "10"}10
-                  %option{value: "11"}11
-                  %option{value: "12"}12
-                .month
-                  月
-                %select.year-select{maxlength: "4", name: "year", type: "text"}
-                  %option{value: "2019"}19
-                  %option{value: "2020"}20
-                  %option{value: "2021"}21
-                  %option{value: "2022"}22
-                  %option{value: "2023"}23
-                  %option{value: "2024"}24
-                  %option{value: "2025"}25
-                  %option{value: "2026"}26
-                  %option{value: "2027"}27
-                  %option{value: "2028"}28
-                  %option{value: "2029"}29
-                .year
-                  年
-            .l-container__content__credit__info-container__input-form__securiry-code
-              .l-container__content__credit__info-container__input-form__securiry-code__title
-                セキュリティコード
-                .require
-                  必須
-              %input.securiry-code{maxlength: "3", name: "cvc", placeholder: "カード背面４桁もしくは３桁の番号", type: "text", id: "payment_card_cvc"}
-              .card-question
-                カード裏面の番号とは？
-            = link_to "#",class: "add-btn" do
-              追加する
+      -# .l-container__content__credit.active.initialize-active
+      -#   .l-container__content__credit__head
+      -#     支払い方法
+      -#   -if @default_card_information.present?
+      -#     クレジットカード情報
+      -#     .form-content
+      -#       %br
+      -#       = "**** **** **** " + @default_card_information.last4
+      -#       %br
+      -#       - exp_month = @default_card_information.exp_month.to_s
+      -#       - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+      -#       = exp_month + " / " + exp_year
+      -#       = form_tag(card_path(current_user.id), method: :delete, id: 'charge-form',  name: "inputForm") do
+      -#         %input{ type: "hidden", name: "card_id", value: "" }
+      -#         %button.delete-btn 削除する
+      -#   -else
+                      
+      -# .l-container__content__credit
+        -# = render partial: 'cards/new'
+        -# .l-container__content__credit__head
+        -#   クレジットカード情報入力
+        -# .l-container__content__credit__info-container
+        -#   .l-container__content__credit__info-container__input-form
+        -#     .l-container__content__credit__info-container__input-form__card-number  
+        -#     = form_tag(pay_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
+        -#       .session__main__container__formGroup    
+        -#       .l-container__content__credit__info-container__input-form__card-number__title      
+        -#         カード番号
+        -#         .require
+        -#           必須
+        -#       = text_field_tag "number", "", class: "input__default", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
+        -#       %ul.card-list
+        -#         %li
+        -#           = image_tag 'visa.png', alt: 'visa', height: '30', width: '40', class: 'visa'
+        -#         %li
+        -#           = image_tag 'master.png', alt: 'master', height: '30', width: '40', class: 'master'
+        -#         %li
+        -#           = image_tag 'seison.png', alt: 'seison', height: '30', width: '40', class: 'seison'
+        -#         %li
+        -#           = image_tag 'jcb.png', alt: 'jcb', height: '30', width: '40', class: 'jcb'
+        -#         %li
+        -#           = image_tag 'AmericanExpress.png', alt: 'AmericanExpress', height: '30', width: '40', class: 'AmericanExpress'
+        -#         %li
+        -#           = image_tag 'DinersClub.png', alt: 'DinersClub', height: '30', width: '40', class: 'DinersClub'
+        -#         %li
+        -#           = image_tag 'discovercard.png', alt: 'discovercard', height: '30', width: '40', class: 'discovercard'
+        -#       .l-container__content__credit__info-container__input-form__expiration-date
+        -#         .l-container__content__credit__info-container__input-form__expiration-date__title
+        -#           有効期限
+        -#           .require
+        -#             必須
+        -#         .l-container__content__credit__info-container__input-form__expiration-date__month-year
+        -#           %select.month-select#exp_month{maxlength: "2", name: "exp_month", type: "text"}
+        -#             %option{value: "1"}01
+        -#             %option{value: "2"}02
+        -#             %option{value: "3"}03
+        -#             %option{value: "4"}04
+        -#             %option{value: "5"}05
+        -#             %option{value: "6"}06
+        -#             %option{value: "7"}07
+        -#             %option{value: "8"}08
+        -#             %option{value: "9"}09
+        -#             %option{value: "10"}10
+        -#             %option{value: "11"}11
+        -#             %option{value: "12"}12
+        -#           .month
+        -#             月
+        -#           %select.year-select#exp_year{maxlength: "4", name: "exp_year", type: "text"}
+        -#             %option{value: "2019"}19
+        -#             %option{value: "2020"}20
+        -#             %option{value: "2021"}21
+        -#             %option{value: "2022"}22
+        -#             %option{value: "2023"}23
+        -#             %option{value: "2024"}24
+        -#             %option{value: "2025"}25
+        -#             %option{value: "2026"}26
+        -#             %option{value: "2027"}27
+        -#             %option{value: "2028"}28
+        -#             %option{value: "2029"}29
+        -#           .year
+        -#             年
+        -#       .l-container__content__credit__info-container__input-form__securiry-code
+        -#         .l-container__content__credit__info-container__input-form__securiry-code__title
+        -#           セキュリティコード
+        -#           .require
+        -#             必須
+        -#           = text_field_tag "cvc", "", class: "input__default cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
+        -#           %br
+        -#           #card_token
+        -#           %br
+        -#           .session__main__container__formGroup__link
+        -#         .card-question
+        -#           カード裏面の番号とは？
+        -#           = submit_tag "追加する", id: "token_submit", class: "add-btn"
+
+            
     //メール/パスワード
     .l-container__content
       メール/パスワード
