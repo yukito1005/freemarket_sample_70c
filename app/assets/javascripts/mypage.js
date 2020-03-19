@@ -37,6 +37,46 @@ $(function(){
     $(".purchase_content").removeClass("show").eq(index).addClass("show");
   }
   
+  //出品した商品-出品中・取引中・売却済み
+  let ExhibitionItemsTabs = $(".exhibition-item-tab");
+  ExhibitionItemsTabs.click(ExhibitionItemsTabSwitch);
+  
+  // クラスの切り替えをtabSwitch関数で定義
+  function ExhibitionItemsTabSwitch() {
+    // 全てのactiveクラスのうち、最初の要素を削除（"[0]は、最初の要素の意味"）
+    $('.exhibition-item-tab').removeClass("active");
+
+    // クリックしたタブにactiveクラスを追加
+    $(this).addClass("active");
+
+    // 何番目の要素がクリックされたかを、配列tabsから要素番号を取得
+    let index = ExhibitionItemsTabs.index(this);
+    
+    // クリックしたタブに対応するshowクラスを追加する
+    $(".exhibition-item-content").removeClass("show").eq(index).addClass("show");
+
+    //sideのnavのactiveを削除
+    $('.mypage-nav-list-item').removeClass("active");
+
+    //side_nav変数に全ての.mypage-nav-list-itemの配列を取得する
+    let side_nav = $(".mypage-nav-list-item");
+    
+    if(index==0){
+      index=5;
+    }else if(index==1){
+      index=6;
+    }else if(index==2){
+      index=7;
+    }
+    //クリックされたタブに応じたsideのnavに切り替える
+    $(side_nav).eq(index).addClass("active");
+  }
+
+  $(".slide").on("click", function() {
+    $(this).next().slideToggle('fast');
+    $('ul.item-detail').not($(this).next()).slideUp();
+  });
+
   //side
   let SideNav = $(".l-container__side__mypage-nav li");
   SideNav.click(SideNavSwitch);

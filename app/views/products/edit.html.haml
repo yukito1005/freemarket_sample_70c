@@ -2,33 +2,37 @@
   .header-new
     = image_tag "logo.png", size:"185x49", class: "logo-new"
   .main-contents
-    = form_with model:@prodoct, url: "/products", method: :post , local:true do |f|
+    = form_with model:@prodoct, url: "/products/#{@product.id}", method: :put , local:true do |f|
       .main-contents__image
         .main-contents__image__body
           %label 出品画像
           %span 必須
           %p.note 最大10枚までアップロードできます
           #image-box-1
+            - @product.images.each_with_index do |image, i|
+              .item-image.edit-image-preview
+                .item-image__content
+                  .item-image__content--icon
+                    = image_tag image.image.url, size: "114x80", name: "product[images_attributes][#{image.id}][image]", 'data-product'=> [@product.id], class: "preview_delete"
+                .item-image__operetion
+                  #preview-destroy.item-image__operetion--delete{'data-id'=> image.id} 削除
             .item-num-0#image-box__container
               = f.fields_for :images do |i|
                 .input-area
                   = i.file_field :image, type: 'file', name: "product[images_attributes][][image]", value:"", style: "display:none", id:"img-file"
                   %label.camera{for: "img-file"}
                     %i.fas.fa-camera
-            
-       
       .main-contents__product-description
         .main-contents__product-description__topform
           .main-contents__product-description__topform__name
             %label 商品名
             %span 必須
-          = f.text_field "product[item_name]" , autocomplete:"off", placeholder:"40文字まで", type:"text", value:"", class:"input"
-       
+          = f.text_field "product[item_name]" , autocomplete:"off", placeholder:"40文字まで", type:"text", value: "#{@product.item_name}", class:"input"
         .main-contents__product-description__bottomform
           .main-contents__product-description__bottomform__name
             %label 商品の説明
             %span 必須
-          = f.text_area "product[item_detail]", cols:"30", id:"input-text", rows:"10", placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" 
+          = f.text_area "product[item_detail]", cols:"30", id:"input-text", rows:"10",  value: "#{@product.item_detail}", placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" 
           .main-contents__product-description__bottomform__counter(id="counter") 0/1000
          
         .main-contents__product-description__bottomform 
@@ -42,8 +46,12 @@
             .listing-form-box
               .listing-select-wrapper
                 .listing-select-wrapper__box
-                  = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
-
+                  = f.collection_select :category_parent, Category.where(ancestry: nil), :name, :name, {selected: @product.category.parent.parent.name},
+                    class: "listing-select-wrapper__box--select", id: "parent_category"
+                  = f.select :category_child, options_for_select(@product.category.parent.parent.children.map{|c|[c[:name], c[:id], {'data-category'=>c[:id]}]}, @product.category.parent.name), {},
+                    {class: 'listing-select-wrapper__box--select edit-children_wrapper', id: 'children_wrapper'}
+                  = f.collection_select "product[category_id]", @product.category.parent.children, :id, :name, {selected: @product.category.name},
+                    class: "listing-select-wrapper__box--select edit-grandchildren_wrapper", id: "grandchildren_wrapper"
         .main-contents__product-detail__middle  
           .main-contents__product-detail__middle__brand
             %label ブランド
@@ -55,8 +63,8 @@
             %label 商品の状態
             %span 必須
           .main-contents__product-detail__bottom__selector
-            =f.select "product[condition]", @condition, {}, class:"condition"
-              
+            = f.collection_select "product[condition_id]", Condition.all, :id, :name,
+             {selected: @product.condition.id}, class:"condition"
       .main-contents__delivery
         .main-contents__delivery__about
           %p 配送について
@@ -65,21 +73,23 @@
           .main-contents__delivery__top__burden
             %label 配送料の負担
             %span 必須
-          .main-contents__delivery__top__selector  
-            =f.select "product[delivery_pay]", @delivery_pay, {}, class:"delivery-select"
+          .main-contents__delivery__top__selector 
+            = f.collection_select "product[delivery_pay_id]", DeliveryPay.all, :id, :name,
+             {selected: @product.condition.id}, class:"delivery-select"
         .main-contents__delivery__middle
           .main-contents__delivery__middle__area
             %label 発送元の地域
             %span 必須
-          .main-contents__delivery__middle__selector 
-            = f.collection_select "product[orign_area]", Prefecture.all, :id, :name, prompt: "選択してください", class: 'input'
-            
+          .main-contents__delivery__middle__selector
+            = f.collection_select "product[prefecture_id]", Prefecture.all, :id, :name,
+             {selected: @product.prefecture.id}, class:'input'
         .main-contents__delivery__bottom
           .main-contents__delivery__bottom__days
             %label 発送までの日数
             %span 必須
           .main-contents__delivery__bottom__selector
-            =f.select "product[lead_time]", @lead_time , {}, class:"lead-time"
+            = f.collection_select "product[lead_time_id]", LeadTime.all, :id, :name,
+               {selected: @product.lead_time.id}, class: 'delivery-select'
       .main-contents__price
         .main-contents__price__about 
           %label 価格
@@ -92,7 +102,7 @@
               %span 必須
             %span.price ¥
             .main-contents__price__sell__top__inputarea
-              = f.number_field "product[price]", class: "price_form-box", placeholder: "例) 300", type: "number",id: "price_calc"
+              = f.number_field "product[price]", class: "price_form-box", placeholder: "例) 300", type: "number",id: "price_calc", value: @product.price
           .main-contents__price__sell__topformerror 300以上9999999以下で入力してください
           .main-contents__price__sell__middle
             .main-contents__price__sell__middle__commission
@@ -103,9 +113,10 @@
             = f.number_field "", style: "display: none", id: "price"
             .right_bar_2 
           .main-contents__price__sell__two-selections
-            = f.submit :出品する, class: "exhibition"  
+            = f.submit :商品の内容を編集する, class: "exhibition"  
             %button{type:"submit", class:"return" } もどる
           %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+
   .footer
     %ul(class="footer-note")
       %li(class="privacy") プライバシーポリシー
@@ -114,4 +125,6 @@
     = image_tag "logo-white.png", size:"185x49", class: "footer-logo" 
     .footer__inc
       %label ©️
+
       %span FURIMA, Inc.
+

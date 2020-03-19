@@ -172,30 +172,33 @@
             // justify-content: center;
             margin-top: 10px;
             flex-wrap: wrap;
+          &--list{
 
-            &--list{
+
+
               img{
                 object-fit: cover;
                 height: 87px;
               }
             }
           }
-
-          @media screen and (max-width:700px){
-            &--index{
-              flex-wrap: wrap;
-            }  
           }
         }
       }
+      @media screen and (max-width:700px){
+        &--index{
+          flex-wrap: wrap;
+        }  
+      }
     }
-  }
-  &__price{
+  
+
+   &__price{
     margin: 24px 0 24px;
     text-align: center;
     display: flex;
     flex-direction: column;
-
+   
     &__main{
       font-size: 46px;
       font-weight: bold;

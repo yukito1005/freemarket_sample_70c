@@ -1,3 +1,4 @@
+
 .top-page
   = render partial: 'shared/home_header'
 
@@ -39,11 +40,13 @@
           .top-contents__item__body
             %ul.top-contents__item__body__images
               %li.top-contents__item__body__images--show
+
                 = image_tag @image.image.url , size: "560x346", class: "top-contents__item__body__images--show--image img01 mainimage"
                 %ul#image-hover.img01.top-contents__item__body__images--show--index
                   - @product.images.each do |image|
                     %li.top-contents__item__body__images--show--index--list
                       = image_tag image.image.url, size: "112x87"
+
         .top-contents__price
           %span.top-contents__price__main
             = @product.price
@@ -51,7 +54,9 @@
             %span (税込)
             %span 送料込み
         - if @product.user.id != current_user.id
+
           = link_to purchase_products_path do
+
             .top-contents__purchase 購入画面に進む
         - else
           = link_to edit_product_path(@product) do
@@ -87,20 +92,20 @@
               %tr
                 %th 商品の状態
                 %td
-                  = @product.condition
+                  = @product.condition.name
               %tr
                 %th 配送料の負担
                 %td
-                  = @product.delivery_pay
+                  = @product.delivery_pay.name
               %tr
                 %th 発送元の地域
                 %td 
                   = link_to "#" do
-                    = @prefecture.name
+                    = @product.prefecture.name
               %tr
                 %th 発送日の目安
                 %td
-                  = @product.lead_time
+                  = @product.lead_time.name
         .top-contents__option
           %ul.top-contents__option--favorite
             %li.top-contents__option--favorite--btn
@@ -143,5 +148,6 @@
         = image_tag "http://furima.tokyo/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg", size: "180x53"
       = link_to "#" do
         = image_tag "http://furima.tokyo/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg", size: "180x53"
+
 
 = render partial: 'shared/home_footer'
