@@ -57,7 +57,8 @@
                   = @profile.lastname
                   = @profile.firstname 
           .single-main__container__buy-info__inner__btn
-            %button{type:"submit", class:"purchase"} 購入する
+            = form_tag(action: :pay, method: :post) do
+              %button.done-button{type:"submit"} 購入する  
   .footer-purchase  
     %ul(class="footer-note")
       %li(class="privacy") プライバシーポリシー

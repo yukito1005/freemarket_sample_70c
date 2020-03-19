@@ -116,7 +116,7 @@
           .block
             - @products.each do |product|
               .left
-                =link_to "商品" ,product_path(product) 
+                =link_to "商品" ,product_path(product)
                 .image
                   - product.images.each_with_index do |image, i|
                     - if i == 0

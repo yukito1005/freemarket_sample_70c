@@ -149,17 +149,23 @@
             }
           }
           &__btn{
-            button{
+            .done-button{
               display: block;
               width: 360px;
               height: 50px;
               margin-top: 32px;
               background-color: #3CCACE;
-              color: white;
               font-size: 14px;
               font-weight: 600;
-          
-            }  
+              text-align: center;
+              line-height: 50px;
+              font-size: 15px;
+              display: block;
+              color: white;
+              background-color: #3CCACE;
+              cursor: pointer;
+            }
+              
           }
         }
       }

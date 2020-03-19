@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     end
     member do 
       get 'purchase'
+      post 'pay', to: 'products#pay'
       get 'confirm'
     end  
   end
@@ -26,4 +27,4 @@ Rails.application.routes.draw do
       post 'pay', to: 'cards#pay'
     end
   end
-end
+end  
