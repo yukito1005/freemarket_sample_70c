@@ -11,7 +11,6 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.new
-
     @category_parent_array = ["選択してください"] 
     @category_parent_array = Category.where(ancestry: nil).pluck(:name)  
     @delivery_pay =["送料込み(出品者負担)","着払い(購入者負担)"]
@@ -27,11 +26,9 @@ class ProductsController < ApplicationController
     @category_grandchildren = Category.find(params[:child_id]).children
   end 
 
-
-
-
-
   def show
+    @comment = Comment.new
+    @comments = Comment.where(product_id: @product.id)
     @parents = Category.where(ancestry: nil)
     @product.images
     @category = @product.category
@@ -48,6 +45,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+    binding.pry
     if @product.update(products_params)
       flash[:notice] = '商品の編集が完了しました'
       redirect_to product_path(@product.id)

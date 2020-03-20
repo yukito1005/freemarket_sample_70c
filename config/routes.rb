@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root "homes#index"
   resources :users, only: [:index]
   resources :products do
+    resources :comments, only: [:new, :create, :destroy]
     collection do
       get 'purchase'
       get 'get_category_children', defaults: { format: 'json' }

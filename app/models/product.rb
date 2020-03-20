@@ -7,7 +7,7 @@ class Product < ApplicationRecord
   belongs_to_active_hash :delivery_pay
 
   
-
+  has_many :comments
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
   # belongs_to :user, class_name: 'User', foreign_key: 'user_id'
@@ -16,9 +16,9 @@ class Product < ApplicationRecord
   belongs_to :category
 
 
+
   
   validates :user_id, :condition_id, :category_id, :delivery_pay_id, :prefecture_id, :lead_time_id, :status, presence: true
-
   validates :item_name, presence: true, length: { maximum: 40 }
   validates :item_detail, presence: true, length: { maximum: 1000}
   validates :price, presence: true, numericality: {greater_than_or_equal_to: 300, less_than: 10000000} 
