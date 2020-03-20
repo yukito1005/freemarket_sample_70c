@@ -35,6 +35,7 @@ class ProductsController < ApplicationController
     @parents = Category.where(ancestry: nil)
     @product.images
     @category = @product.category
+    @like = Like.new
     @product.images.each_with_index do |image, i|
       if i == 0
         @image = image

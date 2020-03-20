@@ -13,7 +13,7 @@
             .menu-category
               = link_to 'カテゴリー', root_path
               %ul.firstMenu
-                - @product.each do |parent|
+                - @parents.each do |parent|
                   %li.firstMenu__parent
                     = parent.name
                     %ul.secondMenu

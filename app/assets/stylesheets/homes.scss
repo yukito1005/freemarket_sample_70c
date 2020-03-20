@@ -1,4 +1,4 @@
-@import "reset";
+ @import "reset";
 .top-page{
   position: relative;
   width: 100%;
@@ -36,7 +36,7 @@
         .search{
           background-color: #3CCACE;
           padding: 9px;
-        }
+         }
         }
        }
       }
@@ -461,6 +461,7 @@
         font-size: 28px;
         line-height: 1.4;
         font-weight: bold;
+        
       }
       &__sub-tittle{
         font-weight: bold;
@@ -525,7 +526,17 @@
             background-color: white;
             color: #333;
             padding: 16px;
+
+            .name{
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              width:195px;
+            }
+
+
             .detail{
+             
               ul{
                 display: flex;
                 align-items: center;
@@ -638,6 +649,14 @@
             background-color: white;
             color: #333;
             padding: 16px;
+               
+            .name{
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              width:195px;
+            }
+
             .detail{
               ul{
                 display: flex;

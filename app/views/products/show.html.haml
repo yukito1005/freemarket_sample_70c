@@ -101,8 +101,7 @@
                 %th 発送元の地域
                 %td 
                   = link_to "#" do
-
-                    = @prefecture.name
+                    -# = @prefecture.name
               %tr
                 %th 発送日の目安
                 %td
@@ -110,7 +109,18 @@
         .top-contents__option
           %ul.top-contents__option--favorite
             %li.top-contents__option--favorite--btn
-              %i.fas.fa-star  お気に入り 0
+              %i.fas.fa-star  
+                %p 
+                  お気に入り #{@product.likes.count}
+                - if current_user.already_liked?(@product)
+                  %button.delete-like-btn{'data-id' => @product.id}
+                  -# = button_to 'お気に入りを取り消す', product_like_path(@product), method: :delete 
+                - else
+                  %button.like-btn{'data-id' => @product.id}
+                  -# = button_to 'お気に入り', product_likes_path(@product)
+               
+                 
+
           %ul.top-contents__option--report
             %li.top-contents__option--report--btn
               = link_to "#" do
