@@ -2,9 +2,9 @@
   = render partial: 'shared/home_header'
   .container
     .containerLeft
-      = search_form_for @search_product, url: search_products_path, html: { method: :post }, class: 'detail-container' do |f|
+      = search_form_for (@q,url: search_products_path) do |f|
         .search-sort
-          = f.select(:sorts, { '並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc' },{ onchange: 'this.form.submit()' })
+          = f.select(:sorts, { '並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc'}, { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()' })
         .detail-box
           %h3 詳細検索
           .detail-field
@@ -16,36 +16,36 @@
             %label
               .i.fas.fa-coins
               %span 価格
-            = f.search_field :price_gteq, placeholder: '¥ Min', class: 'detail-field__middle'
+            = f.search_field :price_gteq, placeholder: '¥ Min', type: 'number', class: 'detail-field__middle'
             %span ~
-            = f.search_field :price_lteq, placeholder: '¥ Max', class: 'detail-field__middle'
+            = f.search_field :price_lteq, placeholder: '¥ Max', type: 'number', class: 'detail-field__middle'
           .detail-field
             %label
               .i.fas.fa-star
               %span 商品の状態
             .detail-field__check-box
-              -# = f.check_box :condition
+              %input{ type: "checkbox", multiple: true }
               %span すべて
             .detail-field__check-box
-              -# = f.check_box :condition
+              %input{ type: "checkbox", value: "1", type: "checkbox", multiple: true, item_name: "q[condition_id_in][]" }
               %span 新品、未使用
             .detail-field__check-box
-              -# = f.check_box :condition
+              %input{ type: "checkbox", value: "2", type: "checkbox", multiple: true, item_name: "q[condition_id_in][]" }
               %span 未使用に近い
             .detail-field__check-box
-              -# = f.check_box :condition
+              %input{ type: "checkbox", value: "3", type: "checkbox", multiple: true, item_name: "q[condition_id_in][]" }
               %span 目立った傷や汚れなし
             .detail-field__check-box
-              -# = f.check_box :condition
+              %input{ type: "checkbox", value: "4", type: "checkbox", multiple: true, item_name: "q[condition_id_in][]" }
               %span やや傷や汚れあり
             .detail-field__check-box
-              -# = f.check_box :condition
+              %input{ type: "checkbox", value: "5", type: "checkbox", multiple: true, item_name: "q[condition_id_in][]" }
               %span 傷や汚れあり
             .detail-field__check-box
-              -# = f.check_box :condition
+              %input{ type: "checkbox", value: "6", type: "checkbox", multiple: true, item_name: "q[condition_id_in][]" }
               %span 全体的に状態が悪い
           .detail-data
-            %button クリア
+            = f.submit "クリア", type: :reset, class: 'button'
             = f.submit '完了', class: 'submit-btn'
     .containerRight
       - if @products.empty?

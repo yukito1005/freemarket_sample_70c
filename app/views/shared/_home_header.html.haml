@@ -6,6 +6,7 @@
           .logo-icon
             = link_to (image_tag "logo.png",size: "140x40"), root_path
           .search-form
+            = search_form_for(@q,url: search_products_path) do |f|
             = form_tag(search_products_path, method: :get, class: 'search-form') do
               = text_field_tag :search, "", placeholder: 'キーワードから探す'
               = image_submit_tag "icon-search 1.png", class:'search-btn', name: nil
