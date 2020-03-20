@@ -188,23 +188,21 @@
       }
     }
   }
-  ul {
+  .pagination {
     width: 200px;
-    margin-left: 430PX;
-    .pagination {
-      padding-bottom: 40px;
-      span {
-        display: inline-block;
-        text-align: center;
-        width: 44px;
-        height: 44px;
-        border-radius: 4px;
-        background: #fff;
-        border: 1px solid #ccc;
-        font-size: 20px;
-        color: #333;
-        line-height: 42px;
-      }
+    padding-bottom: 40px;
+    margin-left: 430px;
+    span {
+      display: inline-block;
+      text-align: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 4px;
+      background: #fff;
+      border: 1px solid #ccc;
+      font-size: 20px;
+      color: #333;
+      line-height: 42px;
     }
   }
 }
