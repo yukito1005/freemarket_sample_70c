@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    registrations: 'users/registrations'
+    registrations: 'users/registrations'  
   }
   devise_scope :user do
     get 'profiles', to: 'users/registrations#new_profile'
@@ -8,16 +8,23 @@ Rails.application.routes.draw do
   end
 
   root "homes#index"
-  resources :users, only: [:index]
+  resources :users, only: [:index,:show]
   resources :products do
     collection do
-      get 'purchase'
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
       get 'get_size', defaults: { format: 'json' }
     end
-    member do
-      delete 'image_destroy', defaults: { format: 'json' }
+    member do 
+      get 'purchase'
+      post 'pay', to: 'products#pay'
+      get 'confirm'
+    end  
+  end
+
+  resources :cards, only: [:new, :index, :show, :destroy] do
+    collection do
+      post 'pay', to: 'cards#pay'
     end
   end
-end
+end  

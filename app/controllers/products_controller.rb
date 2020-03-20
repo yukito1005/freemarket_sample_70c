@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  before_action :set_product, only: [:show, :destroy, :edit, :update, :purchase]
+  before_action :set_product, only: [:show, :destroy, :edit, :update, :purchase, :pay]
   before_action :set_category, only: [:edit, :new]
 
   def index
@@ -32,6 +32,7 @@ class ProductsController < ApplicationController
 
 
   def show
+    @product = Product.find(params[:id])
     @parents = Category.where(ancestry: nil)
     @product.images
     @category = @product.category
@@ -45,6 +46,7 @@ class ProductsController < ApplicationController
   def edit
     @regist_images = Image.find_by(product_id: @product.id)
     @ids = @product.images.map{|image| image.id }
+    
   end
 
   def update
@@ -71,6 +73,35 @@ class ProductsController < ApplicationController
   end
 
   def purchase
+    card = Card.find_by(user_id: current_user.id)
+    Payjp.api_key = Rails.application.credentials[:PAYJP_PRIVATE_KEY]
+    customer = Payjp::Customer.retrieve(card.customer_id)
+    @default_card_information = customer.cards.retrieve(card.card_id)
+    @regist_images = Image.find_by(product_id: @product.id)
+    @product = Product.find(params[:id])
+    @profile = Profile.find_by(user_id:@product.user_id)
+  end
+
+  def pay
+    @product.update(status: 1)
+    @card = Card.find_by(user_id: current_user.id)
+    Payjp.api_key = Rails.application.credentials[:PAYJP_PRIVATE_KEY]
+    Payjp::Charge.create(
+      amount: @product.price, #支払金額を引っ張ってくる
+      customer: @card.customer_id,  #顧客ID
+      currency: 'jpy',              #日本円
+    )
+    redirect_to confirm_product_path #完了画面に移動
+  end
+
+  def confirm
+    card = Card.find_by(user_id: current_user.id)
+    Payjp.api_key = Rails.application.credentials[:PAYJP_PRIVATE_KEY]
+    customer = Payjp::Customer.retrieve(card.customer_id)
+    @default_card_information = customer.cards.retrieve(card.card_id)
+    @product = Product.find(params[:id])
+    @regist_images = Image.find_by(product_id: @product.id)
+    @profile = Profile.find_by(user_id:@product.user_id)
   end
 
   def create

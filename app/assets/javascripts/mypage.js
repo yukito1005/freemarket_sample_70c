@@ -89,23 +89,8 @@ $(function(){
     $('.initialize-show').addClass("show");
 
     // 何番目の要素がクリックされたかを、配列tabsから要素番号を取得
-    let index = SideNav.index(this);
-
-    //クリックしたタブとsideの項目を連動させる
-    if(index == 5){
-      $('.exhibition-active').addClass("active");
-      $('.exhibition-show').addClass("show");
-    }else if(index == 6){
-      $('.transaction-active').addClass("active");
-      $('.transaction-show').addClass("show");
-      index=5;
-    }else if(index == 7){
-      $('.sold-active').addClass("active");
-      $('.sold-show').addClass("show");
-      index=5;
-    }
-    
-    if(index != 4){
+    const index = SideNav.index(this);
+    if(index != 4  && index!=18){
       // 全てのactiveクラスのうち、最初の要素を削除（"[0]は、最初の要素の意味"）
       $('.mypage-nav-list-item').removeClass("active");
       $('.l-container__content').removeClass("show");

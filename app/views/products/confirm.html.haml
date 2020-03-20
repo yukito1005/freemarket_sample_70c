@@ -1,0 +1,67 @@
+.wrapper
+  .header-confirm
+    = image_tag "logo.png", size:"185x49", class: "logo-confirm"
+  .confirm-single-main
+    .confirm-single-main__container
+      .confirm-single-main__container__header
+        %h2 購入が完了しました
+      .confirm-single-main__container__wish-item
+        .confirm-single-main__container__wish-item__box
+          %h3.confirm-single-main__container__wish-item__box__img
+            = image_tag @regist_images.image.url, size:"80x80", class: "sample-purchase"
+          .confirm-single-main__container__wish-item__box__detail
+            %p.confirm-single-main__container__wish-item__box__detail__name
+              =@product.item_name
+            %p.confirm-single-main__container__wish-item__box__detail__price
+              %span
+                =@product.price
+              %span.ship
+      .confirm-single-main__container__buy-info
+        .confirm-single-main__container__buy-info__inner
+          .confirm-single-main__container__buy-info__inner__form
+            %ul
+              %li.payment 支払い金額
+              %li.price 
+                =@product.price
+          .confirm-single-main__container__buy-info__inner__card
+            .confirm-single-main__container__buy-info__inner__card__inner
+              .confirm-single-main__container__buy-info__inner__card__inner__top
+                %label 支払い方法
+              .confirm-single-main__container__buy-info__inner__card__inner__card-info
+                %p.card クレジットカード
+                %p.number 
+                  = "**** **** **** " + @default_card_information.last4
+                %p.expire 
+                  有効期限
+                  - exp_month = @default_card_information.exp_month.to_s
+                  - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                  = exp_month + " / " + exp_year
+                %img{alt:"visa", height:"15", src:"//pcweb-assets.mercdn.net/assets/img/card/visa.svg?3118215515", width:"49" ,class:"card-comp"}
+          .confirm-single-main__container__buy-info__inner__address
+            .confirm-single-main__container__buy-info__inner__address__inner
+              .confirm-single-main__container__buy-info__inner__address__inner__top
+                %label 配送先
+              .confirm-single-main__container__buy-info__inner__address__inner__address
+                %p 
+                  〒
+                  = @profile.postal_code
+                %p 
+                  = @profile.prefecture
+                  = @profile.city
+                  = @profile.address
+                  = @profile.building
+                %p
+                  = @profile.lastname
+                  = @profile.firstname 
+          .confirm-single-main__container__buy-info__inner__btn
+
+            = link_to "マイページへ戻る", user_path(current_user), class: "confirm-return"
+  .footer-confirm 
+    %ul(class="footer-note")
+      %li(class="privacy") プライバシーポリシー
+      %li(class="rules") フリマ利用規約
+      %li(class="specific-deal") 特定商取引に関する表記
+    = image_tag "logo-white.png", size:"185x49", class: "footer-logo" 
+    .footer__inc
+      %label ©️
+      %span FURIMA, Inc.
