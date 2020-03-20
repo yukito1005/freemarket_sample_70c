@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_03_17_112155) do
     t.integer "lead_time_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status"
+    t.integer "status", null: false
     t.string "brand"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["user_id"], name: "index_products_on_user_id"
