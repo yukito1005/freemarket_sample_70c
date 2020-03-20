@@ -147,32 +147,32 @@
         .pickup-brand__sub-tittle
           アーカイバ
         .pickup-brand__product-phot
-          -# .block
-          -#   - @pickupbrand.each do |product|
-          -#     .left
-          -#       = link_to "", root_path
-          -#       .image
-          -#         - product.images.each_with_index do |image, i|
-          -#           - if i == 0
-          -#             = image_tag image.image.url, size:"220x150"
-          -#             - if product.status == 1
-          -#               .sold-group
-          -#                 %p.sold
-          -#                   sold
-          -#                 %p.sold-label
-          -#       .pop
-          -#         .name 
-          -#           = product.item_name
-          -#         .detail
-          -#           %ul
-          -#             %li.price
-          -#               = product.price
-          -#             %li.icon
-          -#               %i.fas.fa-star.stariocn
-          -#             %li
-          -#               3
-          -#         .tax
-          -#           (税込)
+          .block
+            - @pickupbrand.each do |product|
+              .left
+                = link_to "", root_path
+                .image
+                  - product.images.each_with_index do |image, i|
+                    - if i == 0
+                      = image_tag image.image.url, size:"220x150"
+                      - if product.status == 1
+                        .sold-group
+                          %p.sold
+                            sold
+                          %p.sold-label
+                .pop
+                  .name 
+                    = product.item_name
+                  .detail
+                    %ul
+                      %li.price
+                        = product.price
+                      %li.icon
+                        %i.fas.fa-star.stariocn
+                      %li
+                        3
+                  .tax
+                    (税込)
 
     .download-banner
       .download-banner__content
