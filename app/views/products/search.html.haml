@@ -2,7 +2,7 @@
   = render partial: 'shared/home_header'
   .container
     .containerLeft
-      = search_form_for @search_product, url: search_products_path, class: 'detail-container' do |f|
+      = search_form_for @search_product, url: search_products_path, html: { method: :post }, class: 'detail-container' do |f|
         .search-sort
           = f.select(:sorts, { '並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc' },{ onchange: 'this.form.submit()' })
         .detail-box
@@ -24,25 +24,25 @@
               .i.fas.fa-star
               %span 商品の状態
             .detail-field__check-box
-              = f.check_box :condition_in
+              -# = f.check_box :condition
               %span すべて
             .detail-field__check-box
-              = f.check_box :condition_in
+              -# = f.check_box :condition
               %span 新品、未使用
             .detail-field__check-box
-              = f.check_box :condition_in
+              -# = f.check_box :condition
               %span 未使用に近い
             .detail-field__check-box
-              = f.check_box :condition_in
+              -# = f.check_box :condition
               %span 目立った傷や汚れなし
             .detail-field__check-box
-              = f.check_box :condition_in
+              -# = f.check_box :condition
               %span やや傷や汚れあり
             .detail-field__check-box
-              = f.check_box :condition_in
+              -# = f.check_box :condition
               %span 傷や汚れあり
             .detail-field__check-box
-              = f.check_box :condition_in
+              -# = f.check_box :condition
               %span 全体的に状態が悪い
           .detail-data
             %button クリア
@@ -54,18 +54,13 @@
           %span.search-text
             の検索結果
         .containerRight__search-result-head
-          - if @products.empty?
-            %span.search-text
-            %span お探しの商品はありません
+          %span.search-text
+          %span お探しの商品はありません
       - else
         .containerRight__search-result-head
           %span= @search
           %span.search-text
             の検索結果
-        .containerRight__search-result-head
-          - if @products.empty?
-            %span.search-text
-            %span お探しの商品はありません
         .containerRight__search-result-number
           %p= "1-#{@products.count}件表示"
         .containerRight__search-item-field
