@@ -75,7 +75,7 @@ class ProductsController < ApplicationController
   def search
     @parents = Category.where(ancestry: nil)
     @search_product = Product.ransack(params[:search])
-    @products = Product.search(params[:search]).order("created_at DESC").page(params[:page]).per(24)
+    @products = Product.search(params[:search]).order("created_at DESC").page(params[:page]).per(20)
     @search = params[:search]
     unless @search.present?
       flash[:alert] = "キーワードを入力してください"

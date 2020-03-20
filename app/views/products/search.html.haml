@@ -48,30 +48,44 @@
             %button クリア
             = f.submit '完了', class: 'submit-btn'
     .containerRight
-      .containerRight__search-result-head
-        %span= @search
-        %span.search-text
-          の検索結果
-      .containerRight__search-result-number
-        %p= "1-#{@products.count}件表示"
-      .containerRight__search-item-field
-        - @products.each do |product|
-          .item-box
-            .item-box__photo
-            - product.images.each_with_index do |image, i|
-              - if i == 0
-                = image_tag image.image.url
+      - if @products.empty?
+        .containerRight__search-result-head
+          %span= @search
+          %span.search-text
+            の検索結果
+        .containerRight__search-result-head
+          - if @products.empty?
+            %span.search-text
+            %span お探しの商品はありません
+      - else
+        .containerRight__search-result-head
+          %span= @search
+          %span.search-text
+            の検索結果
+        .containerRight__search-result-head
+          - if @products.empty?
+            %span.search-text
+            %span お探しの商品はありません
+        .containerRight__search-result-number
+          %p= "1-#{@products.count}件表示"
+        .containerRight__search-item-field
+          - @products.each do |product|
+            .item-box
+              .item-box__photo
+                - product.images.each_with_index do |image, i|
+                  - if i == 0
+                    = image_tag image.image.url, size: '160x160'
                   - if product.status == 1
-              .item-box__photo__sold-box
-                %p SOLD
-            .item-box__text
-              .item-box__text__name
-                %h3= product.item_name
-              .item-box__text__price
-                = "¥#{product.price}"
-              .item-box__text__icon
-                %i.fas.fa-star.stariocn
-                %span 1
+                    .item-box__photo__sold-box
+                      %p SOLD
+              .item-box__text
+                .item-box__text__name
+                  %h3= product.item_name
+                .item-box__text__price
+                  = "¥#{product.price}"
+                .item-box__text__icon
+                  %i.fas.fa-star.stariocn
+                  %span 1
   %ul
     %li= paginate(@products)
 = render partial: 'shared/home_footer'
