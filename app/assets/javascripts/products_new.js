@@ -31,8 +31,9 @@ $(function(){
     });
   });
   $(document).on("click", '.item-image__operetion--delete', function(){
+  
     var target_image = $(this).parent().parent()
-    var target_name = $(target_image).data('image')
+    var target_name = $(target_image).data('id')
     if(file_field.files.length==1){
       $('input[type=file]').val(null)
       dataBox.clearData();
@@ -98,6 +99,8 @@ $(function(){
         $('#grandchildren_wrapper').remove();
         $('#size_wrapper').remove();
         $('#brand_wrapper').remove();
+        $('.edit-children_wrapper').remove();
+        $('.edit-grandchildren_wrapper').remove();
         var insertHTML = '';
         children.forEach(function(child){
           insertHTML += appendOption(child);
@@ -112,6 +115,8 @@ $(function(){
       $('#grandchildren_wrapper').remove();
       $('#size_wrapper').remove();
       $('#brand_wrapper').remove();
+      $('.edit-children_wrapper').remove();
+      $('.edit-grandchildren_wrapper').remove();
     }
   });
   

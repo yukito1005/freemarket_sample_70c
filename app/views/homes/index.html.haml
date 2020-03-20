@@ -116,7 +116,7 @@
           .block
             - @products.each do |product|
               .left
-                = link_to "",root_path
+                =link_to "商品" ,product_path(product)
                 .image
                   - product.images.each_with_index do |image, i|
                     - if i == 0
@@ -150,7 +150,7 @@
           .block
             - @pickupbrand.each do |product|
               .left
-                = link_to "", root_path
+                = link_to "", product_path 
                 .image
                   - product.images.each_with_index do |image, i|
                     - if i == 0
@@ -160,7 +160,7 @@
                           %p.sold
                             sold
                           %p.sold-label
-                          　
+                          
                 .pop
                   .name 
                     = product.item_name
