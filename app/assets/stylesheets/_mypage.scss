@@ -350,22 +350,33 @@
           font-weight: bold;
         }
         &__add-card{
-          padding: 24px 0;
+          padding: 24px 100px;
           border-bottom: 1px solid #eee;
+          display: flex;
           .btn{
+            margin-left: 10px;
             height: 60px;
-            width: 350px;
-            margin: 0 auto;
+            width: 350px; 
             display: flex;
             background-color: red;
             color: white;
             line-height: 60px;
             text-align: center;
+            font-weight: bold;
             .icon{
               padding-left: 30px;
               float: left;
               background-repeat: no-repeat;
             }
+          }
+          .return{
+            background-color: #3CCACE;
+            color: white;
+            line-height: 60px;
+            width: 350px;
+            text-align: center;
+            margin-left: 20px;
+            font-weight: bold;
           }
           .btn:hover{
             opacity: 0.5;

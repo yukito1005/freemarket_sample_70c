@@ -1,0 +1,208 @@
+.wrapper {
+  background-color: #EEEEEE;
+  .container {
+    display: flex;
+    margin: 40px 128.5px 0;
+    padding: 0 0 40px;
+    width: calc(100% - 20%);
+    .containerLeft {
+      margin-right: 40px;
+      width: calc(100% - 70%);
+      .detail-container {
+        position: relative;
+        .search-sort {
+          #q_sorts {
+            background-color: #fff;
+            height: 48px;
+            padding: 0 16px;
+            border: 1px solid #ccc;
+            width: 100%;
+          }
+        }
+        .detail-box {
+          margin-top: 40px;
+          padding: 16px;
+          background-color: #ffffff;
+          h3 {
+            font-size: 16px;
+            font-weight: bold;
+          }
+          .detail-field {
+            margin-top: 24px;
+            label {
+              display: block;
+              .fas {
+                position: relative;
+                top: -1px;
+                margin: 0 4px 0 0;
+                color: #888;
+                font-size: 16px;
+                vertical-align: middle;
+              }
+              span {
+                font-size: 14px;
+                vertical-align: middle;
+              }
+            }
+            &__check-box {
+              margin: 12px 0 0 0;
+              font-size: 14px;
+            }
+            &__large {
+              width: 100%;
+              height: 48px;
+              margin-top: 8px;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 16px;
+            }
+            &__middle {
+              width: 45%;
+              height: 48px;
+              margin-top: 8px;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 16px;
+            }
+          }
+          .detail-data {
+            padding-top: 40px;
+            display: flex;
+            justify-content: space-around;
+            button {
+              width: 45%;
+              background: #aaa;
+              border: 1px solid #aaa;
+              color: #fff;
+              display: block;
+              line-height: 48px;
+              font-size: 14px;
+              cursor: pointer;
+              text-align: center;
+            }
+            .submit-btn {
+              width: 45%;
+              background: #ea352d;
+              border: 1px solid #ea352d;
+              color: #fff;
+              display: block;
+              line-height: 48px;
+              font-size: 14px;
+              cursor: pointer;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+    .containerRight {
+      width: calc(100% - 17%);
+      &__search-result-head {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+      .search-text {
+        vertical-align: baseline;
+        font-size: 20px;
+        font-weight: lighter;
+      }
+      &__search-result-number p {
+        margin: 16px 0;
+        font-size: 12px;
+        color: #888;
+      }
+      &__search-item-field {
+        width: auto;
+        margin-bottom: 40px;
+        .item-box {
+          height: 218px;
+          width: 160px;
+          margin: 0 20px 20px 0;
+          float: left;
+          &__photo {
+            height: 160px;
+            width: 160px;
+            position: relative;
+            &__sold-box {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 0;
+              z-index: 1;
+              border-style: solid;
+              border-width: 80px 80px 0px 0;
+              border-color: #ea352d transparent transparent transparent;
+              p {
+                position: absolute;
+                top: -67px;
+                left: -2px;
+                color: #fff;
+                font-size: 20px;
+                font-weight: bold;
+                z-index: 2;
+                transform: rotate(-45deg);
+              }
+            }
+          }
+          &__text {
+            position: relative;
+            background-color: #fff;
+            padding: 6px 6px;
+            &__name h3 {
+              position: relative;
+              font-size: 14px;
+              overflow: hidden;
+              word-break: normal;
+              height: 3em;
+              line-height: 1.5;
+              white-space: normal;
+            }
+            &__price {
+              position: absolute;
+              font-weight: 600;
+              font-size: 17px;
+              top: -40px;
+              left: 0;
+              font-weight: 600;
+              color: #fff;
+              padding: 2px 12px 1px 5px;
+              border-radius: 0 16px 16px 0;
+              background-color: rgba(0,0,0,0.3);
+            }
+            &__icon {
+              position: absolute;
+              right: 10px;
+              bottom: 5px;
+              padding-left: 32px;
+              background: linear-gradient(to right, rgba(255,255,255,0), #fff 24px)
+            }
+          }
+        }
+      }
+    }
+  }
+  .pagination {
+    width: 200px;
+    margin-left: 430px;
+    padding-bottom: 40px;
+    span {
+      display: inline-block;
+      text-align: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 4px;
+      background: #fff;
+      border: 1px solid #ccc;
+      font-size: 20px;
+      color: #333;
+      line-height: 42px;
+    }
+  }
+}

@@ -1,45 +1,55 @@
  @import "reset";
 .top-page{
   position: relative;
-  width: 100%;
 
   .header{
     position: relative;
-    width: 100%;
 
     .header-box{
-      height: 97px;
       padding: 13px 60px;
+      box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+      background-color: #ffffff;
+      
 
     .header-block{
       max-width: 1040px;
-      width: 100%;
-      min-height: 82px;
       margin: 0 auto;
       padding: 15px 0 0;
 
-    .main-header{
-      display: flex;
-      align-items: center;
-
-      .logo-icon{
-        padding: 0 15px 0 0;
-        }
-      .search-form{
+      .main-header{
         display: flex;
-        width: 100%;
-        .form{
-          width: calc(100% - 26px);
-          height: 36px;
-          padding: 0 0 0 5px;
+        align-items: center;
+        position: relative;
+
+        .logo-icon{
+          padding: 0 20px 0 0;
+          }
+        .search-form{
+          width: 100%;
+          margin-left: 30px;
+          input[type="text"]{
+            position: absolute;
+            top: 0px;
+            left: 18%;
+            width: 68%;
+            height: 36px;
+            padding: 0 42px 0 10px;
+          }
+          .search-btn{
+            position: absolute;
+            top: 0px;
+            right: 5%;
+            background-color: #3CCACE;
+            padding: 8px;
+            height: 24px;
           }
         .search{
           background-color: #3CCACE;
           padding: 9px;
          }
         }
-       }
       }
+    }
 
       .main-navi{
         display: flex;
@@ -89,6 +99,7 @@
               font-size: 15px;
               line-height: 40px;
               padding-left: 10px;
+              text-align: left;
               &:hover > .secondMenu{
                 opacity: 1;
                 visibility: visible;
@@ -698,7 +709,7 @@
     }
    }
     .download-banner{
-      background-image: image-url("bg-appBanner-pict.jpg");
+      // background-image: image-url("bg-appBanner-pict.jpg");
       height: 359px;
       background-size: cover;
     background-position: center;
