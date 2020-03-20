@@ -114,6 +114,17 @@ class ProductsController < ApplicationController
     end
   end 
 
+  def search
+    @parents = Category.where(ancestry: nil)
+    @search_product = Product.ransack(params[:search])
+    @products = Product.search(params[:search]).order("created_at DESC").page(params[:page]).per(20)
+    @search = params[:search]
+    unless @search.present?
+      flash[:alert] = "キーワードを入力してください"
+      redirect_to root_path
+    end
+  end
+
 
   def get_category_children
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
