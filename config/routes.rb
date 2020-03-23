@@ -27,7 +27,8 @@ Rails.application.routes.draw do
       get 'purchase'
       post 'pay', to: 'products#pay'
       get 'confirm'
-    end  
+      delete 'image_destroy', defaults: { format: 'json' }
+    end
   end
 
   resources :cards, only: [:new, :index, :show, :destroy] do
