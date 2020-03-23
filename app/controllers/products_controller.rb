@@ -136,8 +136,8 @@ class ProductsController < ApplicationController
   end 
 
   def image_destroy
-    @image = Image.find(params[:prevew_id])
-    @image.destroy
+      @image = Image.find(params[:prevew_id])
+      @image.destroy
   end
 
 
