@@ -306,14 +306,14 @@
                   販売価格
                 %li
                   =product.price
-            -if @user_products==nil
-              %li.no-data
+            -if !@user_products.present?
+              .no-data
                 出品中の商品はありません
           %ul.exhibition-item-content.transaction-show
-            %li.no-data
+            .no-data
               取引中の商品はありません
           %ul.exhibition-item-content.sold-show
-            %li.no-data
+            .no-data
               売却済みの商品はありません
     //出品した商品-取引中
     .l-container__content
