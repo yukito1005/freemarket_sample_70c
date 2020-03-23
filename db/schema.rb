@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_17_070442) do
-ActiveRecord::Schema.define(version: 2020_03_19_051314) do
+ActiveRecord::Schema.define(version: 2020_03_17_112155) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -27,16 +26,6 @@ ActiveRecord::Schema.define(version: 2020_03_19_051314) do
     t.string "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "product_id"
-    t.text "text", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_comments_on_product_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -110,8 +99,6 @@ ActiveRecord::Schema.define(version: 2020_03_19_051314) do
   end
 
   add_foreign_key "cards", "users"
-  add_foreign_key "comments", "products"
-  add_foreign_key "comments", "users"
   add_foreign_key "images", "products"
   add_foreign_key "likes", "products"
   add_foreign_key "likes", "users"

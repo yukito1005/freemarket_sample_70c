@@ -13,10 +13,9 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy] do
       collection do
         post 'like_create', defaults: { format: 'json' }
+        delete 'like_destroy', defaults: { format: 'json' }
       end
     end
-  resources :users, only: [:index,:show]　#コンフリM
-  resources :products do　#コンフリM
     collection do
       get 'search'
       get 'purchase'

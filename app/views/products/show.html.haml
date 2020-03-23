@@ -110,8 +110,8 @@
         .top-contents__option
           %ul.top-contents__option--favorite
             %li.top-contents__option--favorite--btn
-              %i.fas.fa-star  
-                %p 
+              %i.fas.fa-star.btn-test 
+                %p.btn-content
                   お気に入り #{@product.likes.count}
                 - if current_user.already_liked?(@product)
                   %button.delete-like-btn{'data-id' => @product.id}

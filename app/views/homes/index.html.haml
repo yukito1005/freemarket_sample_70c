@@ -151,7 +151,7 @@
           .block
             - @pickupbrand.each do |product|
               .left
-                = link_to "", root_path
+                = link_to product_path(product)
                 .image
                   - product.images.each_with_index do |image, i|
                     - if i == 0
