@@ -6,7 +6,9 @@ class User < ApplicationRecord
   
   has_many :products
          
-
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
+  
   has_one :profile
   has_one :creditcard
   accepts_nested_attributes_for :profile
