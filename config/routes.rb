@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :products do
     collection do
       get 'search'
-      get 'purchase'
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
       get 'get_size', defaults: { format: 'json' }

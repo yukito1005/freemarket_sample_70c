@@ -11,7 +11,6 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.new
-
     @category_parent_array = ["選択してください"] 
     @category_parent_array = Category.where(ancestry: nil).pluck(:name)  
     @delivery_pay =["送料込み(出品者負担)","着払い(購入者負担)"]
@@ -26,9 +25,6 @@ class ProductsController < ApplicationController
   def get_category_grandchildren
     @category_grandchildren = Category.find(params[:child_id]).children
   end 
-
-
-
 
 
   def show
@@ -73,13 +69,18 @@ class ProductsController < ApplicationController
   end
 
   def purchase
-    card = Card.find_by(user_id: current_user.id)
-    Payjp.api_key = Rails.application.credentials[:PAYJP_PRIVATE_KEY]
-    customer = Payjp::Customer.retrieve(card.customer_id)
-    @default_card_information = customer.cards.retrieve(card.card_id)
-    @regist_images = Image.find_by(product_id: @product.id)
-    @product = Product.find(params[:id])
-    @profile = Profile.find_by(user_id:@product.user_id)
+    if Card.find_by(user_id: current_user.id) == nil
+      flash[:alert] = "カードを登録してください"
+      redirect_to new_card_path
+    else  
+      card = Card.find_by(user_id: current_user.id)
+      Payjp.api_key = Rails.application.credentials[:PAYJP_PRIVATE_KEY]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @default_card_information = customer.cards.retrieve(card.card_id)
+      @regist_images = Image.find_by(product_id: @product.id)
+      @product = Product.find(params[:id])
+      @profile = Profile.find_by(user_id:@product.user_id)
+    end
   end
 
   def pay
@@ -107,9 +108,9 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(products_params)
     if @product.save
-
       redirect_to product_path(@product)
     else
+      flash[:alert] = "入力されていない項目があります"
       redirect_to new_product_path
     end
   end 
