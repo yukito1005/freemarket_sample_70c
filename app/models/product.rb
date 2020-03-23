@@ -18,7 +18,6 @@ class Product < ApplicationRecord
 
   
   validates :user_id, :condition_id, :category_id, :delivery_pay_id, :prefecture_id, :lead_time_id, :status, presence: true
-
   validates :item_name, presence: true, length: { maximum: 40 }
   validates :item_detail, presence: true, length: { maximum: 1000}
   validates :price, presence: true, numericality: {greater_than_or_equal_to: 300, less_than: 10000000}
