@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :move_to_index, expect: [:index, :show]
+  before_action :move_to_index, except: [:index, :show]
   before_action :set_product, only: [:show, :destroy, :edit, :update, :purchase, :pay, :move_to_purchase]
   before_action :set_category, only: [:edit, :new]
   before_action :move_to_purchase, only: [:purchase, :pay]
@@ -157,9 +157,7 @@ class ProductsController < ApplicationController
   private
 
   def move_to_index
-    unless user_signed_in?
-      redirect_to new_user_session_path
-    end
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
   def products_params
