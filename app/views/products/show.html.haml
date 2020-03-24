@@ -54,8 +54,8 @@
             %span (税込)
             %span 送料込み
         - if @product.user.id != current_user.id
-
-          = link_to purchase_products_path do
+          
+          = link_to purchase_product_path(@product) do
 
             .top-contents__purchase 購入画面に進む
         - else
@@ -92,21 +92,20 @@
               %tr
                 %th 商品の状態
                 %td
-                  = @product.condition
+                  = @product.condition.name
               %tr
                 %th 配送料の負担
                 %td
-                  = @product.delivery_pay
+                  = @product.delivery_pay.name
               %tr
                 %th 発送元の地域
                 %td 
                   = link_to "#" do
-
-                    = @prefecture.name
+                    = @product.prefecture.name
               %tr
                 %th 発送日の目安
                 %td
-                  = @product.lead_time
+                  = @product.lead_time.name
         .top-contents__option
           %ul.top-contents__option--favorite
             %li.top-contents__option--favorite--btn

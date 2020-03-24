@@ -150,7 +150,7 @@ $(function(){
       index=8;
     }
     
-    if(index != 4){
+    if(index != 4  && index!=18){
       // 全てのactiveクラスのうち、最初の要素を削除（"[0]は、最初の要素の意味"）
       $('.mypage-nav-list-item').removeClass("active");
       $('.l-container__content').removeClass("show");

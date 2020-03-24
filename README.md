@@ -61,8 +61,9 @@ Things you may want to cover:
 ## creditcardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_token|string|null: false|
-|user|references|null: false, foreign_key: true|
+|card_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|customer_id|integer|null: false, foreign_key: true|
 
 
 ### Association
@@ -77,11 +78,11 @@ Things you may want to cover:
 |item_name|string|null: false|
 |item_detail|text|null: false|
 |item_size|string||
-|condition|string|null: false|
+|condition_id|references|null: false,foreign_key: true|
 |price|integer|null: false|
-|category|references|null: false,foreign_key: true|
-|delivery_pay|string|null: false|
-|origin_area|string|null: false|
+|category_id|references|null: false,foreign_key: true|
+|delivery_pay_id|references|null: false,foreign_key: true|
+|prefecture_id|references|null: false,foreign_key: true|
 |lead_time|string|null: false|
 |ststus|integer|null: false|
 

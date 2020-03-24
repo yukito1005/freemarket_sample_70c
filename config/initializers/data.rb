@@ -18,4 +18,19 @@ Rails.application.config.to_prepare do
     {id: 43, name: '熊本県'}, {id: 44, name: '大分県'}, {id: 45, name: '宮崎県'},
     {id: 46, name: '鹿児島県'}, {id: 47, name: '沖縄県'}, {id: 48, name: '未定'}
   ]
+
+
+  Condition.data = [
+    {id: 1, name: "新品、未使用"}, {id: 2, name: "未使用に近い"}, {id: 3, name: "目立った傷や汚れなし"},
+    {id: 4, name: "やや傷や汚れあり"}, {id: 5, name: "傷や汚れあり"}, {id: 6, name: "全体的に状態が悪い"}
+  ]
+
+  LeadTime.data = [
+    {id: 1, name: "1~2日で発送"}, {id: 2, name: "2~3日で発送"}, {id: 3, name: "4~7日で発送"}
+  ]
+
+  DeliveryPay.data = [
+    {id: 1, name: "送料込み(出品者負担)"}, {id: 2, name: "着払い(購入者負担)"}
+  ]
+
 end
