@@ -326,7 +326,56 @@
 
     }
   }
+  //購入した商品-取引中・過去の取引
+  &__content{
+    &__purchase-item{
+      &__head{
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        font-size: 20px;
+        font-weight: bold;
+        background-color: white;
+      }
+      &__tabs{
+        height: 60px;
+        background-color: #eee;
+        display: flex;
+        margin: 0 auto;
+        font-weight: bold;
+        .purchase-item-tab{
+          width: 300px;
+          line-height: 60px;
+          text-align: center;
+          color: black;
+        }
+        .active{
+          background-color: white;
+          border-top: 2px solid red;
+          color: skyblue;
+        }
+        :not(.active):hover{
+          opacity: 0.5;
+        }
+      }
+      &__contents{
+        overflow: scroll;
+        background-color: white;
+        padding: 20px;
+        height: 1200px;
+        .purchase-item-content{
+          display: none;
+          .purchase-item:hover{
+            opacity: 0.5;
+          }
+        }
+        .show{
+          display: block;
+        }
+      }
 
+    }
+  }
 
   //クレジット
   &__content{

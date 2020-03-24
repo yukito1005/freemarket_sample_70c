@@ -142,7 +142,7 @@
           .exhibition-item-content.exhibition-show.show
             - @user_products.each do |product|
               = link_to product_path(product),class:"exhibition-item" do
-                .mages
+                .images
                   - product.images.each do |image|
                     = image_tag src=image.image.url, alt: '写真', height: '120px', width: '160px', class: 'images'
                     -break
@@ -205,14 +205,14 @@
                   販売価格
                 %li
                   =product.price
-            -if @user_products==nil
-              %li.no-data
+            -if !@user_products.present?
+              .no-data
                 出品中の商品はありません
           %ul.exhibition-item-content.transaction-show
-            %li.no-data
+            .no-data
               取引中の商品はありません
           %ul.exhibition-item-content.sold-show
-            %li.no-data
+            .no-data
               売却済みの商品はありません
     //出品した商品-取引中
     .l-container__content
@@ -222,7 +222,21 @@
       出品した商品-売却済み
     //購入した商品-取引中
     .l-container__content
-      購入した商品-取引中
+      .l-container__content__purchase-item
+        .l-container__content__purchase-item__head
+          購入した商品
+        %ul.l-container__content__purchase-item__tabs
+          %li.purchase-item-tab.now-transaction-active.active
+            取引中
+          %li.purchase-item-tab.past-transaction-active
+            過去の取引
+        .l-container__content__purchase-item__contents
+          .purchase-item-content.now-transaction-show.show
+            .no-data
+              取引中の商品はありません
+          .purchase-item-content.past-transaction-show
+            .no-data
+              過去の取引の商品はありません
     //購入した商品-過去の取引
     .l-container__content
       購入した商品-過去の取引
