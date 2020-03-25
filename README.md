@@ -23,6 +23,8 @@ Things you may want to cover:
 
 * ...
 
+* ER図![スクリーンショット 2020-03-25 10 52 52](https://user-images.githubusercontent.com/60636877/77493690-1890bb00-6e87-11ea-9406-67fbdf1bc86a.png)
+
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
