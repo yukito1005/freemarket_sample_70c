@@ -8,17 +8,29 @@ Rails.application.routes.draw do
   end
 
   root "homes#index"
+
   resources :users, only: [:index]
+
   resources :products do
-    resources :comments, only: [:new, :create, :destroy]
+
+    resources :comments, only: [:new, :create, :destroy] do
+
+      member do
+        delete "comment_destroy", defaults: { format: 'json' }
+      end
+
+    end
+
     collection do
       get 'purchase'
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
       get 'get_size', defaults: { format: 'json' }
     end
+
     member do
       delete 'image_destroy', defaults: { format: 'json' }
     end
+
   end
 end
