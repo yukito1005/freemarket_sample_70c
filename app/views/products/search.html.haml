@@ -11,7 +11,7 @@
             %label
               .i.fas.fa-plus
               %span キーワードを追加する
-            = f.search_field :item_name_cont, placeholder: '例) 値下げ', class: 'detail-field__large'
+            = f.search_field :item_name_cont, placeholder: '例) 値下げ', class: 'detail-field__large', value: @search
           .detail-field
             %label
               .i.fas.fa-coins
