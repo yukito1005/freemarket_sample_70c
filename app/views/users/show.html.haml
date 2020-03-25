@@ -188,11 +188,11 @@
                 %li.title
                   商品の状態
                 %li
-                  =product.condition
+                  =Condition.find(product.condition_id).name
                 %li.title
                   配送料の負担
                 %li
-                  =product.delivery_pay
+                  =DeliveryPay.find(product.delivery_pay_id).name
                 %li.title
                   発送元の地域
                 %li
@@ -200,7 +200,7 @@
                 %li.title
                   発送までの日数
                 %li
-                  =product.lead_time
+                  =LeadTime.find(product.lead_time_id).name
                 %li.title
                   販売価格
                 %li
