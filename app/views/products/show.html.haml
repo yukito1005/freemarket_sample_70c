@@ -40,7 +40,6 @@
           .top-contents__item__body
             %ul.top-contents__item__body__images
               %li.top-contents__item__body__images--show
-
                 = image_tag @image.image.url , size: "560x346", class: "top-contents__item__body__images--show--image img01 mainimage"
                 %ul#image-hover.img01.top-contents__item__body__images--show--index
                   - @product.images.each do |image|
@@ -53,16 +52,18 @@
           .top-contents__price__sub
             %span (税込)
             %span 送料込み
-        - if @product.user.id != current_user.id
-          
-          = link_to purchase_product_path(@product) do
-
-            .top-contents__purchase 購入画面に進む
-        - else
-          = link_to edit_product_path(@product) do
-            .top-contents__edit 商品の編集ページに進む
-          = link_to product_path(@product), method: :delete do
-            .top-contents__delete 商品を削除する
+        - if user_signed_in?
+          - if @product.user.id != current_user.id
+            - if @product.status == 0
+              = link_to purchase_product_path(@product) do
+                .top-contents__purchase 購入画面に進む
+            - else 
+              .top-contents__delete 購入済
+          - else
+            = link_to edit_product_path(@product) do
+              .top-contents__edit 商品の編集ページに進む
+            = link_to product_path(@product), method: :delete do
+              .top-contents__delete 商品を削除する
         .top-contents__detail
           = @product.item_detail
         .top-contents__table
