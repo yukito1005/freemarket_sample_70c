@@ -21,7 +21,7 @@ $(function(){
                                 </span>
                               </time>
                               <div class="seller-message__contents__items__body--icons--right">
-                                <div class="seller-message__contents__items__body--icons--right--delete">
+                                <div class="seller-message__contents__items__body--icons--right--delete" data-product=${data.product_id} data-comment=${data.id}>
                                   <i class="fas fa-trash-alt"></i>
                                 </div>
                               </div>
@@ -50,7 +50,7 @@ $(function(){
                                 </span>
                               </time>
                               <div class="seller-message__contents__items__body--icons--right">
-                                <div class="seller-message__contents__items__body--icons--right--delete">
+                                <div class="seller-message__contents__items__body--icons--right--delete" data-product=${data.product_id} data-comment=${data.id}>
                                   <i class="fas fa-trash-alt"></i>
                                 </div>
                               </div>
@@ -88,10 +88,12 @@ $(function(){
     })
   });
 
-  $('.seller-message__contents__items__body--icons--right--delete').on('click', function(){
+  $(document).on('click','.seller-message__contents__items__body--icons--right--delete', function(){
     let productId = $(this).data('product');
     let commentId = $(this).data('comment');
-    let data = $(this).parent().parent().parent().parent().remove();
+    console.log(productId);
+    console.log(commentId);
+    $(this).parent().parent().parent().parent().remove();
     $.ajax({
       url: "/products/" + productId + "/comments/" + commentId + "/comment_destroy",
       type: "POST",
