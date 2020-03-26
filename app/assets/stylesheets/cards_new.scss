@@ -1,0 +1,87 @@
+.l-container__content__credit{
+  
+  &__header{
+    text-align: center;
+    padding: 8px 24px;
+    background-color: white;
+    border-bottom: 2px solid whitesmoke;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  &__inner{
+    padding: 40px 40px 40px;
+    background-color: white;
+    &__single{
+      max-width: 343px;
+      margin: 0 auto;
+      &__formtop{
+        
+        .card{
+          font-size: 14px;
+        }
+        .notetop{
+          font-size: 12px;
+          background-color: red;
+          color: white;
+          padding: 2px 4px;
+        }
+      }
+      .input__default{
+        width: 100%;
+        padding: 10px 16px 8px;
+        margin-top: 3px;
+      }
+      .signup-card-list{
+        display: flex;
+        
+        li{
+          padding-right: 8px;
+          margin-top: 6px;
+        }
+      }
+      &__formmiddle{
+        .expire{
+          font-size: 14px;
+        }
+        .notemiddle{
+          font-size: 12px;
+          background-color: red;
+          color: white;
+          padding: 2px 4px;
+        }
+      }
+      #exp_month{
+        background-color:white;
+        width: 40%;
+        height: 48px;
+      }
+      #exp_year{
+        background-color:white;
+        width: 40%;
+        height: 48px;
+      }
+      &__formbottom{
+        .code{
+          font-size: 14px;
+        }
+        .notebottom{
+          font-size: 12px;
+          background-color: red;
+          color: white;
+          padding: 2px 4px;
+        }
+      }
+
+      &__push{
+        .add-btn{
+          width: 379px;
+          padding-bottom: 10px;
+          padding-top: 10px;
+          background-color: red;
+          color: white;
+        }
+      }
+
+    }
+  }
+}
