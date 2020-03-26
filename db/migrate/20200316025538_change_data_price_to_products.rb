@@ -1,5 +1,5 @@
 class ChangeDataPriceToProducts < ActiveRecord::Migration[5.2]
-  def change
-    change_column :products, :price, :string
+  def up
+    change_column :products, :price, :integer
   end
 end

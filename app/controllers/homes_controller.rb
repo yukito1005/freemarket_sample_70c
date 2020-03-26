@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
-  def show
 
+  def show
     @category_first = Category.all.order("id ASC").limit(13)
   end
 
@@ -9,4 +9,5 @@ class HomesController < ApplicationController
     @pickupbrand = Product.where(category_id: 304).limit(3)
     @parents = Category.where(ancestry: nil)
   end
+  
 end

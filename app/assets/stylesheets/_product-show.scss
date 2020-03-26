@@ -381,7 +381,7 @@
 }
 
 .app-banner{
-    background-image: url("/assets/bg-appBanner-pict.jpg");
+    background-image: image-url("bg-appBanner-pict.jpg");
     padding: 100px 40px;
     position: relative;
     background-size: cover;
@@ -513,4 +513,28 @@
   .alert {
     background-color: orange;
   }
+}
+
+
+.show-sold-group{
+  height: 0px;
+ .sold{
+ position: absolute;
+ bottom: 114px;
+ color: white;
+ font-size: 26px;
+ z-index: ２;
+ transform: rotate( -23deg );
+ z-index: 2;
+ 
+ }
+ .sold-label{
+   width: 0;
+   height: 0;
+   border-style: solid;
+   border-width: 49px 108px 0 0;
+   border-color: #ff0000 transparent transparent transparent;
+   position: absolute;
+   bottom: 107px;
+ }
 }
