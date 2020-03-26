@@ -136,9 +136,10 @@
                         %i.fas.fa-clock
                         %span
                           = comment.created_at.strftime("%Y年%m月%d日 %H時%M分")
-                      .seller-message__contents__items__body--icons--right
-                        .seller-message__contents__items__body--icons--right--delete{'data-product'=> @product.id, 'data-comment'=> comment.id}
-                          %i.fas.fa-trash-alt
+                      - if @comment.user_id == current_user.id
+                        .seller-message__contents__items__body--icons--right
+                          .seller-message__contents__items__body--icons--right--delete{'data-product'=> @product.id, 'data-comment'=> comment.id}
+                            %i.fas.fa-trash-alt
       = form_with model:[@product, @comment], url: "/products/#{@product.id}/comments", method: :post, class: "comment__new", local: true do |f|
         = f.text_area :text, class: "comment__new--text"
         = f.hidden_field :product_id, type: "hidden", value: @product.id
