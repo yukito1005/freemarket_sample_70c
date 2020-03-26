@@ -1,20 +1,19 @@
 .seller-message{
   padding: 17px 24px;
-  .seller-message__contents__items__user--right{
+  &__contents__items__user--right{
     left: auto;
     right: 56px;
     text-align: right;
     color: gray;
     margin-right: 20px;
   }
-  .seller-message__contents__items__user--left{
+  &__contents__items__user--left{
     left: auto;
     right: 56px;
     text-align: left;
     color: gray;
   }
-  .seller-message__contents__items__body{
-    // float: left;
+  &__contents__items__body{
     background: #fbf0e6;
     width: 600px;
     position: relative;
@@ -39,39 +38,3 @@
     }
   }
 }
-
-// .other-message{
-//   padding: 24px;
-//   .other-message__contents__items__user{
-//     left: auto;
-//     right: 56px;
-//     text-align: left;
-//     color: red;
-//   }
-//   .other-message__contents__items__body{
-//     float: right;
-//     background: #fbf0e6;
-//     width: 600px;
-//     position: relative;
-//     padding: 16px;
-//     border-radius: 15px;
-//     line-height: 1.5;
-//     word-break: break-all;
-//     margin-bottom: 15px;
-//     &--text{
-//       text-align: left;
-//     }
-//     &--icons{
-//       margin: 8px 0 0;
-//       display: flex;
-//       justify-content: space-between;
-//       &--left{
-//         display: block;
-//         color: #aaa;
-//       }
-//       &--right{
-//         float: right;
-//       }
-//     }
-//   }
-// }

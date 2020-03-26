@@ -91,11 +91,9 @@ $(function(){
   $(document).on('click','.seller-message__contents__items__body--icons--right--delete', function(){
     let productId = $(this).data('product');
     let commentId = $(this).data('comment');
-    console.log(productId);
-    console.log(commentId);
     $(this).parent().parent().parent().parent().remove();
     $.ajax({
-      url: "/products/" + productId + "/comments/" + commentId + "/comment_destroy",
+      url: "/products/" + productId + "/comments/" + commentId ,
       type: "POST",
       data: {"_method": "DELETE" },
       dataType: 'json'
