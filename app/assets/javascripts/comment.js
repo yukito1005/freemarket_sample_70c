@@ -4,7 +4,7 @@ $(function(){
 
     if(data.user_id == data.product_id){
 
-      let html = `<div class="seller-message">
+      let html = `<div class="seller-message" data-id="${data.id}">
                     <ul class="seller-message__items">
                       <li class="seller-message__contents">
                         <div class="seller-message__contents__items">
@@ -31,9 +31,9 @@ $(function(){
                       </li> 
                     </ul>
                   </div>`
-      　return html
+      return html
     }else{
-      let html = `<div class="seller-message">
+      let html = `<div class="seller-message" data-id="${data.id}">
                     <ul class="seller-message__items">
                       <li class="seller-message__contents">
                         <div class="seller-message__contents__items">
@@ -60,7 +60,7 @@ $(function(){
                       </li> 
                     </ul>
                   </div>`
-              　return html
+              return html
     }
   }
 
@@ -97,8 +97,6 @@ $(function(){
       type: "POST",
       data: {"_method": "DELETE" },
       dataType: 'json'
-    })
-    .done(function(data){
     })
   });
 });
