@@ -125,10 +125,10 @@ class ProductsController < ApplicationController
       @products = @search_product.result.page(params[:page])
     end
     
-    # unless @search.present?
-    #   flash[:alert] = "キーワードを入力してください"
-    #   redirect_to root_path
-    # end
+    unless @search.present?
+      flash[:alert] = "キーワードを入力してください"
+      redirect_to root_path
+    end
 
   end
 
