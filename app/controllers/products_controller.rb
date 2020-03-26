@@ -130,13 +130,20 @@ class ProductsController < ApplicationController
 
   def search
     @parents = Category.where(ancestry: nil)
-    @search_product = Product.ransack(params[:search])
-    @products = Product.search(params[:search]).order("created_at DESC").page(params[:page]).per(20)
     @search = params[:search]
+    @search_product = Product.ransack(params[:q])
+    if @search
+      @products = Product.search(params[:search]).order("created_at DESC").page(params[:page]).per(20)
+    else
+      @search = Product.ransack(params[:q]).item_name_cont
+      @products = @search_product.result.page(params[:page])
+    end
+    
     unless @search.present?
       flash[:alert] = "キーワードを入力してください"
       redirect_to root_path
     end
+
   end
 
 

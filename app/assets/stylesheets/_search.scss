@@ -158,6 +158,7 @@
             &__name h3 {
               position: relative;
               font-size: 14px;
+              color: black;
               overflow: hidden;
               word-break: normal;
               height: 3em;
@@ -178,6 +179,7 @@
             }
             &__icon {
               position: absolute;
+              color: black;
               right: 10px;
               bottom: 5px;
               padding-left: 32px;
@@ -189,9 +191,8 @@
     }
   }
   .pagination {
-    width: 200px;
-    margin-left: 430px;
     padding-bottom: 40px;
+    margin-left: 430px;
     span {
       display: inline-block;
       text-align: center;

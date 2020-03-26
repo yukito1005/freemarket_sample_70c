@@ -25,7 +25,7 @@
         = p.label :'都道府県'
         %span 必須
         %br/
-        = p.text_field :prefecture, placeholder:'例)東京都', class:'boxes__field__large-frame'
+        = p.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: '選択してください', class:'prefecture-box'
       .boxes__field
         = p.label :'市区町村'
         %span 必須
