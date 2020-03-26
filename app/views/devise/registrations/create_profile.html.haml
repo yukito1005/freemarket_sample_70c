@@ -7,7 +7,7 @@
       %li.registration__box
         = link_to("トップページへ戻る", root_path, class: "registration__box--btn")
       %li.registration__box
-        = link_to("マイページ", user_path(current_user.id), class: "registration__box--btn")
+        = link_to("マイページ", user_path(current_user), class: "registration__box--btn")
       %li.registration__box
         = link_to("出品する", new_product_path, class: "registration__box--btn")
   = render partial: 'shared/products_footer'

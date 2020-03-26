@@ -9,6 +9,6 @@ ja:
 
   date:
     order:
-      - :year
-      - :month
-      - :day
+    - :year
+    - :month
+    - :day

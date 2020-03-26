@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :products do
     collection do
       get 'search'
-      get 'purchase'
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
       get 'get_size', defaults: { format: 'json' }
@@ -21,7 +20,8 @@ Rails.application.routes.draw do
       get 'purchase'
       post 'pay', to: 'products#pay'
       get 'confirm'
-    end  
+      delete 'image_destroy', defaults: { format: 'json' }
+    end
   end
 
   resources :cards, only: [:new, :index, :show, :destroy] do
