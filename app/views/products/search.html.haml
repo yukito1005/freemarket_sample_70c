@@ -24,28 +24,28 @@
               .i.fas.fa-star
               %span 商品の状態
             .detail-field__check-box
-              = f.check_box :condition_id
+              = f.check_box :condition_id_in, { multiple: true }, '',nil
               %span すべて
             .detail-field__check-box
-              = f.check_box :condition_id
+              = f.check_box :condition_id_in, { multiple: true }, '1', nil
               %span 新品、未使用
             .detail-field__check-box
-              = f.check_box :condition_id
+              = f.check_box :condition_id_in, { multiple: true }, '2', nil
               %span 未使用に近い
             .detail-field__check-box
-              = f.check_box :condition_id
+              = f.check_box :condition_id_in, { multiple: true }, '3', nil
               %span 目立った傷や汚れなし
             .detail-field__check-box
-              = f.check_box :condition_id
+              = f.check_box :condition_id_in, { multiple: true }, '4', nil
               %span やや傷や汚れあり
             .detail-field__check-box
-              = f.check_box :condition_id
+              = f.check_box :condition_id_in, { multiple: true }, '5', nil
               %span 傷や汚れあり
             .detail-field__check-box
-              = f.check_box :condition_id
+              = f.check_box :condition_id_in, { multiple: true }, '6', nil
               %span 全体的に状態が悪い
           .detail-data
-            %button クリア
+            = f.button "リセット", type: :reset, class: 'button'
             = f.submit '完了', class: 'submit-btn'
     .containerRight
       - if @products.empty?
