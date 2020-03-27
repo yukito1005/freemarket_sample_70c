@@ -1,7 +1,5 @@
 $(function(){
-
-  let buildHTML = function(data){
-    if(data.user_id == data.product_id){
+  let buildHTML = function(data){if(data.user_id == data.product_id){
       let html = `<div class="seller-message" data-id="${data.id}">
                     <ul class="seller-message__items">
                       <li class="seller-message__contents">
