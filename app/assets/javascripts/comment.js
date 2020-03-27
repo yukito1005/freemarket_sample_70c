@@ -1,5 +1,6 @@
 $(function(){
-  let buildHTML = function(data){if(data.user_id == data.product_id){
+  let buildHTML = function(data){
+  if(data.user_id == data.product_id){
       let html = `<div class="seller-message" data-id="${data.id}">
                     <ul class="seller-message__items">
                       <li class="seller-message__contents">
@@ -28,7 +29,7 @@ $(function(){
                     </ul>
                   </div>`
       return html
-    }else{
+  }else{
       let html = `<div class="seller-message" data-id="${data.id}">
                     <ul class="seller-message__items">
                       <li class="seller-message__contents">
@@ -56,7 +57,7 @@ $(function(){
                       </li> 
                     </ul>
                   </div>`
-              return html
+        return html
     }
   }
 
@@ -93,6 +94,12 @@ $(function(){
       type: "POST",
       data: {"_method": "DELETE" },
       dataType: 'json'
+    })
+    .done(function(){
+      alert("コメントを削除しました");
+    })
+    .fail(function(){
+      alert("コメントの削除に失敗しました");
     })
   });
 });
