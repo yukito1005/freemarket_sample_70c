@@ -77,7 +77,7 @@ $(function(){
     .done(function(data){
       let html = buildHTML(data);
       $(".insert_comment").append(html);
-      $('form')[0].reset();
+      $('.comment__new')[0].reset();
       $('.comment__new--submit').attr('disabled', false);
     })
     .fail(function(){
